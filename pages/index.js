@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Hero from "../components/Hero";
 
 export default function Home() {
   return (
@@ -9,7 +10,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="text-3xl font-bold underline">Home</main>
+      <section className="text-3xl font-bold underline">
+        <Hero />
+        <article className="h-96 p-6">Contenidos del home</article>
+      </section>
     </>
   );
 }
