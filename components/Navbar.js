@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="bg-black text-white font-bold text-xl uppercase p-9">
+    <nav className="bg-gradient-to-b from-black text-white font-bold text-xl uppercase p-9 absolute w-screen z-30">
       <ul className="flex justify-center space-x-7">
         <li>
           <Link href="/">Home</Link>

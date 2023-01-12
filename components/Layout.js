@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Hero from "./Hero";
 
 import { Roboto } from "@next/font/google";
 
@@ -12,6 +13,7 @@ export default function Layout({ children }) {
   return (
     <main className={roboto.className}>
       <Navbar />
+      <Hero />
       <main>{children}</main>
       {/* <Footer /> */}
     </main>
