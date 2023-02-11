@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Hero from "../components/Hero";
+import HomeExperiences from "../components/HomeExperiences";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -9,11 +12,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="text-3xl font-bold underline">Home</main>
+      <section className="text-3xl">
+        <Hero />
+        <HomeExperiences />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </>
   );
 }
 
-//TODO: create hero component
-//TODO: set background img
-//TODO: set top gradient z indez and absolute
+// poner iconos
+// poner los estilos del footer
+// hacer la api de experiences
+// hacer la pagina experiences
