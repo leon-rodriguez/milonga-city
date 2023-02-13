@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo-milonga-city.svg";
 import { FaShoppingCart } from "react-icons/fa";
+import { MdAccountCircle } from "react-icons/md";
 
 export default function Navbar() {
   return (
@@ -12,7 +13,7 @@ export default function Navbar() {
           height={180}
           width={180}
           alt="logo"
-          className="w-4  object-cover"
+          className="w-14 h-auto object-cover"
         />
         <ul className="flex justify-center space-x-7">
           <li>
@@ -25,8 +26,9 @@ export default function Navbar() {
             <Link href="/feedback">Give us your feedback</Link>
           </li>
         </ul>
-        <div>
+        <div className="flex w-14 justify-between">
           <FaShoppingCart />
+          <MdAccountCircle />
         </div>
       </div>
       <div className="bg-gradient-to-b from-black h-40 opacity-50 top-0 left-0 w-full h-full absolute -z-10"></div>

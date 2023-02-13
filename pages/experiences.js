@@ -1,4 +1,7 @@
 import Head from "next/head";
+import HeroExperiences from "../components/HeroExperiences";
+import ContainerExperiences from "../components/ContainerExperiences";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -9,7 +12,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="text-3xl font-bold underline">Experiences</main>
+      <section>
+        <HeroExperiences />
+      </section>
+      <section>
+        <ContainerExperiences />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </>
   );
 }

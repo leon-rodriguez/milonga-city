@@ -1,11 +1,11 @@
 import Card from "./Card";
-import { experiencesList } from "../pages/api/experiences";
+import { homeList } from "../pages/api/home";
 
 const HomeExperiences = () => {
   //console.log("Data: ", experiencesList);
   return (
-    <article className=" p-6 flex justify-evenly">
-      {experiencesList.map((item) => (
+    <article className=" p-6 flex justify-evenly bg-[#f0f0f0]">
+      {homeList.map((item) => (
         <Card key={item.id} data={item} />
       ))}
     </article>
@@ -23,7 +23,7 @@ export async function getServerSideProps() {
   //   } catch (error) {
   //     throw new Error(error);
   //   }
-  return experiencesList;
+  return homeList;
 }
 
 export default HomeExperiences;
