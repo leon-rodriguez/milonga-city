@@ -23,7 +23,6 @@ export default function Home() {
   );
 }
 
-//TODO poner iconos
-//TODO poner los estilos del footer
-//TODO hacer la api de experiences
-//TODO hacer la pagina experiences
+//TODO hacer estilos responsive
+//TODO hacer menu para mobile
+//TODO arreglar el footer

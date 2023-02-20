@@ -1,5 +1,5 @@
-import Navbar from "./Navbar";
-
+import { Navbar, NavbarMobile } from "./Navbar";
+import { useMediaQuery } from "react-responsive";
 import { Roboto } from "@next/font/google";
 
 const roboto = Roboto({
@@ -9,9 +9,10 @@ const roboto = Roboto({
 });
 
 export default function Layout({ children }) {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 720px)" });
   return (
     <main className={roboto.className}>
-      <Navbar />
+      {isTabletOrMobile ? <NavbarMobile /> : <Navbar />}
       <main>{children}</main>
       {/* <Footer /> */}
     </main>

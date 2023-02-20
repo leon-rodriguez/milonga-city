@@ -1,5 +1,5 @@
-import Image from "next/image";
-import bailarines from "../public/Images/bailarines.jpg";
+import Image from 'next/image';
+import bailarines from '../public/Images/bailarines.jpg';
 
 /*
   //text div styles

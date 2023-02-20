@@ -5,7 +5,7 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 const Card = ({ data }) => {
   const { title, body, src, type, price, currency, cta } = data;
   return (
-    <div className="w-96 h-[560px] p-2 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300">
+    <div className="w-[360px] h-[500px] p-2 mb-8 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300">
       <div className="overflow-hidden">
         <Image
           src={bailarines}
@@ -13,9 +13,9 @@ const Card = ({ data }) => {
           className="cursor-pointer w-full h-full object-cover mb-4 ease-out duration-300 hover:scale-125"
         />
       </div>
-      <div>
+      <div className="hover:[&>p]:bg-[#0195e0]">
         <h2 className="text-2xl text-[#4b4b4b] cursor-pointer ">{title}</h2>
-        <p className="text-sm text-[#7b8794]">{type}</p>
+        <p className="text-sm text-[#7b8794] ">{type}</p>
       </div>
       <div className="border-b border-gray-400 pt-2 grid grid-rows-[3fr_1fr]">
         <div className="text-sm text-[##1f2933] leading-7">{body}</div>
