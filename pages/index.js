@@ -23,6 +23,6 @@ export default function Home() {
   );
 }
 
-//TODO hacer estilos responsive
-//TODO hacer menu para mobile
-//TODO arreglar el footer
+//TODO 
+//TODO 
+//TODO 

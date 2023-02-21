@@ -3,6 +3,7 @@ import Image from 'next/image';
 import logo from '../assets/logo-milonga-city.svg';
 import { FaShoppingCart } from 'react-icons/fa';
 import { MdAccountCircle, MdOutlineMenu } from 'react-icons/md';
+import { useEffect, useRef } from 'react';
 // import { GiHamburgerMenu } from "react-icons/gr";
 
 export function Navbar() {
@@ -36,24 +37,28 @@ export function Navbar() {
 }
 
 export function NavbarMobile() {
-  const menu = document.querySelector('.menu');
   let change = false;
+  const menu = useRef(null);
   const openMenu = () => {
+    console.log("menu, ", menu, menu.current)
     if (change == false) {
-      menu.classList.add('translate-y-[334px]');
+      menu.current.classList.add('translate-y-[334px]');
       change = true;
     } else {
-      menu.classList.remove('translate-y-[334px]');
+      menu.current.classList.remove('translate-y-[334px]');
       change = false;
     }
   };
+  // useEffect(() => {
+  //    menu = document.querySelector('.menu');
+  // }, [])
   return (
     <nav className=" text-white font-bold absolute w-full z-20">
-      <div className="bg-black/75 h-[334px] w-full absolute z-10 flex justify-center items-end transition duration-300 ease-out menu -top-[334px]">
+      <div className="bg-black/75 h-[334px] w-full absolute z-10 flex justify-center items-end transition duration-300 ease-out -top-[334px]" ref={menu}>
         <ul className="h-[222px] text-2xl pb-8 flex flex-col justify-evenly">
           <li className="text-center">HOME</li>
           <li className="text-center">EXPERIENCES</li>
-          <li className="text-center">GIVE US YOUR FEEDBACK</li>
+          <li className="text-center">GIVE US YOUR FEEDBACK messia</li>
         </ul>
       </div>
       <div className=" w-full flex justify-between">

@@ -5,8 +5,8 @@ const ContainerExperiences = () => {
   return (
     <div className="bg-[#f0f0f0] grid grid-cols-3 gap-y-9 w-full p-11 max-xl:grid-cols-2 max-[895px]:grid-cols-1">
       {experiencesList.map((item) => (
-        <div className="flex justify-center ">
-          <Card key={item.id} data={item} />
+        <div className="flex justify-center" key={item.id}>
+          <Card data={item} />
         </div>
       ))}
     </div>
