@@ -58,19 +58,17 @@ export function NavbarMobile() {
         <ul className="h-[222px] text-2xl pb-8 flex flex-col justify-evenly">
           <li className="text-center">HOME</li>
           <li className="text-center">EXPERIENCES</li>
-          <li className="text-center">GIVE US YOUR FEEDBACK messia</li>
+          <li className="text-center">GIVE US YOUR FEEDBACK</li>
         </ul>
       </div>
       <div className=" w-full flex justify-between">
         <Image
           src={logo}
-          height={180}
-          width={180}
           alt="logo"
-          className="w-28 h-auto object-cover relative z-50"
+          className="w-24 h-auto object-cover relative z-50 mt-2 ml-2"
         />
         <MdOutlineMenu
-          className="text-8xl text-white relative z-50"
+          className="text-6xl text-white relative z-50 mt-2 mr-2"
           onClick={openMenu}
         />
         {/* <GiHamburgerMenu /> */}

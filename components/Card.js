@@ -1,6 +1,6 @@
-import Image from "next/image";
-import bailarines from "../public/Images/bailarines.jpg";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import Image from 'next/image';
+import bailarines from '../public/Images/bailarines.jpg';
+import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 const Card = ({ data }) => {
   const { title, body, src, type, price, currency, cta } = data;
@@ -13,7 +13,7 @@ const Card = ({ data }) => {
           className="cursor-pointer w-full h-full object-cover mb-4 ease-out duration-300 hover:scale-125"
         />
       </div>
-      <div className="hover:[&>p]:bg-[#0195e0]">
+      <div>
         <h2 className="text-2xl text-[#4b4b4b] cursor-pointer ">{title}</h2>
         <p className="text-sm text-[#7b8794] ">{type}</p>
       </div>

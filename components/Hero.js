@@ -17,8 +17,8 @@ import bailarines from '../public/Images/bailarines.jpg';
 
 export default function Hero() {
   return (
-    <div className="w-full h-screen">
-      <div className="absolute text-white left-1/3 bottom-1/4 text-7xl text-right">
+    <div className="w-full h-screen ">
+      <div className="absolute bottom-1/4 right-1/4 text-white text-7xl text-right max-[1280px]:text-6xl max-[720px]:text-4xl">
         <p className="underline decoration-3 ">LEARN</p>
         <p className="mt-1">WITH THE BEST</p>
         <p>TANGO TEACHERS</p>

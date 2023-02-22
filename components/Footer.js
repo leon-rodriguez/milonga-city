@@ -1,5 +1,11 @@
-import logo from "../assets/logo-milonga-city.svg";
-import Image from "next/image";
+import logo from '../assets/logo-milonga-city.svg';
+import Image from 'next/image';
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaTripadvisor,
+  FaInstagramSquare,
+} from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -71,10 +77,11 @@ const Footer = () => {
             Follow Us
           </div>
           <div className="flex justify-start pb-10 max-sm:justify-center">
-            <div className="text-white text-xl font-bold ">
-              <span>@</span>
-              <span className="mx-6">+</span>
-              <span>Ç</span>
+            <div className="text-white w-40 text-xl font-bold flex justify-between">
+              <FaFacebookF />
+              <FaInstagramSquare />
+              <FaTwitter />
+              <FaTripadvisor />
             </div>
           </div>
         </div>
