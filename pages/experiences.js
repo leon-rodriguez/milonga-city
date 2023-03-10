@@ -1,7 +1,8 @@
-import Head from "next/head";
-import HeroExperiences from "../components/HeroExperiences";
-import ContainerExperiences from "../components/ContainerExperiences";
-import Footer from "../components/Footer";
+import Head from 'next/head';
+import HeroExperiences from '../components/HeroExperiences';
+import ContainerExperiences from '../components/ContainerExperiences';
+import Footer from '../components/Footer';
+import WhatsappButton from '../components/WhatsappButton';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <ContainerExperiences />
       </section>
       <section>
+        <WhatsappButton />
         <Footer />
       </section>
     </>

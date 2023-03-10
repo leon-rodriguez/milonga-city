@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Hero from '../components/Hero';
-import HomeExperiences from '../components/HomeExperiences';
 import Footer from '../components/Footer';
+import Experience from '../components/Experience';
+import HeroExperience from '../components/HeroExperience';
 import WhatsappButton from '../components/WhatsappButton';
 
-export default function Home() {
+const experience = () => {
   return (
     <>
       <Head>
@@ -13,18 +13,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <HeroExperience />
       <section className="text-3xl">
-        <Hero />
-        <HomeExperiences />
+        <Experience />
       </section>
       <section>
-        <Footer />
         <WhatsappButton />
+        <Footer />
       </section>
     </>
   );
-}
+};
 
-//TODO hacer pagina de card
-//TODO hacer responsive d esa pagina
-//TODO
+export default experience;

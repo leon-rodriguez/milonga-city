@@ -8,13 +8,15 @@ import { useEffect, useRef } from 'react';
 
 export function Navbar() {
   return (
-    <nav className=" text-white font-bold text-xl uppercase p-9 absolute w-full z-30 ">
+    <nav className=" text-white font-bold text-xl uppercase p-9 w-full z-30 fixed">
       <div className="flex w-full justify-between">
-        <Image
-          src={logo}
-          alt="logo"
-          className="w-28 h-auto object-cover max-lg:w-20"
-        />
+        <Link href="/">
+          <Image
+            src={logo}
+            alt="logo"
+            className="w-28 h-auto object-cover max-lg:w-20"
+          />
+        </Link>
         <ul className="flex justify-center space-x-7">
           <li>
             <Link href="/">Home</Link>
@@ -40,7 +42,7 @@ export function NavbarMobile() {
   let change = false;
   const menu = useRef(null);
   const openMenu = () => {
-    console.log("menu, ", menu, menu.current)
+    console.log('menu, ', menu, menu.current);
     if (change == false) {
       menu.current.classList.add('translate-y-[334px]');
       change = true;
@@ -53,12 +55,27 @@ export function NavbarMobile() {
   //    menu = document.querySelector('.menu');
   // }, [])
   return (
-    <nav className=" text-white font-bold absolute w-full z-20">
-      <div className="bg-black/75 h-[334px] w-full absolute z-10 flex justify-center items-end transition duration-300 ease-out -top-[334px]" ref={menu}>
+    <nav className=" text-white font-bold w-full z-20 fixed">
+      <div
+        className="bg-black/75 h-[334px] w-full absolute z-10 flex justify-center items-end transition duration-300 ease-out -top-[334px]"
+        ref={menu}
+      >
         <ul className="h-[222px] text-2xl pb-8 flex flex-col justify-evenly">
-          <li className="text-center">HOME</li>
-          <li className="text-center">EXPERIENCES</li>
-          <li className="text-center">GIVE US YOUR FEEDBACK</li>
+          <Link href="/">
+            <li className="text-center" onClick={openMenu}>
+              HOME
+            </li>
+          </Link>
+          <Link href="/experiences">
+            <li className="text-center" onClick={openMenu}>
+              EXPERIENCES
+            </li>
+          </Link>
+          <Link href="#">
+            <li className="text-center" onClick={openMenu}>
+              GIVE US YOUR FEEDBACK
+            </li>
+          </Link>
         </ul>
       </div>
       <div className=" w-full flex justify-between">

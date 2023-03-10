@@ -78,10 +78,18 @@ const Footer = () => {
           </div>
           <div className="flex justify-start pb-10 max-sm:justify-center">
             <div className="text-white w-40 text-xl font-bold flex justify-between">
-              <FaFacebookF />
-              <FaInstagramSquare />
-              <FaTwitter />
-              <FaTripadvisor />
+              <a href="https://www.facebook.com/people/Milonga-City/100063789690031/">
+                <FaFacebookF />
+              </a>
+              <a href="https://www.instagram.com/milongacity/">
+                <FaInstagramSquare />
+              </a>
+              <a href="#">
+                <FaTwitter />
+              </a>
+              <a href="https://www.tripadvisor.com.ar/Attraction_Review-g312741-d5796317-Reviews-Milonga_City-Buenos_Aires_Capital_Federal_District.html">
+                <FaTripadvisor />
+              </a>
             </div>
           </div>
         </div>

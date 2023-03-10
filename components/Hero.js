@@ -17,8 +17,8 @@ import bailarines from '../public/Images/bailarines.jpg';
 
 export default function Hero() {
   return (
-    <div className="w-full h-screen ">
-      <div className="absolute bottom-1/4 right-1/4 text-white text-7xl text-right max-[1280px]:text-6xl max-[720px]:text-4xl">
+    <div className="w-full h-screen overflow-hidden">
+      <div className="absolute z-20 bottom-1/4 right-1/4 text-white text-7xl text-right max-[1280px]:text-6xl max-[720px]:text-4xl">
         <p className="underline decoration-3 ">LEARN</p>
         <p className="mt-1">WITH THE BEST</p>
         <p>TANGO TEACHERS</p>
@@ -26,7 +26,7 @@ export default function Hero() {
       <Image
         src={bailarines}
         alt="Dos personas bailando tango"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover animate-[zoomOut_18s_linear_forwards]"
       />
     </div>
   );

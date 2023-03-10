@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import bailarines from '../public/Images/bailarines.jpg';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
@@ -20,8 +21,8 @@ const Card = ({ data }) => {
       <div className="border-b border-gray-400 pt-2 grid grid-rows-[3fr_1fr]">
         <div className="text-sm text-[##1f2933] leading-7">{body}</div>
         <div className="flex items-start">
-          <button className="bg-[#0195e0] w-36 h-7 text-white text-center leading-7 text-xl rounded-md cursor-pointer">
-            {cta}
+          <button className="bg-[#0195e0] w-36 h-7 text-white text-center leading-7 text-xl rounded-md cursor-pointer ease-out duration-300 hover:bg-[#01bdba]">
+            <Link href={'/experience'}>{cta}</Link>
           </button>
         </div>
       </div>
