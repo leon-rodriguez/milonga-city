@@ -5,7 +5,7 @@ import WhatsappButton from '../../../components/WhatsappButton';
 import { useRouter } from 'next/router';
 import { experiencesList } from '../../api/experiences.js';
 
-const Experience = () => {
+const experience = () => {
   const router = useRouter();
   const id = router.query.id;
   const element = experiencesList.find((item) => {

@@ -8,7 +8,7 @@ const Card = ({ data }) => {
   return (
     <Link
       href={{
-        pathname: '/Experience/[id]',
+        pathname: '/experience/[id]',
         query: { id },
       }}
     >
