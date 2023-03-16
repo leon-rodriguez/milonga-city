@@ -4,7 +4,7 @@ import bailarines from '../public/Images/bailarines.jpg';
 const AboutMilongas = () => {
   return (
     <div className="min-h-[2000px] w-full grid grid-rows-[1fr_18fr]">
-      <div className="w-full p-6 border border-b-[#0088cc]">
+      <div className="w-full p-6">
         <div id="milonga" className="w-full text-center text-5xl">
           MORE ABOUT MILONGAS
         </div>

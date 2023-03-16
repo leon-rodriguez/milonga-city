@@ -5,7 +5,7 @@ import WhatsappButton from '../../../components/WhatsappButton';
 import { useRouter } from 'next/router';
 import { experiencesList } from '../../api/experiences.js';
 
-const experience = () => {
+const Experience = () => {
   const router = useRouter();
   const id = router.query.id;
   const element = experiencesList.find((item) => {
@@ -46,4 +46,4 @@ const experience = () => {
 //   return experiencesList;
 // }
 
-export default experience;
+export default Experience;
