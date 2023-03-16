@@ -21,7 +21,7 @@ const AboutMilongas = () => {
           <div className="flex justify-start items-center max-[800px]:justify-center max-[800px]:items-start">
             <div className="w-3/4 ml-10 max-[800px]:ml-0 max-[400px]:text-sm">
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+              industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
               survived not only five centuries, but also the leap into
@@ -37,7 +37,7 @@ const AboutMilongas = () => {
           <div className="flex justify-end items-center max-[800px]:justify-center max-[800px]:items-start max-[800px]:order-1">
             <div className="w-3/4 mr-10 max-[800px]:mr-0 max-[400px]:text-sm">
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+              industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
               survived not only five centuries, but also the leap into
@@ -67,7 +67,7 @@ const AboutMilongas = () => {
           <div className="flex justify-start items-center max-[800px]:justify-center max-[800px]:items-start">
             <div className="w-3/4 ml-10 max-[800px]:ml-0 max-[400px]:text-sm">
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+              industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
               survived not only five centuries, but also the leap into
@@ -79,46 +79,6 @@ const AboutMilongas = () => {
             </div>
           </div>
         </div>
-        {/* <div className="grid grid-cols-2 w-full border border-lime-400 max-[800px]:grid-cols-1  ">
-          <div className=" grid place-items-center  border border-l-orange-700 max-[800px]:h-[400px]">
-            <Image
-              className=" object-cover p-8 h-[300px] w-[550px] max-[800px]:h-[400px]"
-              src={bailarines}
-              alt="bailarines de tango"
-            />
-          </div>
-          <div className="grid place-items-center p-24 max-[1024px]:p-8 max-[800px]:place-items-start">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </div>
-        </div>
-        <div className="grid grid-cols-2 w-full border border-lime-400 max-[800px]:grid-cols-1  ">
-          <div className=" grid place-items-center  border border-l-orange-700 max-[800px]:h-[400px]">
-            <Image
-              className=" object-cover p-8 h-[300px] w-[550px] max-[800px]:h-[400px]"
-              src={bailarines}
-              alt="bailarines de tango"
-            />
-          </div>
-          <div className="grid place-items-center p-24 max-[1024px]:p-8 max-[800px]:place-items-start">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </div>
-        </div> */}
       </div>
     </div>
   );
