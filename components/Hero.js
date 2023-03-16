@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import bailarines from '../public/Images/bailarines.jpg';
+import { Parallax } from 'react-scroll-parallax';
 
 /*
   //text div styles
@@ -23,11 +24,15 @@ export default function Hero() {
         <p className="mt-1">WITH THE BEST</p>
         <p>TANGO TEACHERS</p>
       </div>
+      {/* <Parallax speed={10} style={{
+        backgroundImage: `${bailarines}`
+      }}> */}
       <Image
         src={bailarines}
         alt="Dos personas bailando tango"
         className="w-full h-full object-cover animate-[zoomOut_18s_linear_forwards]"
       />
+      {/* </Parallax> */}
     </div>
   );
 }

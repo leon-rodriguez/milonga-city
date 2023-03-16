@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import HomeExperiences from '../components/HomeExperiences';
 import Footer from '../components/Footer';
 import WhatsappButton from '../components/WhatsappButton';
+import AboutMilongas from '../components/AboutMilongas';
 
 export default function Home() {
   return (
@@ -15,7 +16,13 @@ export default function Home() {
       </Head>
       <section className="text-3xl">
         <Hero />
+      </section>
+      <section>
         <HomeExperiences />
+        {/* <iframe src="./fareharbor.html" width="100%" height="500px"></iframe> */}
+      </section>
+      <section>
+        <AboutMilongas />
       </section>
       <section>
         <Footer />

@@ -22,10 +22,7 @@ export function Navbar() {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/experiences">Experiences</Link>
-          </li>
-          <li>
-            <Link href="/feedback">Give us your feedback</Link>
+            <a href="#milonga">MORE ABOUT MILONGAS</a>
           </li>
         </ul>
         <div className="flex w-24 justify-evenly">
@@ -66,16 +63,9 @@ export function NavbarMobile() {
               HOME
             </li>
           </Link>
-          <Link href="/experiences">
-            <li className="text-center" onClick={openMenu}>
-              EXPERIENCES
-            </li>
-          </Link>
-          <Link href="#">
-            <li className="text-center" onClick={openMenu}>
-              GIVE US YOUR FEEDBACK
-            </li>
-          </Link>
+          <li className="text-center" onClick={openMenu}>
+            <a href="#milonga">MORE ABOUT MILONGAS</a>
+          </li>
         </ul>
       </div>
       <div className=" w-full flex justify-between">

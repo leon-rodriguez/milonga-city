@@ -7,7 +7,11 @@ const WhatsappButton = () => {
     <div>
       <a href="https://web.whatsapp.com/">
         {/* <logo className="w-16 h-16 fixed bottom-5 left-5"></logo> */}
-        <Image src={logo} className="w-16 h-16 fixed bottom-14 left-5" />
+        <Image
+          src={logo}
+          alt="whatsapp button"
+          className="w-16 h-16 fixed bottom-14 left-5"
+        />
       </a>
     </div>
   );
