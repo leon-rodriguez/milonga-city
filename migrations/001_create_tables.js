@@ -10,6 +10,7 @@ const experiencesList = [
     cta: 'Explore',
     price: 90,
     currency: 'USD',
+    showInHome: true,
   },
   {
     extId: '296419',

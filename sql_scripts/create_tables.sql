@@ -1,3 +1,4 @@
+-- creamos la tabla experiences
 CREATE TABLE experiences (
     id serial PRIMARY KEY,
     title VARCHAR (255) NOT NULL,
@@ -7,9 +8,11 @@ CREATE TABLE experiences (
     body TEXT,
     cta VARCHAR (255),
     price NUMERIC,
-    currency VARCHAR (3)
+    currency VARCHAR (3),
+    showInHome BOOLEAN
 )
 
+-- agregamos registros a la tabla
 INSERT INTO experiences (
     title,
     extId,
@@ -59,3 +62,12 @@ INSERT INTO experiences (
     170,
     'USD'
 )
+
+-- agregamos una columna
+ALTER TABLE experiences ADD COLUMN showInHome BOOLEAN DEFAULT false;
+
+UPDATE experiences SET showInHome = true WHERE id = 1;  
+UPDATE experiences SET showInHome = true WHERE id = 2;  
+UPDATE experiences SET showInHome = true WHERE id = 4;  
+
+ALTER TABLE experiences RENAME COLUMN showInHome TO active;

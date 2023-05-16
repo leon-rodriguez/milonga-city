@@ -1,8 +1,19 @@
 import Card from './Card';
 import { homeList } from '../pages/api/home';
+import { useState, useEffect } from 'react';
 
 const HomeExperiences = () => {
   //console.log("Data: ", experiencesList);
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/experiences`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((results) => {
+        setData(results.data);
+      });
+  }, []);
   return (
     <article className=" p-6 bg-[#f0f0f0] min-h-[750px]">
       <h1 className="text-center font-bold text-4xl mb-2">TRENDING TOURS</h1>
@@ -10,9 +21,11 @@ const HomeExperiences = () => {
         JOIN MILONGA CITY TO ENJOY BUENOS AIRES EXPERIENCES
       </h3>
       <div className="flex justify-evenly flex-wrap">
-        {homeList.map((item) => (
-          <Card key={item.id} data={item} />
-        ))}
+        {!data && 'cargando :('}
+        {data && data.length === 0 && 'no hay experiencias disponibles'}
+        {data &&
+          data.length > 0 &&
+          data.map((item) => <Card key={item.id} data={item} />)}
       </div>
     </article>
   );
