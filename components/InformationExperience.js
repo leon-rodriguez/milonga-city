@@ -1,16 +1,30 @@
+import { useEffect, useState } from 'react';
+import { AiFillStar } from 'react-icons/ai';
+import { useInView } from 'react-intersection-observer';
+
 const InformationExperience = () => {
   return (
     <div className="w-full mt-4 grid grid-cols-[3fr_2fr] gap-2 max-[720px]:grid-cols-none max-[720px]:grid-rows-[400px-auto] relative">
-      <div className="min-h-[1000px] border border-red-500 pl-6 max-[720px]:order-2">
+      <div className="min-h-[2000px] border border-red-500 pl-6 pr-6 max-[720px]:order-2">
         <div className="w-full flex">
           <button className="border-b-2 border-b-transparent focus:border-b-black cursor-pointer">
             <a>Description</a>
           </button>
           <button className="mx-6 border-b-2 border-b-transparent focus:border-b-black">
-            <a href="#details">Details</a>
+            <a
+              className="border-b-2 border-b-transparent active:border-b-black "
+              href="#details"
+            >
+              Details
+            </a>
           </button>
           <button className="border-b-2 border-b-transparent focus:border-b-black cursor-pointer">
-            <a>Reviews</a>
+            <a
+              href="#reviews"
+              className="border-b-2 border-b-transparent active:border-b-black "
+            >
+              Reviews
+            </a>
           </button>
         </div>
         <div className="mt-4">
@@ -78,11 +92,147 @@ const InformationExperience = () => {
             <li>Welcome drink at the Milonga</li>
             <li>Transport back to the Hotel</li>
           </ul>
+          <div className="font-bold text-lg mt-4">
+            What is not included in the tour?
+          </div>
+          <ul className="list-disc list-inside mt-4 pl-6">
+            <li>
+              If the service is Show Only, the Tango Lesson is not included.
+            </li>
+            <li>Tango lessons in the Milonga</li>
+            <li>Food in the Milonga</li>
+          </ul>
+        </div>
+        <div className="mt-8 pt-8 border-t-[1px] border-t-gray-400">
+          <div className="grid grid-cols-2">
+            <div className="font-bold text-4xl flex items-center" id="reviews">
+              Reviews
+            </div>
+            <div className="grid place-items-end font-bold text-xl">
+              <div>8.9 / 10</div>
+              <div className="flex">
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="max-h-[200px] w-full grid grid-cols-[1fr_4fr] mb-8 overflow-y-hidden">
+              <div className=" flex justify-end font-bold pr-3">
+                <div>
+                  <div className=" text-right flex">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                  </div>
+                  <div>05/13/23</div>
+                </div>
+              </div>
+              <div>
+                <div className="font-bold">🏴John Doe</div>
+                <div className="text-md">
+                  John Doe Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Curabitur tempus risus nec tortor posuere tincidunt.
+                  Vivamus ut velit at ipsum laoreet vestibulum. Mauris malesuada
+                  a sem eget commodo. Duis ut elit luctus, ultrices massa ut,
+                  condimentum urna. Nullam id lectus vitae lacus sagittis
+                  hendrerit vel sed nunc.
+                </div>
+              </div>
+            </div>
+            <div className="max-h-[200px] w-full grid grid-cols-[1fr_4fr] mb-8 overflow-y-hidden">
+              <div className=" flex justify-end font-bold pr-3">
+                <div>
+                  <div className=" text-right flex">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                  </div>
+                  <div>05/13/23</div>
+                </div>
+              </div>
+              <div>
+                <div className="font-bold">🏴John Doe</div>
+                <div className="text-md">
+                  John Doe Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Curabitur tempus risus nec tortor posuere tincidunt.
+                  Vivamus ut velit at ipsum laoreet vestibulum. Mauris malesuada
+                  a sem eget commodo. Duis ut elit luctus, ultrices massa ut,
+                  condimentum urna. Nullam id lectus vitae lacus sagittis
+                  hendrerit vel sed nunc. velit at ipsum laoreet vestibulum.
+                  Mauris malesuada a sem eget commodo. Duis ut elit luctus,
+                  ultrices massa ut, condimentum urna. Nullam id lectus vitae
+                  lacus sagittis hendrerit vel sed¡velit at ipsum laoreet
+                  vestibulum. Mauris malesuada a sem eget commodo. Duis ut elit
+                  luctus, ultrices massa ut, condimentum urna. Nullam id lectus
+                  vitae lacus sagittis hendrerit vel sed nunc.velit at ipsum
+                  laoreet vestibulum. Mauris malesuada a sem eget commodo. Duis
+                  ut elit luctus, ultrices massa ut, condimentum urna. Nullam id
+                  lectus vitae lacus sagittis hendrerit vel sed nunc.
+                </div>
+              </div>
+            </div>
+            <div className="max-h-[200px] w-full grid grid-cols-[1fr_4fr] mb-8 overflow-y-hidden">
+              <div className=" flex justify-end font-bold pr-3">
+                <div>
+                  <div className=" text-right flex">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                  </div>
+                  <div>05/13/23</div>
+                </div>
+              </div>
+              <div>
+                <div className="font-bold">🏴John Doe</div>
+                <div className="text-md">
+                  John Doe Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Curabitur tempus risus nec tortor posuere tincidunt.
+                  Vivamus ut velit at ipsum laoreet vestibulum. Mauris malesuada
+                  a sem eget commodo. Duis ut elit luctus, ultrices massa ut,
+                  condimentum urna. Nullam id lectus vitae lacus sagittis
+                  hendrerit vel sed nunc.
+                </div>
+              </div>
+            </div>
+            <div className="max-h-[200px] w-full grid grid-cols-[1fr_4fr] mb-8 overflow-y-hidden">
+              <div className=" flex justify-end font-bold pr-3">
+                <div>
+                  <div className=" text-right flex">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                  </div>
+                  <div>05/13/23</div>
+                </div>
+              </div>
+              <div>
+                <div className="font-bold">🏴John Doe</div>
+                <div className="text-md">
+                  John Doe Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Curabitur tempus risus nec tortor posuere tincidunt.
+                  Vivamus ut velit at ipsum laoreet vestibulum. Mauris malesuada
+                  a sem eget commodo. Duis ut elit luctus, ultrices massa ut,
+                  condimentum urna. Nullam id lectus vitae lacus sagittis
+                  hendrerit vel sed nunc.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="h-[400px] border border-blue-500 grid-row max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0">
-        b
-      </div>
+      <div className="h-[400px] border border-blue-500 grid-row max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0"></div>
     </div>
   );
 };

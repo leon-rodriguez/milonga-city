@@ -1,6 +1,7 @@
 import Card from './Card';
 import { homeList } from '../pages/api/home';
 import { useState, useEffect } from 'react';
+import LoaderSpinner from './LoaderSpinner';
 
 const HomeExperiences = () => {
   //console.log("Data: ", experiencesList);
@@ -21,7 +22,7 @@ const HomeExperiences = () => {
         JOIN MILONGA CITY TO ENJOY BUENOS AIRES EXPERIENCES
       </h3>
       <div className="flex justify-evenly flex-wrap">
-        {!data && 'cargando :('}
+        {!data && <LoaderSpinner />}
         {data && data.length === 0 && 'no hay experiencias disponibles'}
         {data &&
           data.length > 0 &&
