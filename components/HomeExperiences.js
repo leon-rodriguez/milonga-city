@@ -22,7 +22,7 @@ const HomeExperiences = () => {
         JOIN MILONGA CITY TO ENJOY BUENOS AIRES EXPERIENCES
       </h3>
       <div className="flex justify-evenly flex-wrap">
-        {!data && <LoaderSpinner />}
+        {!data && <LoaderSpinner size={80} />}
         {data && data.length === 0 && 'no hay experiencias disponibles'}
         {data &&
           data.length > 0 &&

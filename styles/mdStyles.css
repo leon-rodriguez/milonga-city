@@ -1,0 +1,15 @@
+.md-styles h2 {
+  @apply font-bold;
+}
+
+.md-styles p {
+  @apply mt-6;
+}
+
+.md-styles h3 {
+  @apply font-bold text-xl mt-8;
+}
+
+.md-styles ul {
+  @apply list-disc list-inside mt-3 pl-6;
+}

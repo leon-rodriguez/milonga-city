@@ -4,7 +4,7 @@ import HeroExperience from '../../../components/HeroExperience';
 import WhatsappButton from '../../../components/WhatsappButton';
 import ContainerExperience from '../../../components/ContainerExperience';
 import { useRouter } from 'next/router';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 const Experience = () => {
   const router = useRouter();
@@ -17,22 +17,15 @@ const Experience = () => {
         return results.json();
       })
       .then((results) => {
-        // console.log(results.data);
-        // setData(results.data);
         const devolverCard = results.data.find((item) => {
           if (item.id == id) {
             console.log(`el item que se encontro es: ${item.title}`);
             return item;
           }
         });
-        console.log(devolverCard, 'la pija esta devovler card');
         setData(devolverCard);
-        console.log('data es ', data);
       });
   }, []);
-  // const element = experiencesList.find((item) => {
-  //   return item.id == id;
-  // });
   return (
     <>
       <Head>
@@ -45,7 +38,7 @@ const Experience = () => {
         <HeroExperience />
       </section>
       <section className="w-full flex justify-center bg-[#f0f0f0]">
-        <ContainerExperience />
+        <ContainerExperience id={id} />
         {/* {!data && 'cargando :('}
         {data && (
           <iframe
