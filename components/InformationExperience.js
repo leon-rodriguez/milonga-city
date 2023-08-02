@@ -107,7 +107,11 @@ const InformationExperience = ({ id }) => {
               </div>
               <div className="flex text-[#0088cc]">
                 {[...Array(5)].map((_, index) =>
-                  index < averageRating ? <AiFillStar /> : <AiOutlineStar />
+                  index < averageRating ? (
+                    <AiFillStar key={index} />
+                  ) : (
+                    <AiOutlineStar key={index} />
+                  )
                 )}
               </div>
             </div>
@@ -128,9 +132,9 @@ const InformationExperience = ({ id }) => {
                         <div className=" text-right flex text-[#0088cc]">
                           {[...Array(5)].map((_, index) =>
                             index < item.rating ? (
-                              <AiFillStar />
+                              <AiFillStar key={index} />
                             ) : (
-                              <AiOutlineStar />
+                              <AiOutlineStar key={index} />
                             )
                           )}
                         </div>
