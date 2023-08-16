@@ -3,7 +3,6 @@ import { createKysely } from '@vercel/postgres-kysely';
 export default async function handler(req, res) {
   try {
     const { id } = req.query;
-    console.log('el id es: ', id);
     const db = createKysely();
     const experiences = await db
       .selectFrom('experiences')

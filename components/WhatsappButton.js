@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const WhatsappButton = () => {
   return (
-    <div>
+    <div className="select-none">
       <a href="https://web.whatsapp.com/">
         {/* <logo className="w-16 h-16 fixed bottom-5 left-5"></logo> */}
         <Image

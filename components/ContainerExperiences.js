@@ -30,19 +30,4 @@ const ContainerExperiences = (props) => {
   );
 };
 
-// export async function getServerSideProps() {
-//   try {
-//     // Fetch data from external API
-//     const res = await fetch(`http://localhost:3000/api/experiences`);
-//     const data = await res.json();
-
-//     // Pass data to the page via props
-//     return { props: { data } };
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-//   // return experiencesList;
-// }
 export default ContainerExperiences;
-
-//flex flex-wrap justify-evenly

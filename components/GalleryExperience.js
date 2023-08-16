@@ -10,6 +10,14 @@ const GalleryExperience = () => {
           alt="Dos personas bailando tango"
           className="w-full h-full object-cover"
         />
+        {/* <video
+          muted
+          loop
+          autoPlay
+          className="w-full h-full object-cover absolute top-0 left-0"
+        >
+          <source src="/Images/background.mp4" type="video/mp4"></source>
+        </video> */}
       </div>
       <div className="col-span-2 cursor-pointer overflow-hidden max-[720px]:col-span-2">
         <Image

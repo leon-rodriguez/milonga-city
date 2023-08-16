@@ -5,7 +5,6 @@ import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 const Card = ({ data }) => {
   const { title, body, imgsrc, type, price, currency, cta, id } = data;
-  console.log('la ruta de la imagen es: ', imgsrc);
   return (
     <Link
       href={{
@@ -15,11 +14,6 @@ const Card = ({ data }) => {
     >
       <div className="w-[400px] h-[600px] p-2 mb-8 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300 max-[420px]:w-[300px]">
         <div className="overflow-hidden">
-          {/* <Image
-            src={imgsrc}
-            alt="Dos personas bailando tango"
-            className="cursor-pointer w-full h-full object-cover mb-4 ease-out duration-300 hover:scale-125"
-          /> */}
           <img
             src={imgsrc}
             alt="Dos personas bailando tango"

@@ -29,14 +29,6 @@ export default function Hero() {
           TEACHERS
         </p>
       </div>
-      {/* <Parallax speed={10} style={{
-        backgroundImage: `${bailarines}`
-      }}> */}
-      {/* <Image
-        src={bailarines}
-        alt="Dos personas bailando tango"
-        className="w-full h-full object-cover animate-[zoomOut_18s_linear_forwards]"
-      /> */}
       <video
         muted
         loop
@@ -45,7 +37,6 @@ export default function Hero() {
       >
         <source src="/Images/background.mp4" type="video/mp4"></source>
       </video>
-      {/* </Parallax> */}
     </div>
   );
 }

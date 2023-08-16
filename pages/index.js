@@ -31,7 +31,3 @@ export default function Home() {
     </>
   );
 }
-
-//TODO hacer pagina de card
-//TODO hacer responsive d esa pagina
-//TODO

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import LoaderSpinner from './LoaderSpinner';
 
 const HomeExperiences = () => {
-  //console.log("Data: ", experiencesList);
   const [data, setData] = useState(null);
   useEffect(() => {
     fetch(`http://localhost:3000/api/experiences`)

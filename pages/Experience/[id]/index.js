@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react';
 const Experience = () => {
   const router = useRouter();
   const id = router.query.id;
-  console.log('id ', id);
   const [data, setData] = useState(null);
   useEffect(() => {
     fetch(`http://localhost:3000/api/experiences`)
@@ -19,7 +18,6 @@ const Experience = () => {
       .then((results) => {
         const devolverCard = results.data.find((item) => {
           if (item.id == id) {
-            console.log(`el item que se encontro es: ${item.title}`);
             return item;
           }
         });
@@ -39,15 +37,6 @@ const Experience = () => {
       </section>
       <section className="w-full flex justify-center bg-[#f0f0f0]">
         <ContainerExperience id={id} />
-        {/* {!data && 'cargando :('}
-        {data && (
-          <iframe
-            src={`https://fareharbor.com/embeds/book/milonga-city/items/${data.extid}/?full-items=yes&flow=546049`}
-            width="100%"
-            height="1600px"
-            className="mt-10"
-          ></iframe>
-        )} */}
       </section>
       <section>
         <WhatsappButton />
@@ -56,9 +45,5 @@ const Experience = () => {
     </>
   );
 };
-
-// export async function getServerSideProps() {
-//   return experiencesList;
-// }
 
 export default Experience;

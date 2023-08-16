@@ -39,7 +39,6 @@ export function NavbarMobile() {
   let change = false;
   const menu = useRef(null);
   const openMenu = () => {
-    console.log('menu, ', menu, menu.current);
     if (change == false) {
       menu.current.classList.add('translate-y-[334px]');
       change = true;
@@ -48,9 +47,7 @@ export function NavbarMobile() {
       change = false;
     }
   };
-  // useEffect(() => {
-  //    menu = document.querySelector('.menu');
-  // }, [])
+
   return (
     <nav className=" text-white font-bold w-full z-20 fixed">
       <div
