@@ -145,10 +145,12 @@ const HourPicker = ({ min, max, step, id, placeHolder, selectedDay }) => {
 
   const handlePicker = () => {
     if (change.current === false) {
-      picker.current.classList.remove('hidden');
+      picker.current.classList.remove('opacity-0', 'scale-0');
+      picker.current.classList.add('opacity-100', 'scale-100');
       change.current = true;
     } else {
-      picker.current.classList.add('hidden');
+      picker.current.classList.remove('opacity-100', 'scale-100');
+      picker.current.classList.add('opacity-0', 'scale-0');
       change.current = false;
     }
   };
@@ -158,7 +160,7 @@ const HourPicker = ({ min, max, step, id, placeHolder, selectedDay }) => {
       setHourSelected(hours[index].hour);
     }
   };
-
+  // border border-gray-500
   return (
     <div
       className="w-[259px] h-[56px] border-[#c4c4c4] border border-solid rounded-md flex items-center justify-between pl-[14px] pr-[9px] relative mt-4 cursor-pointer hover:border-[#000]"
@@ -171,7 +173,7 @@ const HourPicker = ({ min, max, step, id, placeHolder, selectedDay }) => {
         <AiOutlineClockCircle />
       </div>
       <div
-        className="absolute top-14 right-0 w-full max-h-[216px] bg-white overflow-y-scroll shadow-2xl border border-gray-500 shadow-[-1px 1px 24px -1px rgba(0,0,0,1)] rounded-lg transition-all duration-1000 ease-linear hidden"
+        className="absolute top-14 right-0 w-full max-h-[216px] bg-white overflow-y-scroll shadow-2xl  shadow-[-1px 1px 24px -1px rgba(0,0,0,1)] rounded-lg opacity-0 scale-0 transition-all duration-300 ease-out"
         ref={picker}
       >
         {hours &&

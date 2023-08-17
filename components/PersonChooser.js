@@ -25,8 +25,8 @@ const PersonChooser = (props) => {
 
   const openSelecter = () => {
     if (change.current == false) {
-      adultSelecter.current.classList.add('h-20', 'w-[259px]');
-      adultSelecter.current.classList.remove('hidden');
+      adultSelecter.current.classList.remove('opacity-0', 'scale-0');
+      adultSelecter.current.classList.add('opacity-100', 'scale-100');
       outline.current.classList.add('border-[#1976d2]', 'border-2');
       outline.current.classList.remove(
         'border-[#c4c4c4]',
@@ -34,8 +34,8 @@ const PersonChooser = (props) => {
       );
       change.current = true;
     } else {
-      adultSelecter.current.classList.add('hidden');
-      adultSelecter.current.classList.remove('h-20', 'w-[259px]');
+      adultSelecter.current.classList.add('opacity-0', 'scale-0');
+      adultSelecter.current.classList.remove('opacity-100', 'scale-100');
       outline.current.classList.remove('border-[#1976d2]', 'border-2');
       outline.current.classList.add('border-[#c4c4c4]', 'hover:border-[#000]');
       change.current = false;
@@ -55,7 +55,7 @@ const PersonChooser = (props) => {
         </div>
       </div>
       <div
-        className="absolute top-14 right-0 bg-white shadow-2xl grid grid-cols-[1fr_3fr]  hidden transition-all duration-300 ease-out"
+        className="h-20 w-[259px] absolute top-14 right-0 bg-white shadow-2xl grid grid-cols-[1fr_3fr] opacity-0 scale-0 transition-all duration-200 ease-out"
         ref={adultSelecter}
       >
         <div className="flex justify-center items-center text-xl ml-4">
