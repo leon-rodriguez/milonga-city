@@ -1,13 +1,13 @@
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import { useEffect, useState } from 'react';
-import LoaderSpinner from './LoaderSpinner';
-import { useRemark } from 'react-remark';
-import Callendar from './Callendar';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import PersonChooser from './PersonChooser';
-import HourPicker from './HourPicker';
-import CommentForm from './CommentForm';
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useEffect, useState } from "react";
+import LoaderSpinner from "./LoaderSpinner";
+import { useRemark } from "react-remark";
+import Callendar from "./Callendar";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import PersonChooser from "./PersonChooser";
+import HourPicker from "./HourPicker";
+import CommentForm from "./CommentForm";
 
 //TODO no mostrar el rating cuando no hay comentarios - HECHO
 //TODO parsear la fecha de los comments - HECHO A MEDIAS - desde el js cuando se publique el comentario voy a pasar la fecha ya parseada
@@ -19,7 +19,7 @@ const InformationExperience = ({ id }) => {
   const [averageRating, setAverageRating] = useState(5);
   const [description, setDescription] = useRemark();
   const [details, setDetails] = useRemark();
-  const [dataForm, setDataForm] = useState();
+  const [selectedDate, setSelectedDate] = useState();
   const [persons, setPersons] = useState(1);
   const [minPersons, setMinPersons] = useState(0);
   const [maxPersons, setMaxPersons] = useState(0);
@@ -88,8 +88,8 @@ const InformationExperience = ({ id }) => {
     }
   }, [persons, []]);
 
-  const handleDataFormChange = (newValue) => {
-    setDataForm(newValue);
+  const handleSelectedDateChange = (newValue) => {
+    setSelectedDate(newValue);
   };
 
   const handlePersonsChange = (newValue) => {
@@ -157,7 +157,7 @@ const InformationExperience = ({ id }) => {
               <CommentForm />
             </div>
             {!reviews && <LoaderSpinner />}
-            {reviews && reviews.length == 0 && 'No hay comentarios'}
+            {reviews && reviews.length == 0 && "No hay comentarios"}
             {reviews &&
               reviews.length > 0 &&
               reviews.map((item) => {
@@ -192,14 +192,14 @@ const InformationExperience = ({ id }) => {
       </div>
       <div className="h-[500px] shadow-2xl rounded-3xl max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0">
         <div className="text-3xl text-center mt-3">
-          {!data ? '' : data.title}
+          {!data ? "" : data.title}
         </div>
         <div className="mt-8">
           <div className="flex justify-center">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Callendar
-                dataForm={dataForm}
-                onDataFormChange={handleDataFormChange}
+                dataForm={selectedDate}
+                onDataFormChange={handleSelectedDateChange}
                 id={id}
               />
             </LocalizationProvider>
@@ -214,8 +214,8 @@ const InformationExperience = ({ id }) => {
           <div className="flex justify-center">
             <HourPicker
               id={id}
-              placeHolder={'Select hour'}
-              selectedDay={dataForm}
+              placeHolder={"Select hour"}
+              selectedDay={selectedDate}
             />
           </div>
           <div className="flex justify-center items-end mt-8">

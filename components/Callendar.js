@@ -1,7 +1,7 @@
-import { DatePicker, TimePicker } from '@mui/x-date-pickers';
-import { useState, useEffect, useRef } from 'react';
-import dayjs from 'dayjs';
-import HourPicker from './HourPicker';
+import { DatePicker, TimePicker } from "@mui/x-date-pickers";
+import { useState, useEffect, useRef } from "react";
+import dayjs from "dayjs";
+import HourPicker from "./HourPicker";
 
 const Callendar = ({ dataForm, onDataFormChange, id }) => {
   const [data, setData] = useState(null);
@@ -32,7 +32,7 @@ const Callendar = ({ dataForm, onDataFormChange, id }) => {
         setNotDays(results.data);
         results.data.notavailabledays.forEach((element) => {
           const parsedDate = dayjs(element);
-          notAvailableDays.current.push(parsedDate.format('YYYY-M-DD'));
+          notAvailableDays.current.push(parsedDate.format("YYYY-M-DD"));
         });
       });
   }, [id]);
@@ -50,18 +50,17 @@ const Callendar = ({ dataForm, onDataFormChange, id }) => {
   };
 
   return (
-    <div className="w-full">
-      <div className="w-full flex justify-center">
-        <DatePicker
-          label="Select day"
-          disablePast
-          value={dataForm}
-          onChange={(newValue) => {
-            onDataFormChange(newValue);
-          }}
-          shouldDisableDate={isAvailable}
-        />
-      </div>
+    <div className="w-full flex justify-center">
+      <DatePicker
+        label="Select day"
+        disablePast
+        value={dataForm}
+        className="w-[260px]"
+        onChange={(newValue) => {
+          onDataFormChange(newValue);
+        }}
+        shouldDisableDate={isAvailable}
+      />
     </div>
   );
 };
