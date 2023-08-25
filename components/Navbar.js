@@ -48,6 +48,11 @@ export function Navbar() {
 }
 
 export function NavbarMobile() {
+  const [bookingIsActive, setBookingIsActive] = useState(false);
+
+  const handleBookingModal = () => {
+    setBookingIsActive(!bookingIsActive);
+  };
   let change = false;
   const menu = useRef(null);
   const openMenu = () => {
@@ -61,7 +66,7 @@ export function NavbarMobile() {
   };
 
   return (
-    <nav className=" text-white font-bold w-full z-20 fixed">
+    <nav className=" text-white font-bold w-full z-30 fixed">
       <div
         className="bg-black/75 h-[334px] w-full absolute z-10 flex justify-center items-end transition duration-300 ease-out -top-[334px]"
         ref={menu}
@@ -83,10 +88,23 @@ export function NavbarMobile() {
           alt="logo"
           className="w-24 h-auto object-cover relative z-50 mt-2 ml-2"
         />
-        <MdOutlineMenu
-          className="text-6xl text-white relative z-50 mt-2 mr-2"
-          onClick={openMenu}
-        />
+        <div className="w-[200px] grid grid-cols-3">
+          <div className="relative flex justify-center ">
+            <FaShoppingCart
+              className="text-3xl mt-5 cursor-pointer"
+              onClick={handleBookingModal}
+            />
+            <ModalBookings isActive={bookingIsActive} />
+          </div>
+          <div className="flex justify-center mt-5">
+            <MdAccountCircle className="text-3xl cursor-pointer" />
+          </div>
+
+          <MdOutlineMenu
+            className="text-6xl text-white relative z-50 mt-2 mr-2"
+            onClick={openMenu}
+          />
+        </div>
       </div>
       <div className="bg-gradient-to-b from-black h-40 opacity-50 top-0 left-0 w-full absolute -z-10"></div>
     </nav>

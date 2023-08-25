@@ -15,7 +15,7 @@ const ModalBookings = ({ isActive }) => {
 
   return (
     <div
-      className="w-[400px] min-h-[208px] bg-white absolute top-8 right-0 grid grid-rows-[52px_6fr] text-[#505050] rounded-2xl opacity-0 scale-0 transition-all duration-200 ease-out"
+      className="w-[400px] min-h-[208px] bg-white absolute z-50 top-8 right-0 grid grid-rows-[52px_6fr] text-[#505050] rounded-2xl opacity-0 scale-0 transition-all duration-200 ease-out max-[720px]:top-16 max-[720px]:left--4"
       ref={modal}
     >
       <div className="flex justify-between border-b p-3 text-lg">

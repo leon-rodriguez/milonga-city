@@ -73,7 +73,7 @@ const CommentForm = () => {
             )
           )}
         </div>
-        <div>
+        <div className="max-[380px]:grid max-[380px]:grid-rows-2">
           <button
             className="w-24 h-10 mr-4 border rounded-3xl transition-all duration-100 ease-in hover:bg-gray-100"
             onClick={cleanForm}
