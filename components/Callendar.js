@@ -60,6 +60,7 @@ const Callendar = ({ dataForm, onDataFormChange, id }) => {
             onDataFormChange(newValue);
           }}
           shouldDisableDate={isAvailable}
+          className="w-[259px]"
         />
       </div>
     </div>

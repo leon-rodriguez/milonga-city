@@ -214,6 +214,7 @@ const InformationExperience = ({ id }) => {
           <div className="flex justify-center">
             <HourPicker
               id={id}
+              dataExperience={data}
               placeHolder={'Select hour'}
               selectedDay={dataForm}
             />

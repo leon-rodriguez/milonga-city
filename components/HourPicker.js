@@ -3,23 +3,68 @@ import { useState, useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
 import { getExperiences } from '../lib/experiences';
 
-const getBookings = (date) => {
-  return fetch(`http://localhost:3000/api/bookingsByDate?date=${date}`).then(
-    (results) => {
-      return results.json();
-    }
-  );
+const getBookings = (date, experience) => {
+  return fetch(
+    `http://localhost:3000/api/bookingsByDate?date=${date}&experience=${experience}`
+  ).then((results) => {
+    return results.json();
+  });
 };
 
-const HourPicker = ({ id, placeHolder, selectedDay }) => {
+const getAvailableHours = (minhour, maxhour, step, takenHours) => {
+  const takenHoursParsed = takenHours.map((item) => {
+    const [_, time] = item.date.split('T');
+    const [hour, minute] = time.split(':');
+    return `${hour}:${minute}`;
+  });
+
+  const hoursToPrint = [];
+  let [parsedMinHour, parsedMinMinute] = minhour.split(':');
+  let [parsedMaxHour, parsedMaxMinute] = maxhour.split(':');
+  parsedMinHour = parseInt(parsedMinHour);
+  parsedMaxHour = parseInt(parsedMaxHour);
+  parsedMinMinute = parseInt(parsedMinMinute);
+  parsedMaxMinute = parseInt(parsedMaxMinute);
+
+  const startTime = new Date();
+  startTime.setHours(parsedMinHour, parsedMinMinute, 0, 0);
+
+  const endTime = new Date();
+  endTime.setHours(parsedMaxHour, parsedMaxMinute, 0, 0);
+
+  let currentTime = new Date(startTime);
+
+  while (currentTime <= endTime) {
+    const hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes();
+
+    let parsedMinute = minutes;
+    let parsedHour = hours;
+
+    currentTime.setMinutes(currentTime.getMinutes() + step);
+    if (hours < 10) {
+      parsedHour = `0${hours}`;
+    }
+    if (minutes < 10) {
+      parsedMinute = `0${minutes}`;
+    }
+
+    let hourToPrint = `${parsedHour}:${parsedMinute}`;
+    hoursToPrint.push(hourToPrint);
+  }
+  //TODO: generar el array dinamicamente
+  return hoursToPrint.map((hour) => {
+    return {
+      hour,
+      isAvailable: !takenHoursParsed.includes(hour),
+    };
+  });
+};
+
+const HourPicker = ({ id, placeHolder, selectedDay, dataExperience }) => {
   const [data, setData] = useState(null);
   const [hours, setHours] = useState(null);
   const [hourSelected, setHourSelected] = useState(null);
-  const [bookings, setBookings] = useState(null);
-  const [disabledHour, setDisabledHour] = useState(null);
-  const provisionalDisabledHours = useRef([]);
-  const provisionalBookings = useRef([]);
-  let provisionalHours = useRef([]);
   const picker = useRef(null);
   let change = useRef(false);
 
@@ -31,117 +76,18 @@ const HourPicker = ({ id, placeHolder, selectedDay }) => {
   }, [id]);
 
   useEffect(() => {
-    console.log('selected day: ', selectedDay);
-    getBookings(selectedDay).then((results) => {
-      if (
-        bookings === null &&
-        provisionalBookings.current[0] === undefined &&
-        results.data.length > 0
-      ) {
-        //TODO sacar el foreach y setear los bookings del selectedday
-        console.log('data ', results.data[0].date);
-        let element = results.data[0];
-        if (element.experiences_id == id) {
-          let parsedDate = dayjs(element.date);
-          parsedDate = parsedDate.format('YYYY-M-DD');
-
-          const [_, time] = element.date.split('T');
-          const [hour, minute] = time.split(':');
-          const parsedHour = `${hour}:${minute}`;
-
-          provisionalBookings.current.push({
-            date: parsedDate,
-            hour: parsedHour,
-          });
-          console.log(provisionalBookings.current);
-          setBookings(provisionalBookings.current);
-        }
-      }
+    if (!selectedDay || !dataExperience) return;
+    getBookings(selectedDay, id).then((results) => {
+      setHours(
+        getAvailableHours(
+          dataExperience.minhour,
+          dataExperience.maxhour,
+          dataExperience.stephour,
+          results.data
+        )
+      );
     });
-    if (selectedDay) {
-      const parsedDate = `${selectedDay.$y}-${selectedDay.$M + 1}-${
-        selectedDay.$D
-      }`;
-
-      provisionalDisabledHours.current = [];
-      provisionalHours.current.forEach((item) => {
-        item.isAvailable = true;
-      });
-      setHours(provisionalHours.current);
-      setHourSelected(null);
-
-      if (bookings) {
-        bookings.forEach((item) => {
-          if (item.date == parsedDate) {
-            provisionalDisabledHours.current.push(item.hour);
-            setDisabledHour(provisionalDisabledHours.current);
-          }
-        });
-        provisionalDisabledHours.current.forEach((item) => {
-          provisionalHours.current.forEach((element) => {
-            if (item == element.hour) {
-              console.log('coincidio la hora', item);
-              element.isAvailable = false;
-              setHours(provisionalHours.current);
-            }
-          });
-        });
-      }
-    }
   }, [id, selectedDay]);
-
-  useEffect(() => {
-    if (data && provisionalHours.current[0] === undefined) {
-      const [hour, minute] = data.minhour.split(':');
-      const [maxHour] = data.maxhour.split(':');
-      const step = data.stephour;
-
-      let currentHour = parseInt(hour);
-      let currentMinute = parseInt(minute);
-      let parsedHour = ``;
-
-      const maxHourParsed = parseInt(maxHour);
-
-      provisionalHours.current.push({
-        hour: `${hour}:${minute}`,
-        isAvailable: true,
-      });
-      while (true) {
-        if (currentHour < maxHourParsed) {
-          currentMinute = currentMinute + step;
-          if (currentMinute === 60) {
-            currentHour = currentHour + 1;
-            currentMinute = 0;
-            if (currentHour < 10) {
-              // provisionalHours.current.push(
-              //   `0${currentHour}:${currentMinute}0`
-              // );
-              parsedHour = `0${currentHour}:${currentMinute}0`;
-            } else {
-              //provisionalHours.current.push(`${currentHour}:${currentMinute}0`);
-              parsedHour = `${currentHour}:${currentMinute}0`;
-            }
-          } else {
-            if (currentHour < 10) {
-              //provisionalHours.current.push(`0${currentHour}:${currentMinute}`);
-              parsedHour = `0${currentHour}:${currentMinute}`;
-            } else {
-              //provisionalHours.current.push(`${currentHour}:${currentMinute}`);
-              parsedHour = `${currentHour}:${currentMinute}`;
-            }
-          }
-          provisionalHours.current.push({
-            hour: parsedHour,
-            isAvailable: true,
-          });
-          setHours(provisionalHours.current);
-        } else {
-          setHours(provisionalHours.current);
-          return;
-        }
-      }
-    }
-  }, [data]);
 
   const handlePicker = () => {
     if (change.current === false) {
@@ -166,7 +112,11 @@ const HourPicker = ({ id, placeHolder, selectedDay }) => {
       className="w-[259px] h-[56px] border-[#c4c4c4] border border-solid rounded-md flex items-center justify-between pl-[14px] pr-[9px] relative mt-4 cursor-pointer hover:border-[#000]"
       onClick={handlePicker}
     >
-      <div className="cursor-pointer">
+      <div
+        className={`cursor-pointer ${
+          hours ? '' : 'text-gray-300 cursor-default'
+        }`}
+      >
         {hourSelected === null ? placeHolder : hourSelected}
       </div>
       <div className="text-2xl cursor-pointer ">
