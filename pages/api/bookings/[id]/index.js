@@ -1,17 +1,15 @@
 import { createKysely } from '@vercel/postgres-kysely';
-import { sql } from 'kysely';
 
 export default async function handler(req, res) {
-  const params = req.query;
   try {
+    const { id } = req.query;
     const db = createKysely();
-    const experiences = await db
+    const bookings = await db
       .selectFrom('bookings')
       .selectAll()
-      .where(sql`DATE(date)`, '=', params.date)
-      .where('experiences_id', '=', params.experience)
+      .where('id', '=', id)
       .execute();
-    res.status(200).json({ data: experiences });
+    res.status(200).json({ data: bookings[0] });
   } catch (error) {
     console.log(error);
   }

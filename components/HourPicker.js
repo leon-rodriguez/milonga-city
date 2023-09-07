@@ -1,7 +1,8 @@
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { useState, useEffect, useRef } from 'react';
-import dayjs from 'dayjs';
 import { getExperiences } from '../lib/experiences';
+
+//TODO resetear valores cuando cambias el dia
 
 const getBookings = (date, experience) => {
   return fetch(
