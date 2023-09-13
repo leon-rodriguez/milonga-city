@@ -9,21 +9,19 @@ import PersonChooser from './PersonChooser';
 import HourPicker from './HourPicker';
 import CommentForm from './CommentForm';
 
-//TODO no mostrar el rating cuando no hay comentarios - HECHO
-//TODO parsear la fecha de los comments - HECHO A MEDIAS - desde el js cuando se publique el comentario voy a pasar la fecha ya parseada
-//TODO optimizar las estrellas de los comentarios - HECHO
-
 const InformationExperience = ({ id }) => {
   const [data, setData] = useState(null);
   const [reviews, setReviews] = useState(null);
   const [averageRating, setAverageRating] = useState(5);
   const [description, setDescription] = useRemark();
   const [details, setDetails] = useRemark();
-  const [dataForm, setDataForm] = useState();
+  const [date, setDate] = useState();
   const [persons, setPersons] = useState(1);
   const [minPersons, setMinPersons] = useState(0);
   const [maxPersons, setMaxPersons] = useState(0);
   const [price, setPrice] = useState(0);
+  const [time, setTime] = useState(null);
+  const [huboCambio, setHuboCambio] = useState(null);
 
   useEffect(() => {
     if (!id) return;
@@ -41,14 +39,14 @@ const InformationExperience = ({ id }) => {
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/reviews?experiences_id=${id}`)
+    fetch(`http://localhost:3000/api/reviewsByExperience?experiences_id=${id}`)
       .then((results) => {
         return results.json();
       })
       .then((results) => {
         setReviews(results.data);
       });
-  }, []);
+  }, [huboCambio]);
 
   useEffect(() => {
     if (reviews) {
@@ -88,12 +86,47 @@ const InformationExperience = ({ id }) => {
     }
   }, [persons, []]);
 
-  const handleDataFormChange = (newValue) => {
-    setDataForm(newValue);
+  const handleDateChange = (newValue) => {
+    setDate(newValue);
+    console.log(newValue);
   };
 
   const handlePersonsChange = (newValue) => {
     setPersons(newValue);
+  };
+
+  const handleTimeChange = (newValue) => {
+    setTime(newValue);
+    console.log('nueva hora seleecionada', newValue);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (date && time && price && persons) {
+      const bookingData = {
+        experiences_id: id,
+        users_id: 1, //TODO tomar id usuario
+        date: `${date.$y}-${date.$M + 1}-${date.$D}`,
+        time: `${time}:00`,
+        price: price,
+        persons: persons,
+      };
+
+      fetch('http://localhost:3000/api/bookings', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      }).then((response) => {
+        console.log(response);
+      });
+    }
+  };
+
+  const handleReviewsChenge = (newValue) => {
+    setHuboCambio(newValue);
   };
 
   return (
@@ -154,7 +187,7 @@ const InformationExperience = ({ id }) => {
           </div>
           <div>
             <div>
-              <CommentForm />
+              <CommentForm onReviewsChange={handleReviewsChenge} />
             </div>
             {!reviews && <LoaderSpinner />}
             {reviews && reviews.length == 0 && 'No hay comentarios'}
@@ -177,7 +210,7 @@ const InformationExperience = ({ id }) => {
                             )
                           )}
                         </div>
-                        <div>{item.fecha}</div>
+                        <div>{item.publisheddate}</div>
                       </div>
                     </div>
                     <div>
@@ -191,43 +224,49 @@ const InformationExperience = ({ id }) => {
         </div>
       </div>
       <div className="h-[500px] shadow-2xl rounded-3xl max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0">
-        <div className="text-3xl text-center mt-3">
-          {!data ? '' : data.title}
-        </div>
-        <div className="mt-8">
-          <div className="flex justify-center">
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <Callendar
-                dataForm={dataForm}
-                onDataFormChange={handleDataFormChange}
-                id={id}
+        <form onSubmit={handleSubmit}>
+          <div className="text-3xl text-center mt-3">
+            {!data ? '' : data.title}
+          </div>
+          <div className="mt-8">
+            <div className="flex justify-center">
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <Callendar
+                  date={date}
+                  onDateChange={handleDateChange}
+                  id={id}
+                />
+              </LocalizationProvider>
+            </div>
+            <div className="flex justify-center mt-4">
+              <PersonChooser
+                min={minPersons}
+                max={maxPersons}
+                onPersonChange={handlePersonsChange}
               />
-            </LocalizationProvider>
-          </div>
-          <div className="flex justify-center mt-4">
-            <PersonChooser
-              min={minPersons}
-              max={maxPersons}
-              onPersonChange={handlePersonsChange}
-            />
-          </div>
-          <div className="flex justify-center">
-            <HourPicker
-              id={id}
-              dataExperience={data}
-              placeHolder={'Select hour'}
-              selectedDay={dataForm}
-            />
-          </div>
-          <div className="flex justify-center items-end mt-8">
-            <div className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb]">
-              Reserve
+            </div>
+            <div className="flex justify-center">
+              <HourPicker
+                id={id}
+                dataExperience={data}
+                placeHolder={'Select hour'}
+                selectedDay={date}
+                onTimeChange={handleTimeChange}
+              />
+            </div>
+            <div className="flex justify-center items-end mt-8">
+              <button
+                className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
+                type="submit"
+              >
+                Reserve
+              </button>
+            </div>
+            <div className="h-20 flex justify-center items-center">
+              <div className="text-3xl font-bold">${price}</div>
             </div>
           </div>
-          <div className="h-20 flex justify-center items-center">
-            <div className="text-3xl font-bold">${price}</div>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   );

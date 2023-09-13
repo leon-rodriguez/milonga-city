@@ -1,5 +1,4 @@
 import { createKysely } from '@vercel/postgres-kysely';
-//TODO agregar campos personas precio
 //TODO hacer cosito de reviews y users
 
 export default async function handler(req, res) {
@@ -7,7 +6,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'PUT') {
     const params = req.body;
-    const newDate = `${params.date}T${params.time}Z`;
+    const newDate = `${params.date} ${params.time}`;
     // res.status(200).json({ data: params });
 
     try {
@@ -18,15 +17,19 @@ export default async function handler(req, res) {
           experiences_id: params.experiences_id,
           users_id: params.users_id,
           date: newDate,
+          price: params.price,
+          persons: params.persons,
         })
         .executeTakeFirst();
       res.status(200).json({ data: response });
     } catch (error) {
       console.log(error);
+      res.status(400).json({ data: error });
     }
     return;
   }
 
+  // get all booking
   try {
     const db = createKysely();
     const bookings = await db.selectFrom('bookings').selectAll().execute();

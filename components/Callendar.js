@@ -3,24 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
 import HourPicker from './HourPicker';
 
-const Callendar = ({ dataForm, onDataFormChange, id }) => {
+const Callendar = ({ date, onDateChange, id }) => {
   const [data, setData] = useState(null);
   const [notDays, setNotDays] = useState(null);
   const notAvailableDays = useRef([]);
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/api/bookingsByDate`)
-  //     .then((results) => {
-  //       return results.json();
-  //     })
-  //     .then((results) => {
-  //       setData(results.data);
-  //       results.data.forEach((element) => {
-  //         const parsedDate = dayjs(element.date);
-  //         notAvailableDays.current.push(parsedDate.format('YYYY-M-DD'));
-  //       });
-  //     });
-  // }, []);
 
   useEffect(() => {
     if (!id) return;
@@ -55,9 +41,9 @@ const Callendar = ({ dataForm, onDataFormChange, id }) => {
         <DatePicker
           label="Select day"
           disablePast
-          value={dataForm}
+          value={date}
           onChange={(newValue) => {
-            onDataFormChange(newValue);
+            onDateChange(newValue);
           }}
           shouldDisableDate={isAvailable}
           className="w-[259px]"

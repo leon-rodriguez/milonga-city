@@ -18,7 +18,6 @@ const Booking = () => {
         setData(devolverCard);
       });
   }, []);
-  return <div>a</div>;
 };
 
 export default [id];

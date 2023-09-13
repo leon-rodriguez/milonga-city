@@ -1,23 +1,33 @@
 import Image from 'next/image';
 import bailarines from '../public/Images/bailarines.jpg';
+import { useState, useEffect } from 'react';
+import LoaderSpinner from './LoaderSpinner';
 
-const GalleryExperience = () => {
+const GalleryExperience = ({ id }) => {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    if (!id) return;
+    fetch(`http://localhost:3000/api/experiences/${id}`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((results) => {
+        setData(results.data);
+        console.log('from experiences data', results.data.video);
+      });
+  }, [id]);
+
   return (
     <div className="w-full h-[450px] grid grid-cols-5 grid-rows-2 gap-2 relative">
       <div className=" col-span-3 row-span-2 max-[720px]:col-span-5 max-[720px]:row-span-1">
-        <Image
-          src={bailarines}
-          alt="Dos personas bailando tango"
-          className="w-full h-full object-cover"
-        />
-        {/* <video
-          muted
-          loop
-          autoPlay
-          className="w-full h-full object-cover absolute top-0 left-0"
-        >
-          <source src="/Images/background.mp4" type="video/mp4"></source>
-        </video> */}
+        {!data ? (
+          <div className=" bg-gray-100 h-full"></div>
+        ) : (
+          <video muted loop autoPlay className=" h-full w-full object-cover">
+            <source src={data.video} type="video/mp4"></source>
+          </video>
+        )}
       </div>
       <div className="col-span-2 cursor-pointer overflow-hidden max-[720px]:col-span-2">
         <Image

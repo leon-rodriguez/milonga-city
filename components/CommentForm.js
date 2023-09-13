@@ -1,7 +1,10 @@
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useState, useRef } from 'react';
 
-const CommentForm = () => {
+//TODO sacar la fecha y hardcodear el user y completar el body con los datos del review
+//TODO evaluar el response y si es correcto mostrar un mensaje reseña agregada
+
+const CommentForm = ({ onReviewsChange }) => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   let lastValue = useRef(0);
@@ -32,59 +35,88 @@ const CommentForm = () => {
     setRating(lastValue.current);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    cleanForm();
+    const commentData = {
+      username: 'massa',
+      body: comment,
+      publisheddate: '2023-09-09',
+      rating: rating,
+      bookings_id: 26,
+    };
+
+    // TODO throw error on fail su
+    fetch('http://localhost:3000/api/reviews', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(commentData),
+    }).then((response) => {
+      console.log(response);
+      onReviewsChange(true);
+    });
+  };
+
   return (
     <div className="w-full mt-4 mb-5">
-      <input
-        type="text"
-        className="w-full outline-none border p-2 h-10 min-h-0 rounded-lg overflow-y-visible"
-        placeholder="Add comment"
-        value={comment}
-        onChange={(event) => {
-          handleComment(event);
-        }}
-      />
-      <div className="flex justify-between mt-2">
-        <div className="flex text-xl text-[#0088cc]">
-          {[...Array(5)].map((_, index) =>
-            index < rating ? (
-              <AiFillStar
-                key={index}
-                className="cursor-pointer"
-                onMouseEnter={() => {
-                  handleMouseHover(index);
-                }}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => {
-                  handleRating(index);
-                }}
-              />
-            ) : (
-              <AiOutlineStar
-                key={index}
-                className="cursor-pointer"
-                onMouseEnter={() => {
-                  handleMouseHover(index);
-                }}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => {
-                  handleRating(index);
-                }}
-              />
-            )
-          )}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="w-full outline-none border p-2 h-10 min-h-0 rounded-lg overflow-y-visible"
+          placeholder="Add comment"
+          value={comment}
+          onChange={(event) => {
+            handleComment(event);
+          }}
+        />
+        <div className="flex justify-between mt-2">
+          <div className="flex text-xl text-[#0088cc]">
+            {[...Array(5)].map((_, index) =>
+              index < rating ? (
+                <AiFillStar
+                  key={index}
+                  className="cursor-pointer"
+                  onMouseEnter={() => {
+                    handleMouseHover(index);
+                  }}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => {
+                    handleRating(index);
+                  }}
+                />
+              ) : (
+                <AiOutlineStar
+                  key={index}
+                  className="cursor-pointer"
+                  onMouseEnter={() => {
+                    handleMouseHover(index);
+                  }}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => {
+                    handleRating(index);
+                  }}
+                />
+              )
+            )}
+          </div>
+          <div className="max-[380px]:grid max-[380px]:grid-rows-2">
+            <button
+              className="w-24 h-10 mr-4 border rounded-3xl transition-all duration-100 ease-in hover:bg-gray-100"
+              onClick={cleanForm}
+            >
+              Cancel
+            </button>
+            <button
+              className="w-28 h-10 border rounded-3xl bg-[#0088cc] text-white font-bold transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
+              type="submit"
+            >
+              Comment
+            </button>
+          </div>
         </div>
-        <div className="max-[380px]:grid max-[380px]:grid-rows-2">
-          <button
-            className="w-24 h-10 mr-4 border rounded-3xl transition-all duration-100 ease-in hover:bg-gray-100"
-            onClick={cleanForm}
-          >
-            Cancel
-          </button>
-          <button className="w-28 h-10 border rounded-3xl bg-[#0088cc] text-white font-bold transition-all duration-100 ease-in hover:bg-[#0088ccbb]">
-            Comment
-          </button>
-        </div>
-      </div>
+      </form>
     </div>
   );
 };

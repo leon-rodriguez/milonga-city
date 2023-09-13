@@ -10,7 +10,7 @@ const WhatsappButton = () => {
         <Image
           src={logo}
           alt="whatsapp button"
-          className="w-16 h-16 fixed bottom-14 left-5"
+          className="w-16 h-16 fixed bottom-14 left-5 z-50"
         />
       </a>
     </div>

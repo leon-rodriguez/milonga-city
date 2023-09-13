@@ -2,8 +2,6 @@ import { AiOutlineClockCircle } from 'react-icons/ai';
 import { useState, useEffect, useRef } from 'react';
 import { getExperiences } from '../lib/experiences';
 
-//TODO resetear valores cuando cambias el dia
-
 const getBookings = (date, experience) => {
   return fetch(
     `http://localhost:3000/api/bookingsByDate?date=${date}&experience=${experience}`
@@ -53,7 +51,6 @@ const getAvailableHours = (minhour, maxhour, step, takenHours) => {
     let hourToPrint = `${parsedHour}:${parsedMinute}`;
     hoursToPrint.push(hourToPrint);
   }
-  //TODO: generar el array dinamicamente
   return hoursToPrint.map((hour) => {
     return {
       hour,
@@ -62,7 +59,13 @@ const getAvailableHours = (minhour, maxhour, step, takenHours) => {
   });
 };
 
-const HourPicker = ({ id, placeHolder, selectedDay, dataExperience }) => {
+const HourPicker = ({
+  id,
+  placeHolder,
+  selectedDay,
+  dataExperience,
+  onTimeChange,
+}) => {
   const [data, setData] = useState(null);
   const [hours, setHours] = useState(null);
   const [hourSelected, setHourSelected] = useState(null);
@@ -78,6 +81,7 @@ const HourPicker = ({ id, placeHolder, selectedDay, dataExperience }) => {
 
   useEffect(() => {
     if (!selectedDay || !dataExperience) return;
+    setHourSelected(null);
     getBookings(selectedDay, id).then((results) => {
       setHours(
         getAvailableHours(
@@ -105,6 +109,7 @@ const HourPicker = ({ id, placeHolder, selectedDay, dataExperience }) => {
   const handleHourSelected = (index) => {
     if (hours[index].isAvailable) {
       setHourSelected(hours[index].hour);
+      onTimeChange(hours[index].hour);
     }
   };
   // border border-gray-500
