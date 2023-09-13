@@ -8,9 +8,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import PersonChooser from './PersonChooser';
 import HourPicker from './HourPicker';
 import CommentForm from './CommentForm';
+import ReserveForm from './ReserveForm';
 
-const InformationExperience = ({ id }) => {
-  const [data, setData] = useState(null);
+const InformationExperience = ({ id, data }) => {
   const [reviews, setReviews] = useState(null);
   const [averageRating, setAverageRating] = useState(5);
   const [description, setDescription] = useRemark();
@@ -24,19 +24,12 @@ const InformationExperience = ({ id }) => {
   const [huboCambio, setHuboCambio] = useState(null);
 
   useEffect(() => {
-    if (!id) return;
-    fetch(`http://localhost:3000/api/experiences/${id}`)
-      .then((results) => {
-        return results.json();
-      })
-      .then((results) => {
-        setData(results.data);
-        setDescription(results.data.extendeddescription);
-        setDetails(results.data.extendeddetails);
-        setMinPersons(results.data.minpersons);
-        setMaxPersons(results.data.maxpersons);
-      });
-  }, [id]);
+    if (!id || !data) return;
+    setDescription(data.extendeddescription);
+    setDetails(data.extendeddetails);
+    setMinPersons(data.minpersons);
+    setMaxPersons(data.maxpersons);
+  }, [data]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/reviewsByExperience?experiences_id=${id}`)
@@ -223,7 +216,7 @@ const InformationExperience = ({ id }) => {
           </div>
         </div>
       </div>
-      <div className="h-[500px] shadow-2xl rounded-3xl max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0">
+      <div className="h-[500px] shadow-2xl rounded-3xl relative max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0 transition-all duration-300 hover:h-[800px]">
         <form onSubmit={handleSubmit}>
           <div className="text-3xl text-center mt-3">
             {!data ? '' : data.title}
@@ -254,16 +247,17 @@ const InformationExperience = ({ id }) => {
                 onTimeChange={handleTimeChange}
               />
             </div>
-            <div className="flex justify-center items-end mt-8">
+            <div className="h-20 flex justify-center items-center">
+              <div className="text-3xl font-bold">${price}</div>
+            </div>
+            {true ? <ReserveForm /> : ''}
+            <div className="w-full flex justify-center items-end mt-8 absolute bottom-10 left-0">
               <button
                 className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
                 type="submit"
               >
-                Reserve
+                Continue
               </button>
-            </div>
-            <div className="h-20 flex justify-center items-center">
-              <div className="text-3xl font-bold">${price}</div>
             </div>
           </div>
         </form>

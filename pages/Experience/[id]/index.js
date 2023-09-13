@@ -33,7 +33,7 @@ const Experience = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section>
-        <HeroExperience />
+        <HeroExperience id={id} />
       </section>
       <section className="w-full flex justify-center bg-[#f0f0f0]">
         <ContainerExperience id={id} />

@@ -1,58 +1,67 @@
 import Image from 'next/image';
 import bailarines from '../public/Images/bailarines.jpg';
 import { useState, useEffect } from 'react';
-import LoaderSpinner from './LoaderSpinner';
+import Carrousel from './Carrousel';
 
-const GalleryExperience = ({ id }) => {
-  const [data, setData] = useState();
+const GalleryExperience = ({ data }) => {
+  const [isCarrouselActive, setIsCarrouselActive] = useState(false);
+  const [imageClicked, setImageClicked] = useState(null);
 
-  useEffect(() => {
-    if (!id) return;
-    fetch(`http://localhost:3000/api/experiences/${id}`)
-      .then((results) => {
-        return results.json();
-      })
-      .then((results) => {
-        setData(results.data);
-        console.log('from experiences data', results.data.video);
-      });
-  }, [id]);
+  const handleClick = (index) => {
+    setImageClicked(index);
+  };
 
   return (
-    <div className="w-full h-[450px] grid grid-cols-5 grid-rows-2 gap-2 relative">
-      <div className=" col-span-3 row-span-2 max-[720px]:col-span-5 max-[720px]:row-span-1">
-        {!data ? (
-          <div className=" bg-gray-100 h-full"></div>
-        ) : (
-          <video muted loop autoPlay className=" h-full w-full object-cover">
-            <source src={data.video} type="video/mp4"></source>
-          </video>
-        )}
+    <div>
+      <div className="w-full h-[450px] grid grid-cols-5 grid-rows-2 gap-2 relative">
+        <div className=" col-span-3 row-span-2 max-[720px]:col-span-5 max-[720px]:row-span-1">
+          {!data ? (
+            <div className=" bg-gray-100 h-full"></div>
+          ) : (
+            <video muted loop autoPlay className=" h-full w-full object-cover">
+              <source src={data.video} type="video/mp4"></source>
+            </video>
+          )}
+        </div>
+        {data &&
+          data.images.map((element, index) => {
+            if (index > 2) {
+              return;
+            }
+            //TODO arreglar como se ven las imagenes en mobile
+            return (
+              <div
+                className={`${
+                  index === 0 ? 'col-span-2' : ''
+                } cursor-pointer overflow-hidden max-[720px]:${
+                  index <= 1 ? 'col-span-2' : 'col-span-1'
+                }`}
+                key={index}
+                onClick={() => {
+                  handleClick(index);
+                }}
+              >
+                <img
+                  src={element}
+                  alt="Dos personas bailando tango"
+                  className="w-full h-full object-cover ease-out duration-300 hover:scale-110"
+                />
+              </div>
+            );
+          })}
+        <div className="absolute w-28 h-12 cursor-pointer bg-slate-50 text-black grid place-items-center rounded-xl left-2 top-4">
+          Ver galeria
+        </div>
       </div>
-      <div className="col-span-2 cursor-pointer overflow-hidden max-[720px]:col-span-2">
-        <Image
-          src={bailarines}
-          alt="Dos personas bailando tango"
-          className="w-full h-full object-cover ease-out duration-300 hover:scale-110"
+      {imageClicked != null ? (
+        <Carrousel
+          images={data.images}
+          firstIndex={imageClicked}
+          handleClose={handleClick}
         />
-      </div>
-      <div className="cursor-pointer overflow-hidden max-[720px]:col-span-2">
-        <Image
-          src={bailarines}
-          alt="Dos personas bailando tango"
-          className="w-full h-full object-cover ease-out duration-300 hover:scale-110"
-        />
-      </div>
-      <div className="cursor-pointer overflow-hidden max-[720px]:col-span-1">
-        <Image
-          src={bailarines}
-          alt="Dos personas bailando tango"
-          className="w-full h-full object-cover ease-out duration-300 hover:scale-110"
-        />
-      </div>
-      <div className="absolute w-28 h-12 cursor-pointer bg-slate-50 text-black grid place-items-center rounded-xl left-2 top-4">
-        Ver galeria
-      </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
