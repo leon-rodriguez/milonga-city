@@ -43,7 +43,7 @@ const PersonChooser = (props) => {
   };
 
   return (
-    <div className="w-[259px] h-[56px]  border  relative rounded-md bg-white z-40">
+    <div className="w-[259px] h-[56px]  border  relative rounded-md bg-white z-10">
       <div
         className="cursor-pointer w-full h-[56px] flex items-center justify-between  hover:border-[#000] border pl-[14px] pr-[10px] rounded-md"
         onClick={openSelecter}

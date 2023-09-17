@@ -22,6 +22,7 @@ const InformationExperience = ({ id, data }) => {
   const [price, setPrice] = useState(0);
   const [time, setTime] = useState(null);
   const [huboCambio, setHuboCambio] = useState(null);
+  const [showReservForm, setShowReservForm] = useState(false);
 
   useEffect(() => {
     if (!id || !data) return;
@@ -122,6 +123,12 @@ const InformationExperience = ({ id, data }) => {
     setHuboCambio(newValue);
   };
 
+  const handleContinueClick = () => {
+    if (showReservForm === false) {
+      setShowReservForm(true);
+    }
+  };
+
   return (
     <div className="w-full mt-4 grid grid-cols-[3fr_2fr] gap-2 max-[720px]:grid-cols-none max-[720px]:grid-rows-[400px-auto] relative">
       <div className="min-h-[1000px] pl-6 pr-6 max-[720px]:order-2">
@@ -216,7 +223,11 @@ const InformationExperience = ({ id, data }) => {
           </div>
         </div>
       </div>
-      <div className="h-[500px] shadow-2xl rounded-3xl relative max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0 transition-all duration-300 hover:h-[800px]">
+      <div
+        className={`${
+          showReservForm ? 'h-[900px]' : 'h-[500px]'
+        } shadow-2xl rounded-3xl relative max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0 transition-all duration-300`}
+      >
         <form onSubmit={handleSubmit}>
           <div className="text-3xl text-center mt-3">
             {!data ? '' : data.title}
@@ -250,13 +261,13 @@ const InformationExperience = ({ id, data }) => {
             <div className="h-20 flex justify-center items-center">
               <div className="text-3xl font-bold">${price}</div>
             </div>
-            {true ? <ReserveForm /> : ''}
+            {showReservForm ? <ReserveForm /> : ''}
             <div className="w-full flex justify-center items-end mt-8 absolute bottom-10 left-0">
               <button
                 className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
-                type="submit"
+                onClick={handleContinueClick}
               >
-                Continue
+                {showReservForm ? 'Reserve' : 'Continue'}
               </button>
             </div>
           </div>
