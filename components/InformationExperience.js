@@ -226,7 +226,9 @@ const InformationExperience = ({ id, data }) => {
       <div
         className={`${
           showReservForm ? 'h-[900px]' : 'h-[500px]'
-        } shadow-2xl rounded-3xl relative max-[720px]:order-1 min-[720px]:sticky min-[720px]:top-0 transition-all duration-300`}
+        } shadow-2xl rounded-3xl relative max-[720px]:order-1 ${
+          showReservForm ? '' : 'min-[720px]:sticky'
+        } min-[720px]:top-0 transition-all duration-300`}
       >
         <form onSubmit={handleSubmit}>
           <div className="text-3xl text-center mt-3">

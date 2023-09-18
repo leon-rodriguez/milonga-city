@@ -129,7 +129,7 @@ const HourPicker = ({
         <AiOutlineClockCircle />
       </div>
       <div
-        className="absolute top-14 right-0 w-full max-h-[216px] bg-white overflow-y-scroll shadow-2xl  shadow-[-1px 1px 24px -1px rgba(0,0,0,1)] rounded-lg opacity-0 scale-0 transition-all duration-300 ease-out"
+        className="absolute z-10 top-14 right-0 w-full max-h-[216px] bg-white overflow-y-scroll shadow-2xl  shadow-[-1px 1px 24px -1px rgba(0,0,0,1)] rounded-lg opacity-0 scale-0 transition-all duration-300 ease-out"
         ref={picker}
       >
         {hours &&
