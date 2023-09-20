@@ -1,9 +1,10 @@
-import Head from 'next/head';
-import Hero from '../components/Hero';
-import HomeExperiences from '../components/HomeExperiences';
-import Footer from '../components/Footer';
-import WhatsappButton from '../components/WhatsappButton';
-import AboutMilongas from '../components/AboutMilongas';
+import Head from "next/head";
+import Hero from "../components/Hero";
+import HomeExperiences from "../components/HomeExperiences";
+import Footer from "../components/Footer";
+import WhatsappButton from "../components/WhatsappButton";
+import AboutMilongas from "../components/AboutMilongas";
+import { useEffect } from "react";
 
 export default function Home() {
   return (

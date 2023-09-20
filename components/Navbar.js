@@ -1,18 +1,19 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import logo from '../assets/logo-milonga-city.svg';
-import { FaShoppingCart } from 'react-icons/fa';
-import { MdAccountCircle, MdOutlineMenu } from 'react-icons/md';
-import { useEffect, useRef, useState } from 'react';
-import ModalBookings from './ModalBookings';
+import Link from "next/link";
+import Image from "next/image";
+import logo from "../assets/logo-milonga-city.svg";
+import { FaShoppingCart } from "react-icons/fa";
+import { MdAccountCircle, MdOutlineMenu } from "react-icons/md";
+import { useEffect, useRef, useState } from "react";
+import ModalBookings from "./ModalBookings";
+import { useScroll } from "../hooks/useScroll";
 
 export function Navbar() {
   const [bookingIsActive, setBookingIsActive] = useState(false);
+  const { scrollY } = useScroll();
 
   const handleBookingModal = () => {
     setBookingIsActive(!bookingIsActive);
   };
-
   return (
     <nav className=" text-white font-bold text-xl p-9 w-full z-30 fixed">
       <div className="flex w-full justify-between">
@@ -42,7 +43,11 @@ export function Navbar() {
           <MdAccountCircle className="text-2xl cursor-pointer" />
         </div>
       </div>
-      <div className="bg-gradient-to-b from-black h-40 opacity-50 top-0 left-0 w-full  absolute -z-10"></div>
+      <div
+        className={`${
+          scrollY > 40 ? "bg-black" : "bg-gradient-to-b from-black opacity-50"
+        } h-40 top-0 left-0 w-full  absolute -z-10 transition-all duration-300 ease-out`}
+      ></div>
     </nav>
   );
 }
@@ -57,10 +62,10 @@ export function NavbarMobile() {
   const menu = useRef(null);
   const openMenu = () => {
     if (change == false) {
-      menu.current.classList.add('translate-y-[334px]');
+      menu.current.classList.add("translate-y-[334px]");
       change = true;
     } else {
-      menu.current.classList.remove('translate-y-[334px]');
+      menu.current.classList.remove("translate-y-[334px]");
       change = false;
     }
   };
