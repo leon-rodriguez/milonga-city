@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <div className="w-full h-screen overflow-hidden relative">
       <div className="absolute top-0 left-0 z-20 w-screen h-screen bg-[#00000066]"></div>
-      <div className="absolute z-50 bottom-1/4 right-1/4 text-white text-7xl text-right max-[1280px]:text-6xl max-[720px]:text-4xl">
+      <div className="absolute z-20 bottom-1/4 right-1/4 text-white text-7xl text-right max-[1280px]:text-6xl max-[720px]:text-4xl">
         <p className="underline decoration-3 text-amber-300">LEARN</p>
         <p className="mt-1">
           WITH THE <span className="">BEST</span>

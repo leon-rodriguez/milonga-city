@@ -36,79 +36,91 @@ const UserDataForm = () => {
   };
 
   return (
-    <div className="w-full h-[400px] mt-4 grid grid-rows-5">
-      <div className="container-input-field">
-        <div
-          className={`${isTextValid ? 'input-field' : 'input-field-incorrect'}`}
-        >
-          <input
-            type="text"
-            autoComplete="off"
-            id="name"
-            required
-            onChange={(e) => {
-              verifyValidName(e);
-            }}
-          />
-          <label for="name">Name:</label>
-        </div>
-      </div>
-      <div className="container-input-field">
-        <div
-          className={`${
-            isEmailValid ? 'input-field' : 'input-field-incorrect'
-          }`}
-        >
-          <input
-            autoComplete="off"
-            type="text"
-            id="name"
-            required
-            onChange={(e) => {
-              verifyValidEmail(e);
-            }}
-          />
-          <label for="name">Email:</label>
-        </div>
-      </div>
-      <div className="container-input-field">
-        <div
-          className={`${
-            isPhoneValid ? 'input-field' : 'input-field-incorrect'
-          }`}
-        >
-          <input
-            type="text"
-            autoComplete="off"
-            id="name"
-            required
-            onChange={(e) => {
-              verifyValidPhone(e);
-            }}
-          />
-          <label for="name">Phone number:</label>
-        </div>
-      </div>
-      <NationalityPicker />
-      <div className="container-input-field">
-        <div
-          className={`${
-            isHotelValid ? 'input-field' : 'input-field-incorrect'
-          }`}
-        >
-          <div>
+    <div>
+      <div className="w-full h-[400px] mt-4 grid grid-rows-5">
+        <div className="container-input-field">
+          <div
+            className={`${
+              isTextValid ? 'input-field' : 'input-field-incorrect'
+            }`}
+          >
             <input
+              type="text"
+              autoComplete="off"
+              id="name"
+              required
+              onChange={(e) => {
+                verifyValidName(e);
+              }}
+            />
+            <label for="name">Name:</label>
+          </div>
+        </div>
+        <div className="container-input-field">
+          <div
+            className={`${
+              isEmailValid ? 'input-field' : 'input-field-incorrect'
+            }`}
+          >
+            <input
+              autoComplete="off"
               type="text"
               id="name"
               required
-              autoComplete="off"
               onChange={(e) => {
-                verifyValidHotel(e);
+                verifyValidEmail(e);
               }}
             />
-            <label for="name">Hotel / Accommodation:</label>
+            <label for="name">Email:</label>
           </div>
         </div>
+        <div className="container-input-field">
+          <div
+            className={`${
+              isPhoneValid ? 'input-field' : 'input-field-incorrect'
+            }`}
+          >
+            <input
+              type="text"
+              autoComplete="off"
+              id="name"
+              required
+              onChange={(e) => {
+                verifyValidPhone(e);
+              }}
+            />
+            <label for="name">Phone number:</label>
+          </div>
+        </div>
+        <NationalityPicker />
+        <div className="container-input-field">
+          <div
+            className={`${
+              isHotelValid ? 'input-field' : 'input-field-incorrect'
+            }`}
+          >
+            <div>
+              <input
+                type="text"
+                id="name"
+                required
+                autoComplete="off"
+                onChange={(e) => {
+                  verifyValidHotel(e);
+                }}
+              />
+              <label for="name">Hotel / Accommodation:</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full flex justify-center items-end mt-9">
+        <textarea
+          placeholder="Observations"
+          rows="4"
+          cols="50"
+          className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
+        ></textarea>
       </div>
     </div>
   );

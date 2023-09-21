@@ -1,25 +1,30 @@
-import { Navbar, NavbarMobile } from "./Navbar";
-import { useMediaQuery } from "react-responsive";
-import { Roboto } from "@next/font/google";
-import {useState, useEffect} from 'react';
+import { Navbar, NavbarMobile } from './Navbar';
+import { useMediaQuery } from 'react-responsive';
+import { Roboto } from '@next/font/google';
+import { useState, useEffect, createContext } from 'react';
+import { useScroll } from '../hooks/useScroll';
 
 const roboto = Roboto({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
 });
 
+export const scrollContext = createContext();
+
 export default function Layout({ children }) {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 720px)" });
+  const { scrollY } = useScroll();
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 720px)' });
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  useEffect(() =>{
+  useEffect(() => {
     setShowMobileMenu(isTabletOrMobile);
-  },[isTabletOrMobile] )
+  }, [isTabletOrMobile]);
   return (
-    <main className={roboto.className}>
-      {showMobileMenu ? <NavbarMobile /> : <Navbar />}
-      <main>{children}</main>
-      {/* <Footer /> */}
-    </main>
+    <scrollContext.Provider value={scrollY}>
+      <main className={roboto.className}>
+        {showMobileMenu ? <NavbarMobile /> : <Navbar />}
+        <main>{children}</main>
+      </main>
+    </scrollContext.Provider>
   );
 }

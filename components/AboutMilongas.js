@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import bailarines from '../public/Images/bailarines.jpg';
+import { scrollContext } from './Layout';
+import { useContext } from 'react';
 
 const AboutMilongas = () => {
+  const scrollY = useContext(scrollContext);
+  const maxYScroll = 1130;
+
   return (
     <div className="min-h-[2000px] w-full grid grid-rows-[1fr_18fr]">
       <div className="w-full p-6">
@@ -10,11 +15,19 @@ const AboutMilongas = () => {
         </div>
       </div>
       <div className=" w-full grid grid-rows-[1fr_1fr_1fr]">
-        <div className="grid grid-cols-2 w-full max-[800px]:grid-cols-1  ">
-          <div className=" flex justify-end items-center max-[800px]:justify-center ">
-            <Image
-              className=" object-cover h-[350px] w-3/4 mr-10 border-4 border-[#01bdba] max-[800px]:mr-0 max-[800px]:w-10/12"
-              src={bailarines}
+        <div className="grid grid-cols-2 w-full max-[800px]:grid-cols-1 ">
+          <div
+            className={`${
+              scrollY > maxYScroll
+                ? 'translate-x-0 translate-y-0'
+                : 'translate-x-[-300px] translate-y-[-150px]'
+            } flex justify-end items-center max-[800px]:justify-center transition-all duration-300 ease-out delay-100`}
+          >
+            <img
+              className={`${
+                scrollY > maxYScroll ? ' scale-100' : ' scale-0'
+              }object-cover h-[350px] w-3/4 mr-10 border-4 border-[#01bdba] max-[800px]:mr-0 max-[800px]:w-10/12 transition-all duration-300 ease-out delay-500 `}
+              src="/Images/bailarines.jpg"
               alt="bailarines de tango"
             />
           </div>
@@ -35,7 +48,9 @@ const AboutMilongas = () => {
         </div>
         <div className="grid grid-cols-2 w-full bg-[#f0f0f0] max-[800px]:grid-cols-1">
           <div className="flex justify-end items-center max-[800px]:justify-center max-[800px]:items-start max-[800px]:order-1">
-            <div className="w-3/4 mr-10 max-[800px]:mr-0 max-[400px]:text-sm">
+            <div
+              className={`w-3/4 mr-10 max-[800px]:mr-0 max-[400px]:text-sm opacity-1`}
+            >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s, when an unknown printer took a galley of

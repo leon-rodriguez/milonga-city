@@ -2,7 +2,8 @@
 import logo from '../assets/logo-whatsapp.svg';
 import Image from 'next/image';
 
-const WhatsappButton = () => {
+const WhatsappButton = ({ hola }) => {
+  console.log('como estas warap ', hola);
   return (
     <div className="select-none">
       <a href="https://web.whatsapp.com/">

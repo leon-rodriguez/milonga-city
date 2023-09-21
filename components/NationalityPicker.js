@@ -30,7 +30,6 @@ const NationalityPicker = () => {
       })
       .then((results) => {
         setCountries(results.sort((a, b) => a.value.localeCompare(b.value)));
-        console.log(typeof results);
       });
   }, []);
 
@@ -45,7 +44,6 @@ const NationalityPicker = () => {
     setSelectedCountry(e.target.value);
     countries.map((item) => {
       if (item.value.toLowerCase() === e.target.value.toLowerCase()) {
-        console.log('coincidio');
         setIsNationalityValid(true);
         flag = false;
       }
@@ -78,7 +76,7 @@ const NationalityPicker = () => {
         <label for="name">Nationality:</label>
         <div
           className={`absolute top-[45px] w-full max-h-[216px] border bg-white z-20 overflow-y-scroll shadow-2xl  shadow-[-1px 1px 24px -1px rgba(0,0,0,1)] rounded-lg transition-all duration-300 ease-out ${
-            showOptions ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+            showOptions ? 'scale-100 visible' : 'scale-50 invisible'
           }`}
         >
           {countries &&

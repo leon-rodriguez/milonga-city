@@ -3,27 +3,37 @@ import Image from 'next/image';
 import logo from '../assets/logo-milonga-city.svg';
 import { FaShoppingCart } from 'react-icons/fa';
 import { MdAccountCircle, MdOutlineMenu } from 'react-icons/md';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import ModalBookings from './ModalBookings';
+import { scrollContext } from './Layout';
+// import { useScroll } from '../hooks/useScroll';
 
 export function Navbar() {
   const [bookingIsActive, setBookingIsActive] = useState(false);
+  const scrollY = useContext(scrollContext);
+  const maxYScroll = 190;
 
   const handleBookingModal = () => {
     setBookingIsActive(!bookingIsActive);
   };
 
   return (
-    <nav className=" text-white font-bold text-xl p-9 w-full z-30 fixed">
-      <div className="flex w-full justify-between">
+    <nav
+      className={`${
+        scrollY > maxYScroll ? 'p-4' : 'p-9'
+      } font-bold text-white text-xl w-full z-50 fixed transition-all duration-500 ease-out`}
+    >
+      <div className="flex w-full justify-between relative z-40">
         <Link href="/">
           <Image
             src={logo}
             alt="logo"
-            className="w-28 h-auto object-cover max-lg:w-20"
+            className={`${
+              scrollY > maxYScroll ? 'w-14' : 'w-28'
+            } h-auto object-cover max-lg:w-20 transition-all duration-500 ease-out`}
           />
         </Link>
-        <ul className="flex justify-center space-x-7">
+        <ul className="flex justify-center space-x-7 ">
           <li>
             <Link href="/">HOME</Link>
           </li>
@@ -31,7 +41,7 @@ export function Navbar() {
             <a href="#milonga">MORE ABOUT MILONGAS</a>
           </li>
         </ul>
-        <div className="flex w-24 justify-evenly">
+        <div className="flex w-24 justify-evenly ">
           <div className="relative">
             <FaShoppingCart
               className="text-2xl cursor-pointer"
@@ -42,7 +52,13 @@ export function Navbar() {
           <MdAccountCircle className="text-2xl cursor-pointer" />
         </div>
       </div>
-      <div className="bg-gradient-to-b from-black h-40 opacity-50 top-0 left-0 w-full  absolute -z-10"></div>
+      <div
+        className={`${
+          scrollY > maxYScroll
+            ? 'bg-black h-20'
+            : 'bg-gradient-to-b from-black opacity-50 h-40'
+        } top-0 left-0 w-full  absolute z-30 transition-all duration-500 ease-out`}
+      ></div>
     </nav>
   );
 }

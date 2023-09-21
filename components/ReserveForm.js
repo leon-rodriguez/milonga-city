@@ -58,22 +58,11 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     if (date && time && price && persons) {
       const bookingData = {
         experiences_id: id,
-        users_id: 1, //TODO tomar id usuario
         date: `${date.$y}-${date.$M + 1}-${date.$D}`,
         time: `${time}:00`,
         price: price,
         persons: persons,
       };
-
-      fetch('http://localhost:3000/api/bookings', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bookingData),
-      }).then((response) => {
-        console.log(response);
-      });
 
       fetch('http://localhost:3000/api/bookings', {
         method: 'PUT',
@@ -95,7 +84,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   return (
     <div
       className={`${
-        showReservForm ? 'h-[900px]' : 'h-[500px]'
+        showReservForm ? 'h-[1100px]' : 'h-[500px]'
       } shadow-2xl rounded-3xl relative max-[720px]:order-1 ${
         showReservForm ? '' : 'min-[720px]:sticky'
       } min-[720px]:top-0 transition-all duration-300`}
@@ -130,14 +119,19 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             <div className="text-3xl font-bold">${price}</div>
           </div>
           {showReservForm ? <UserDataForm /> : ''}
-          <div className="w-full flex justify-center items-end mt-8 absolute bottom-10 left-0">
-            <button
-              className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
-              onClick={handleContinueClick}
-            >
-              {showReservForm ? 'Reserve' : 'Continue'}
-            </button>
-          </div>
+        </div>
+        <div className="w-full flex justify-center items-end mt-8">
+          <button
+            className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
+            onClick={handleContinueClick}
+          >
+            {showReservForm ? 'Reserve' : 'Continue'}
+          </button>
+        </div>
+        <div className="w-full flex justify-center items-end mt-4">
+          <button className="w-[200px] h-12 bg-transparent border-2 border-[#0088cc] rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33]">
+            Message Milonga city
+          </button>
         </div>
       </form>
     </div>
