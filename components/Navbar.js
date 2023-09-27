@@ -30,7 +30,7 @@ export function Navbar() {
             alt="logo"
             className={`${
               scrollY > maxYScroll ? 'w-14' : 'w-28'
-            } h-auto object-cover max-lg:w-20 transition-all duration-500 ease-out`}
+            } h-auto object-cover  transition-all duration-500 ease-out`}
           />
         </Link>
         <ul className="flex justify-center space-x-7 ">

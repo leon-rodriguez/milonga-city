@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Roboto } from '@next/font/google';
 import { useState, useEffect, createContext } from 'react';
 import { useScroll } from '../hooks/useScroll';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -20,11 +21,13 @@ export default function Layout({ children }) {
     setShowMobileMenu(isTabletOrMobile);
   }, [isTabletOrMobile]);
   return (
-    <scrollContext.Provider value={scrollY}>
-      <main className={roboto.className}>
-        {showMobileMenu ? <NavbarMobile /> : <Navbar />}
-        <main>{children}</main>
-      </main>
-    </scrollContext.Provider>
+    <ParallaxProvider>
+      <scrollContext.Provider value={scrollY}>
+        <main className={roboto.className}>
+          {showMobileMenu ? <NavbarMobile /> : <Navbar />}
+          <main>{children}</main>
+        </main>
+      </scrollContext.Provider>
+    </ParallaxProvider>
   );
 }

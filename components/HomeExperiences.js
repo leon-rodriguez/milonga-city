@@ -2,6 +2,7 @@ import Card from './Card';
 import { homeList } from '../pages/api/home';
 import { useState, useEffect } from 'react';
 import LoaderSpinner from './LoaderSpinner';
+import { useParallax } from 'react-scroll-parallax';
 
 const HomeExperiences = () => {
   const [data, setData] = useState(null);
@@ -14,6 +15,11 @@ const HomeExperiences = () => {
         setData(results.data);
       });
   }, []);
+
+  // const parallax = useParallax({
+  //   speed: 100,
+  // });
+
   return (
     <article className=" p-6 bg-[#f0f0f0] min-h-[750px]">
       <h1 className="text-center font-bold text-4xl mb-2">TRENDING TOURS</h1>

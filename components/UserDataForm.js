@@ -114,7 +114,7 @@ const UserDataForm = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-center items-end mt-9">
+      <div className="w-full flex justify-center items-end mt-9 mb-8">
         <textarea
           placeholder="Observations"
           rows="4"

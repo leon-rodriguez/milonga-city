@@ -1,22 +1,10 @@
-import Image from 'next/image';
-import bailarines from '../public/Images/bailarines.jpg';
-import { Parallax } from 'react-scroll-parallax';
-
-/*
-  //text div styles
-  position: absolute;
-  z-index: 51;
-  width: 100%;
-  color: white;
-  height: 100%;
-  padding: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-*/
+import { observe } from 'react-intersection-observer';
+import { useParallax } from 'react-scroll-parallax';
 
 export default function Hero() {
+  const parallax = useParallax({
+    speed: -50,
+  });
   return (
     <div className="w-full h-screen overflow-hidden relative">
       <div className="absolute top-0 left-0 z-20 w-screen h-screen bg-[#00000066]"></div>
@@ -35,6 +23,7 @@ export default function Hero() {
         loop
         autoPlay
         className="w-full h-full object-cover absolute top-0 left-0"
+        ref={parallax.ref}
       >
         <source src="/Images/background.mp4" type="video/mp4"></source>
       </video>

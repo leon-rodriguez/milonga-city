@@ -83,3 +83,35 @@
   top: -24px;
   color: red;
 }
+
+.about_left_appear {
+  animation: about_left_appear 700ms ease forwards;
+}
+
+.about_right_appear {
+  animation: about_right_appear 700ms ease forwards;
+}
+
+@keyframes about_left_appear {
+  0% {
+    transform: translate(-150px, -75px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+
+@keyframes about_right_appear {
+  0% {
+    transform: translate(150px, -75px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}

@@ -84,9 +84,9 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   return (
     <div
       className={`${
-        showReservForm ? 'h-[1100px]' : 'h-[500px]'
-      } shadow-2xl rounded-3xl relative max-[720px]:order-1 ${
-        showReservForm ? '' : 'min-[720px]:sticky'
+        showReservForm ? 'h-[1100px]' : 'h-[550px]'
+      } shadow-2xl rounded-3xl relative max-[720px]:order-1 border-2 ${
+        showReservForm ? '' : 'min-[721px]:sticky min-[720px]:top-[80px]'
       } min-[720px]:top-0 transition-all duration-300`}
     >
       <form onSubmit={handleSubmit}>
@@ -120,16 +120,16 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           </div>
           {showReservForm ? <UserDataForm /> : ''}
         </div>
-        <div className="w-full flex justify-center items-end mt-8">
+        <div className="w-full flex justify-center items-end mt-2 max-[800px]:mt-0">
           <button
-            className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
+            className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb] max-[920px]:h-10"
             onClick={handleContinueClick}
           >
             {showReservForm ? 'Reserve' : 'Continue'}
           </button>
         </div>
         <div className="w-full flex justify-center items-end mt-4">
-          <button className="w-[200px] h-12 bg-transparent border-2 border-[#0088cc] rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33]">
+          <button className="w-[200px] h-12 bg-transparent border-2 border-[#0088cc] rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33] max-[920px]:h-10">
             Message Milonga city
           </button>
         </div>
