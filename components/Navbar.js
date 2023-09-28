@@ -33,12 +33,30 @@ export function Navbar() {
             } h-auto object-cover  transition-all duration-500 ease-out`}
           />
         </Link>
-        <ul className="flex justify-center space-x-7 ">
+        <ul className="flex justify-center h-[60px]">
           <li>
-            <Link href="/">HOME</Link>
+            <Link
+              href="/"
+              className="transition-all ease duration-300 hover:text-[#01bdba]"
+            >
+              CONTACT US
+            </Link>
           </li>
-          <li>
-            <a href="#milonga">MORE ABOUT MILONGAS</a>
+          <li className=" px-4 mx-4">
+            <Link
+              href="/"
+              className="transition-all ease duration-300 hover:text-[#01bdba]"
+            >
+              HOME
+            </Link>
+          </li>
+          <li className="flex justify-start">
+            <a
+              href="#milonga"
+              className="transition-all ease duration-300 hover:text-[#01bdba]"
+            >
+              MORE ABOUT MILONGAS
+            </a>
           </li>
         </ul>
         <div className="flex w-24 justify-evenly ">
