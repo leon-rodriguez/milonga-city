@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import NationalityPicker from './NationalityPicker';
 
-const UserDataForm = () => {
+const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
   const [isTextValid, setIsTextValid] = useState(null);
   const [isEmailValid, setIsEmailValid] = useState(null);
   const [isPhoneValid, setIsPhoneValid] = useState(null);
@@ -14,25 +14,47 @@ const UserDataForm = () => {
         !/[0-9\|{}\[\]_\\]/.test(e.target.value) &&
         /[a-zA-Z]/.test(e.target.value)
     );
+    if (isTextValid) {
+      handleDataFormChange({
+        ...dataFormValues,
+        name: e.target.value,
+      });
+    }
   };
 
   const verifyValidEmail = (e) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     setIsEmailValid(regex.test(e.target.value));
-    // console.log(regex.test(e.target.value));
+    if (isEmailValid) {
+      handleDataFormChange({
+        ...dataFormValues,
+        mail: e.target.value,
+      });
+    }
   };
 
   const verifyValidPhone = (e) => {
     // Expresión regular para verificar un número de teléfono en formato internacional
     const regex = /^\+?[0-9()\s-]+$/;
 
-    console.log(regex.test(e.target.value));
     setIsPhoneValid(regex.test(e.target.value));
+    if (isPhoneValid) {
+      handleDataFormChange({
+        ...dataFormValues,
+        phone: e.target.value,
+      });
+    }
   };
 
   const verifyValidHotel = (e) => {
     setIsHotelValid(e.target.value.trim().length > 0 ? true : false);
+    if (isHotelValid) {
+      handleDataFormChange({
+        ...dataFormValues,
+        hotel: e.target.value,
+      });
+    }
   };
 
   return (
@@ -92,7 +114,10 @@ const UserDataForm = () => {
             <label for="name">Phone number:</label>
           </div>
         </div>
-        <NationalityPicker />
+        <NationalityPicker
+          handleDataFormChange={handleDataFormChange}
+          dataFormValues={dataFormValues}
+        />
         <div className="container-input-field">
           <div
             className={`${

@@ -11,8 +11,7 @@ export default async function handler(req, res) {
 
     try {
       const db = createKysely();
-      //TODO checkear si el usuario existe en base al mail
-
+      //checkea si el usuario existe en base al mail
       const users = await db
         .selectFrom('users')
         .where('mail', '=', params.mail)
@@ -20,18 +19,17 @@ export default async function handler(req, res) {
         .execute();
       let user_id = users[0]?.id ?? null;
 
-      if (!users_id) {
-        //TODO si no existe crearlo
-        //TODO obtener el id de usuario ya sea del nuevo creado o del q ya existe
+      //si el usuario no existe crea uno nuevo y obtiene el id
+      if (!user_id) {
         const result = await db
           .insertInto('users')
           .values({
             username: params.username,
             password: params.password,
-            mail: 'eafoi@gmail.com',
-            country: 'arew',
-            phone: '124332432',
-            hotel: 'continetnal',
+            mail: params.mail,
+            country: params.country,
+            phone: params.phone,
+            hotel: params.hotel,
             authenticated: false,
           })
           .returning(['id'])
@@ -39,6 +37,7 @@ export default async function handler(req, res) {
         user_id = result.id;
       }
 
+      //crea el booking
       const response = await db
         .insertInto('bookings')
         .values({
@@ -47,12 +46,19 @@ export default async function handler(req, res) {
           date: newDate,
           price: params.price,
           persons: params.persons,
+          confirmed: false,
+          name: params.name,
+          mail: params.mail,
+          country: params.country,
+          phone: params.phone,
+          hotel: params.hotel,
+          observations: params.observations,
         })
         .executeTakeFirst();
       res.status(200).json({ data: response });
     } catch (error) {
       console.log(error);
-      res.status(400).json({ data: error });
+      res.status(400).json({ error: error });
     }
     return;
   }

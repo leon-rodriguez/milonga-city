@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-
-const NationalityPicker = () => {
+//TODO mandar por objeto el valor del pais seleccionado
+const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
   const [countries, setCountries] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState('');
   const [showOptions, setShowOptions] = useState(false);
@@ -37,6 +37,12 @@ const NationalityPicker = () => {
     setSelectedCountry(country);
     setShowOptions(false);
     setIsNationalityValid(true);
+    if (isNationalityValid) {
+      handleDataFormChange({
+        ...dataFormValues,
+        nationality: selectedCountry,
+      });
+    }
   };
 
   const handleWriting = (e) => {

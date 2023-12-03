@@ -30,7 +30,7 @@ const InformationExperience = ({ id, data }) => {
       .then((results) => {
         setReviews(results.data);
       });
-  }, [change]);
+  }, [change, id]);
 
   useEffect(() => {
     if (reviews) {

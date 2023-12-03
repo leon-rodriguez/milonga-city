@@ -39,24 +39,24 @@ export function Navbar() {
               href="/"
               className="transition-all ease duration-300 hover:text-[#01bdba]"
             >
-              CONTACT US
-            </Link>
-          </li>
-          <li className=" px-4 mx-4">
-            <Link
-              href="/"
-              className="transition-all ease duration-300 hover:text-[#01bdba]"
-            >
               HOME
             </Link>
           </li>
-          <li className="flex justify-start">
+          <li className="flex justify-start  px-4 mx-4">
             <a
               href="#milonga"
               className="transition-all ease duration-300 hover:text-[#01bdba]"
             >
               MORE ABOUT MILONGAS
             </a>
+          </li>
+          <li>
+            <Link
+              href="/"
+              className="transition-all ease duration-300 hover:text-[#01bdba]"
+            >
+              CONTACT US
+            </Link>
           </li>
         </ul>
         <div className="flex w-24 justify-evenly ">

@@ -12,6 +12,15 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [showReservForm, setShowReservForm] = useState(false);
   const [date, setDate] = useState();
   const [time, setTime] = useState(null);
+  const [showContinueAvailable, setShowContinueAvailable] = useState(false);
+  const [dataFormValues, setDataFormValues] = useState({
+    name: '',
+    mail: '',
+    phone: '',
+    nationality: '',
+    hotel: '',
+    observations: '',
+  });
 
   useEffect(() => {
     if (data) {
@@ -39,9 +48,14 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     }
   }, [persons, []]);
 
+  useEffect(() => {
+    if (date && time && persons && price) {
+      setShowContinueAvailable(true);
+    }
+  }, [date, time, persons, price]);
+
   const handleDateChange = (newValue) => {
     setDate(newValue);
-    console.log(newValue);
   };
 
   const handlePersonsChange = (newValue) => {
@@ -50,6 +64,11 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
 
   const handleTimeChange = (newValue) => {
     setTime(newValue);
+  };
+
+  const handleDataFormChange = (newValue) => {
+    setDataFormValues(newValue);
+    console.log('objeto data form', dataFormValues);
   };
 
   const handleSubmit = (e) => {
@@ -62,6 +81,12 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
         time: `${time}:00`,
         price: price,
         persons: persons,
+        name: name,
+        mail: params.mail,
+        country: params.country,
+        phone: params.phone,
+        hotel: params.hotel,
+        observations: params.observations,
       };
 
       fetch('http://localhost:3000/api/bookings', {
@@ -77,7 +102,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   };
 
   const handleContinueClick = () => {
-    if (showReservForm === false) {
+    if (showReservForm === false && date && time && price && persons) {
       setShowReservForm(true);
     }
   };
@@ -85,9 +110,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     <div
       className={`${
         showReservForm ? 'h-[1100px]' : 'h-[550px]'
-      } shadow-2xl rounded-3xl relative max-[720px]:order-1 border-2 ${
-        showReservForm ? '' : 'min-[721px]:sticky min-[720px]:top-[80px]'
-      } min-[720px]:top-0 transition-all duration-300`}
+      } shadow-2xl rounded-3xl relative max-[720px]:order-1 border-2 max-[720px]:top-0 transition-all duration-300 min-[721px]:sticky top-[80px]`}
     >
       <form onSubmit={handleSubmit}>
         <div className="text-3xl text-center mt-3">
@@ -118,11 +141,22 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           <div className="h-20 flex justify-center items-center">
             <div className="text-3xl font-bold">${price}</div>
           </div>
-          {showReservForm ? <UserDataForm /> : ''}
+          {showReservForm ? (
+            <UserDataForm
+              handleDataFormChange={handleDataFormChange}
+              dataFormValues={dataFormValues}
+            />
+          ) : (
+            ''
+          )}
         </div>
         <div className="w-full flex justify-center items-end mt-2 max-[800px]:mt-0">
           <button
-            className="w-[200px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in hover:bg-[#0088ccbb] max-[920px]:h-10"
+            className={`w-[200px] h-12 rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 ${
+              showContinueAvailable
+                ? 'bg-[#0088cc] hover:bg-[#0088ccbb]'
+                : 'bg-[#0088cc48] cursor-default'
+            }`}
             onClick={handleContinueClick}
           >
             {showReservForm ? 'Reserve' : 'Continue'}
