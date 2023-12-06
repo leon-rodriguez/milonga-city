@@ -5,6 +5,8 @@ import PersonChooser from './PersonChooser';
 import HourPicker from './HourPicker';
 import UserDataForm from './UserDataForm';
 import { useState, useEffect } from 'react';
+import { set } from 'date-fns';
+import { is } from 'date-fns/locale';
 
 const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [price, setPrice] = useState(0);
@@ -13,6 +15,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [date, setDate] = useState();
   const [time, setTime] = useState(null);
   const [showContinueAvailable, setShowContinueAvailable] = useState(false);
+  const [isReserved, setIsReserved] = useState(false);
   const [dataFormValues, setDataFormValues] = useState({
     name: '',
     mail: '',
@@ -68,13 +71,25 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
 
   const handleDataFormChange = (newValue) => {
     setDataFormValues(newValue);
-    console.log('objeto data form', dataFormValues);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (date && time && price && persons) {
+    console.log(dataFormValues.name + ' name');
+    console.log(dataFormValues.mail + ' mail');
+    console.log(dataFormValues.phone + ' phone');
+    console.log(dataFormValues.nationality + ' nationality');
+    if (
+      date &&
+      time &&
+      price &&
+      persons &&
+      dataFormValues.name &&
+      dataFormValues.mail &&
+      dataFormValues.phone &&
+      dataFormValues.nationality
+    ) {
       const bookingData = {
         experiences_id: id,
         date: `${date.$y}-${date.$M + 1}-${date.$D}`,
@@ -96,8 +111,15 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
         },
         body: JSON.stringify(bookingData),
       }).then((response) => {
-        console.log(response);
+        console.log(response.ok + ' esta es la respuesta booking');
+        if (response.ok) {
+          setIsReserved(true);
+        } else if (response.ok === false) {
+          alert('fallo en la db');
+        }
       });
+    } else {
+      alert('fallo en los inputs');
     }
   };
 
@@ -106,6 +128,12 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
       setShowReservForm(true);
     }
   };
+
+  useEffect(() => {
+    if (isReserved) {
+      alert('ola');
+    }
+  }, [isReserved]);
   return (
     <div
       className={`${

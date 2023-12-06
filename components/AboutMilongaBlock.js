@@ -4,7 +4,6 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, refValue, entry }) => {
   const [animationShowed, setAnimationShowed] = useState(false);
 
   useEffect(() => {
-    console.log('entry ', entry);
     if (entry?.isIntersecting === true) {
       setAnimationShowed(true);
     }
@@ -46,7 +45,6 @@ const AboutMilongaBlockImgRight = ({ text, src, refValue, entry }) => {
   const [animationShowed, setAnimationShowed] = useState(false);
 
   useEffect(() => {
-    console.log('entry ', entry);
     if (entry?.isIntersecting === true) {
       setAnimationShowed(true);
     }

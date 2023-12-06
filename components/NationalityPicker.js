@@ -37,12 +37,10 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
     setSelectedCountry(country);
     setShowOptions(false);
     setIsNationalityValid(true);
-    if (isNationalityValid) {
-      handleDataFormChange({
-        ...dataFormValues,
-        nationality: selectedCountry,
-      });
-    }
+    handleDataFormChange({
+      ...dataFormValues,
+      nationality: country,
+    });
   };
 
   const handleWriting = (e) => {
