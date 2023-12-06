@@ -24,8 +24,8 @@ export default async function handler(req, res) {
         const result = await db
           .insertInto('users')
           .values({
-            username: params.username,
-            password: params.password,
+            username: params.name,
+            password: 'contrasñea string',
             mail: params.mail,
             country: params.country,
             phone: params.phone,
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         .values({
           experiences_id: params.experiences_id,
           users_id: user_id,
-          date: newDate,
+          date: params.date,
           price: params.price,
           persons: params.persons,
           confirmed: false,

@@ -57,6 +57,13 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
     }
   };
 
+  const verifyObservations = (e) => {
+    handleDataFormChange({
+      ...dataFormValues,
+      observations: e.target.value,
+    });
+  };
+
   return (
     <div>
       <div className="w-full h-[400px] mt-4 grid grid-rows-5">
@@ -145,6 +152,9 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
           rows="4"
           cols="50"
           className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
+          onChange={(e) => {
+            verifyObservations(e);
+          }}
         ></textarea>
       </div>
     </div>

@@ -81,12 +81,12 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
         time: `${time}:00`,
         price: price,
         persons: persons,
-        name: name,
-        mail: params.mail,
-        country: params.country,
-        phone: params.phone,
-        hotel: params.hotel,
-        observations: params.observations,
+        name: dataFormValues.name,
+        mail: dataFormValues.mail,
+        country: dataFormValues.country,
+        phone: dataFormValues.phone,
+        hotel: dataFormValues.hotel,
+        observations: dataFormValues.observations,
       };
 
       fetch('http://localhost:3000/api/bookings', {
