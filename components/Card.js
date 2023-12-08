@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import bailarines from '../public/Images/bailarines.jpg';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 const Card = ({ data }) => {

@@ -52,7 +52,7 @@ export function Navbar() {
           </li>
           <li>
             <Link
-              href="/"
+              href="/contact"
               className="transition-all ease duration-300 hover:text-[#01bdba]"
             >
               CONTACT US
@@ -114,6 +114,11 @@ export function NavbarMobile() {
           <li className="text-center" onClick={openMenu}>
             <a href="#milonga">MORE ABOUT MILONGAS</a>
           </li>
+          <Link href="/contact">
+            <li className="text-center" onClick={openMenu}>
+              CONTACT US
+            </li>
+          </Link>
         </ul>
       </div>
       <div className=" w-full flex justify-between">

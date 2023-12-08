@@ -38,12 +38,19 @@ const CommentForm = ({ onReviewsChange }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     cleanForm();
+
+    const fechaActual = new Date();
+
+    const año = fechaActual.getFullYear();
+    const mes = fechaActual.getMonth() + 1; // Nota: los meses comienzan desde 0
+    const dia = fechaActual.getDate();
+
     const commentData = {
-      username: 'massa',
+      username: 'el admin',
       body: comment,
-      publisheddate: '2023-09-09',
+      publisheddate: `${año}-${mes}-${dia}`,
       rating: rating,
-      bookings_id: 26,
+      bookings_id: 37,
     };
 
     // TODO throw error on fail su
@@ -54,7 +61,6 @@ const CommentForm = ({ onReviewsChange }) => {
       },
       body: JSON.stringify(commentData),
     }).then((response) => {
-      console.log(response);
       onReviewsChange(true);
     });
   };

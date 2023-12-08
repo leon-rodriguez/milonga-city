@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Hero from '../components/Hero';
-import HomeExperiences from '../components/HomeExperiences';
 import Footer from '../components/Footer';
 import WhatsappButton from '../components/WhatsappButton';
-import AboutMilongas from '../components/AboutMilongas';
+import ContactForm from '../components/ContactForm';
+import HeroExperience from '../components/HeroExperience';
 
-export default function Home() {
+export default function Contact() {
   return (
     <>
       <Head>
@@ -14,14 +14,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="text-3xl">
-        <Hero />
-      </section>
       <section>
-        <HomeExperiences />
+        <HeroExperience id={1} />
       </section>
-      <section>
-        <AboutMilongas />
+      <section className="min-h-[800px]">
+        <ContactForm />
       </section>
       <section>
         <Footer />

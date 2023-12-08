@@ -11,15 +11,6 @@ import {
 // import { useContext, useEffect, useState } from 'react';
 
 const AboutMilongas = () => {
-  // const scrollY = useContext(scrollContext);
-  // const [showFirstAnimation, setShowFirstAnimation] = useState(false);
-  // const maxYScroll = 1130;
-
-  // useEffect(() => {
-  //   if (showFirstAnimation === false && scrollY > maxYScroll) {
-  //     setShowFirstAnimation(true);
-  //   }
-  // }, [scrollY]);
   const [firstImageInView, setFirstImageInView] = useState(false);
   const MILONGA_FEATURES = [
     {
@@ -38,16 +29,6 @@ const AboutMilongas = () => {
       src: '/Images/bailarines.jpg',
     },
   ];
-
-  // const { ref, inView, entry } = useInView({
-  //   threshold: 0,
-  // });
-
-  // useEffect(() => {
-  //   if (!firstImageInView && inView) {
-  //     setFirstImageInView(true);
-  //   }
-  // }, [inView]);
 
   return (
     <div className="min-h-[2000px] w-full grid grid-rows-[1fr_18fr]">
