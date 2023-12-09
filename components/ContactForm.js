@@ -1,85 +1,102 @@
+import { useState } from 'react';
+
 const ContactForm = () => {
+  const [isTextValid, setIsTextValid] = useState(null);
+  const [isEmailValid, setIsEmailValid] = useState(null);
+  const [message, setMessage] = useState(null);
+
+  const verifyValidName = (e) => {
+    //verifica que solo tenga letras de la a a la z
+    setIsTextValid(
+      /^[a-zA-Z\s]+$/.test(e.target.value) &&
+        !/[0-9\|{}\[\]_\\]/.test(e.target.value) &&
+        /[a-zA-Z]/.test(e.target.value)
+    );
+  };
+
+  const verifyValidEmail = (e) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    setIsEmailValid(regex.test(e.target.value));
+  };
+
+  const handleMessage = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (message && isTextValid && isEmailValid) {
+      alert(message);
+    }
+  };
+
   return (
-    // <div class="space-y-8 mx-auto w-full max-w-md h-full">
-    //   <div
-    //     class="rounded-lg border bg-card text-card-foreground shadow-sm text-center"
-    //     data-v0-t="card"
-    //   >
-    //     <div class="flex flex-col space-y-1.5 p-6">
-    //       <h2 class="text-3xl font-bold">Contact Us</h2>
-    //       <p class="text-gray-500 dark:text-gray-400">
-    //         Fill out the form and we'll get back to you shortly.
-    //       </p>
-    //     </div>
-    //     <div class="p-6 space-y-4">
-    //       <div class="grid grid-cols-2 gap-4">
-    //         <div class="space-y-2">
-    //           <label
-    //             class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-    //             for="name"
-    //           >
-    //             Name
-    //           </label>
-    //           <input
-    //             class="flex h-10 w-full rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 px-2 py-1"
-    //             id="name"
-    //             placeholder="Enter your name"
-    //           />
-    //         </div>
-    //         <div class="space-y-2">
-    //           <label
-    //             class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-    //             for="phone"
-    //           >
-    //             Phone
-    //           </label>
-    //           <input
-    //             class="flex h-10 w-full rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 px-2 py-1"
-    //             id="phone"
-    //             placeholder="Enter your phone"
-    //             type="tel"
-    //           />
-    //         </div>
-    //       </div>
-    //       <div class="space-y-2">
-    //         <label
-    //           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-    //           for="email"
-    //         >
-    //           Email
-    //         </label>
-    //         <input
-    //           class="flex h-10 w-full rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 px-2 py-1"
-    //           id="email"
-    //           placeholder="Enter your email"
-    //           type="email"
-    //         />
-    //       </div>
-    //       <div class="space-y-2">
-    //         <label
-    //           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-    //           for="message"
-    //         >
-    //           Message
-    //         </label>
-    //         <textarea
-    //           class="flex w-full rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px] px-2 py-1"
-    //           id="message"
-    //           placeholder="Enter your message"
-    //         ></textarea>
-    //       </div>
-    //       <button
-    //         class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
-    //         type="submit"
-    //       >
-    //         Send Message
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
-    <div>
-      <div>a</div>
-      <div>b</div>
+    <div className=" max-w-[600px] h-[800px] mx-auto border rounded-md shadow-md pt-4">
+      <div className="">
+        <h3 class="text-3xl font-semibold text-center">Send us your message</h3>
+        <h3 class="text-md text-center mt-4 text-[#8d8d8f]">
+          We will be answering in the following days
+        </h3>
+      </div>
+      <div className=" pt-12">
+        <div className="container-input-field">
+          <div
+            className={`${
+              isTextValid ? 'input-field' : 'input-field-incorrect'
+            }`}
+          >
+            <input
+              type="text"
+              autoComplete="off"
+              required
+              onChange={(e) => {
+                verifyValidName(e);
+              }}
+            />
+            <label for="name">Name:</label>
+          </div>
+        </div>
+        <div className="container-input-field my-20">
+          <div
+            className={`${
+              isEmailValid ? 'input-field' : 'input-field-incorrect'
+            }`}
+          >
+            <input
+              type="text"
+              autoComplete="off"
+              required
+              onChange={(e) => {
+                verifyValidEmail(e);
+              }}
+            />
+            <label for="email">Email:</label>
+          </div>
+        </div>
+        <div className="container-input-field">
+          <div className="input-field ">
+            <input type="text" autoComplete="off" required />
+            <label for="phone">Phone: (optional)</label>
+          </div>
+        </div>
+        <div className="w-full flex justify-center items-end mt-20">
+          <textarea
+            placeholder="Message"
+            rows="4"
+            cols="50"
+            className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
+            onChange={handleMessage}
+          ></textarea>
+        </div>
+        <div className="w-full flex justify-center items-end mt-20">
+          <button
+            className="w-[130px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-md cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 hover:bg-[#0088ccbb]"
+            onClick={handleSubmit}
+          >
+            Send
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
