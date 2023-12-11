@@ -2,28 +2,34 @@ import Head from 'next/head';
 import Footer from '../../../components/Footer';
 import HeroExperience from '../../../components/HeroExperience';
 import WhatsappButton from '../../../components/WhatsappButton';
-import ContainerExperience from '../../../components/ContainerExperience';
+import Booking from '../../../components/Booking';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
 const Experience = () => {
   const router = useRouter();
   const id = router.query.id;
+  // id is the hash that will be received
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:3000/api/experiences`)
+    if (!id) {
+      return;
+    }
+    fetch(`http://localhost:3000/api/bookings`)
       .then((results) => {
         return results.json();
       })
       .then((results) => {
-        const devolverCard = results.data.find((item) => {
-          if (item.id == id) {
+        console.log('id de boooking ' + id);
+        const returnBooking = results.data.find((item) => {
+          if (item.url_hash == id) {
+            console.log('coincidio');
             return item;
           }
         });
-        setData(devolverCard);
+        setData(returnBooking);
       });
-  }, []);
+  }, [id]);
   return (
     <>
       <Head>
@@ -32,8 +38,15 @@ const Experience = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <section>
+        <HeroExperience id={1} />
+      </section>
       <section className="w-full flex justify-center bg-[#f0f0f0]">
-        <ContainerExperience id={id} />
+        <Booking data={data} />
+      </section>
+      <section>
+        <WhatsappButton />
+        <Footer />
       </section>
     </>
   );

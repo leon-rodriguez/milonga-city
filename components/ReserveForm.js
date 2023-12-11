@@ -5,8 +5,6 @@ import PersonChooser from './PersonChooser';
 import HourPicker from './HourPicker';
 import UserDataForm from './UserDataForm';
 import { useState, useEffect } from 'react';
-import { set } from 'date-fns';
-import { is } from 'date-fns/locale';
 
 const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [price, setPrice] = useState(0);
