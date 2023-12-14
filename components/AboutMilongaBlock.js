@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useIntersectionObserver } from '@uidotdev/usehooks';
 
-const AboutMilongaBlockImgLeft = ({ index, text, src, refValue, entry }) => {
+const AboutMilongaBlockImgLeft = ({ index, text, src }) => {
   const [animationShowed, setAnimationShowed] = useState(false);
 
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0,
+    root: null,
+    rootMargin: '0px',
+  });
   useEffect(() => {
     if (entry?.isIntersecting === true) {
       setAnimationShowed(true);
@@ -23,7 +29,7 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, refValue, entry }) => {
           } object-cover h-[350px] w-3/4 mr-10 border-4 border-[#01bdba] max-[800px]:mr-0 max-[800px]:w-10/12 opacity-0 `}
           src={src}
           alt="bailarines de tango"
-          ref={refValue}
+          ref={ref}
         />
       </div>
       <div
@@ -41,9 +47,14 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, refValue, entry }) => {
   );
 };
 
-const AboutMilongaBlockImgRight = ({ text, src, refValue, entry }) => {
+const AboutMilongaBlockImgRight = ({ text, src }) => {
   const [animationShowed, setAnimationShowed] = useState(false);
 
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0,
+    root: null,
+    rootMargin: '0px',
+  });
   useEffect(() => {
     if (entry?.isIntersecting === true) {
       setAnimationShowed(true);
@@ -68,7 +79,7 @@ const AboutMilongaBlockImgRight = ({ text, src, refValue, entry }) => {
           } object-cover h-[350px] w-3/4 ml-10 border-4 border-[#01bdba] max-[800px]:ml-0 max-[800px]:w-10/12`}
           src={src}
           alt="bailarines de tango"
-          ref={refValue}
+          ref={ref}
         />
       </div>
     </div>
