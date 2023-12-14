@@ -21,7 +21,7 @@ export function Navbar() {
     <nav
       className={`${
         scrollY > maxYScroll ? 'p-4' : 'p-9'
-      } font-bold text-white text-xl w-full z-50 fixed transition-all duration-500 ease-out`}
+      } font-bold text-white text-xl w-full z-full  z-[999] fixed transition-all duration-500 ease-out`}
     >
       <div className="flex w-full justify-between relative z-40">
         <Link href="/">
@@ -100,7 +100,7 @@ export function NavbarMobile() {
   };
 
   return (
-    <nav className=" text-white font-bold w-full z-30 fixed">
+    <nav className=" text-white font-bold w-full z-[999] fixed">
       <div
         className="bg-black/75 h-[334px] w-full absolute z-10 flex justify-center items-end transition duration-300 ease-out -top-[334px]"
         ref={menu}
