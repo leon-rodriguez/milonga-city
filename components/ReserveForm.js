@@ -5,6 +5,7 @@ import PersonChooser from './PersonChooser';
 import HourPicker from './HourPicker';
 import UserDataForm from './UserDataForm';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [price, setPrice] = useState(0);
@@ -13,7 +14,6 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [date, setDate] = useState();
   const [time, setTime] = useState(null);
   const [showContinueAvailable, setShowContinueAvailable] = useState(false);
-  const [isReserved, setIsReserved] = useState(false);
   const [dataFormValues, setDataFormValues] = useState({
     name: '',
     mail: '',
@@ -22,6 +22,8 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     hotel: '',
     observations: '',
   });
+  const [urlHash, setUrlHash] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (data) {
@@ -109,9 +111,11 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
         },
         body: JSON.stringify(bookingData),
       }).then((response) => {
-        console.log(response.ok + ' esta es la respuesta booking');
         if (response.ok) {
-          setIsReserved(true);
+          response.json().then((resJson) => {
+            console.log('res ' + resJson.data.url_hash);
+            setUrlHash(resJson.data.url_hash);
+          });
         } else if (response.ok === false) {
           alert('fallo en la db');
         }
@@ -128,10 +132,11 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   };
 
   useEffect(() => {
-    if (isReserved) {
-      alert('ola');
+    if (urlHash) {
+      console.log(urlHash);
+      router.push(`/Booking/${urlHash}`);
     }
-  }, [isReserved]);
+  }, [urlHash]);
   return (
     <div
       className={`${

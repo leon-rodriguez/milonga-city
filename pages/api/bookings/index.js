@@ -54,7 +54,8 @@ export default async function handler(req, res) {
           hotel: params.hotel,
           observations: params.observations,
         })
-        .executeTakeFirst();
+        .returning(['url_hash'])
+        .executeTakeFirstOrThrow();
       res.status(200).json({ data: response });
     } catch (error) {
       console.log(error);

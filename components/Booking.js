@@ -37,7 +37,7 @@ const Booking = ({ data }) => {
   return (
     <div>
       {bookingState === 'payment' ? (
-        <BookingPayed />
+        <Payment />
       ) : bookingState === 'information' ? (
         <BookingPayed />
       ) : (
