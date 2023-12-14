@@ -75,11 +75,6 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(dataFormValues.name + ' name');
-    console.log(dataFormValues.mail + ' mail');
-    console.log(dataFormValues.phone + ' phone');
-    console.log(dataFormValues.nationality + ' nationality');
     if (
       date &&
       time &&

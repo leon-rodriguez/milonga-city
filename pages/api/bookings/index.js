@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         .values({
           experiences_id: params.experiences_id,
           users_id: user_id,
-          date: params.date,
+          date: newDate,
           price: params.price,
           persons: params.persons,
           confirmed: false,
