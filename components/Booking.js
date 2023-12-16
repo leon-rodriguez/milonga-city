@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Payment from './Payment';
 import BookingPayed from './BookingPayed';
 
 const Booking = ({ data }) => {
   const [bookingState, setBookingState] = useState(null);
+  const bookingDate = useRef(null);
+  const bookingHour = useRef(null);
 
   useEffect(() => {
     if (!data) {
@@ -32,14 +34,38 @@ const Booking = ({ data }) => {
       //pagado y realizado
       setBookingState('review');
     }
+
+    //parse date and hour
+    const date = new Date(data?.date);
+    const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-EN', formatOptions);
+
+    //hour
+    const hour = new Date(data?.date);
+    const formatHourOptions = {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: false,
+    };
+    const formattedHour = hour.toLocaleTimeString('es-ES', formatHourOptions);
+
+    bookingDate.current = formattedDate;
+    bookingHour.current = formattedHour;
   }, [data]);
+
+  console.log('estado ' + bookingState);
 
   return (
     <div>
       {bookingState === 'payment' ? (
-        <Payment />
+        <Payment data={data} date={bookingDate.current} />
       ) : bookingState === 'information' ? (
-        <BookingPayed data={data} />
+        <BookingPayed
+          data={data}
+          date={bookingDate.current}
+          hour={bookingHour.current}
+        />
       ) : (
         ''
       )}

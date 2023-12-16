@@ -2,29 +2,8 @@ import { RxDoubleArrowDown, RxDoubleArrowUp } from 'react-icons/rx';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-const BookingPayed = ({ data }) => {
+const BookingPayed = ({ data, date, hour }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const bookingDate = useRef(null);
-  const bookingHour = useRef(null);
-  useEffect(() => {
-    //date
-    const date = new Date(data?.date);
-    const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-EN', formatOptions);
-
-    //hour
-    const hour = new Date(data?.date);
-    const formatHourOptions = {
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      hour12: false,
-    };
-    const formattedHour = hour.toLocaleTimeString('es-ES', formatHourOptions);
-
-    bookingDate.current = formattedDate;
-    bookingHour.current = formattedHour;
-  });
 
   return (
     <div
@@ -77,15 +56,11 @@ const BookingPayed = ({ data }) => {
             </div>
             <div className="text-left pl-[75px]">
               <span className="text-2xl mr-4">Date: </span>
-              <span className="text-xl text-gray-500">
-                {bookingDate.current}
-              </span>
+              <span className="text-xl text-gray-500">{date}</span>
             </div>
             <div className="text-left pl-[75px]">
               <span className="text-2xl mr-4">Hour: </span>
-              <span className="text-xl text-gray-500">
-                {bookingHour.current}
-              </span>
+              <span className="text-xl text-gray-500">{hour}</span>
             </div>
           </div>
         </div>
