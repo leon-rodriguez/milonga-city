@@ -3,19 +3,24 @@ import Image from 'next/image';
 import logo from '../assets/logo-milonga-city.svg';
 import { FaShoppingCart } from 'react-icons/fa';
 import { MdAccountCircle, MdOutlineMenu } from 'react-icons/md';
-import { useRef, useState, useContext } from 'react';
+import { useRef, useState, useContext, useEffect } from 'react';
 import ModalBookings from './ModalBookings';
 import { scrollContext } from './Layout';
-// import { useScroll } from '../hooks/useScroll';
+import { usePathname } from 'next/navigation';
 
 export function Navbar() {
   const [bookingIsActive, setBookingIsActive] = useState(false);
   const scrollY = useContext(scrollContext);
   const maxYScroll = 190;
-
+  const pathname = usePathname();
+  const [actualUrl, setActualUrl] = useState(pathname);
   const handleBookingModal = () => {
     setBookingIsActive(!bookingIsActive);
   };
+
+  useEffect(() => {
+    setActualUrl(pathname);
+  }, [pathname]);
 
   return (
     <nav
@@ -43,12 +48,21 @@ export function Navbar() {
             </Link>
           </li>
           <li className="flex justify-start  px-4 mx-4">
-            <a
-              href="#milonga"
-              className="transition-all ease duration-300 hover:text-[#01bdba]"
-            >
-              MORE ABOUT MILONGAS
-            </a>
+            {actualUrl === '/' ? (
+              <a
+                href="#milonga"
+                className="transition-all ease duration-300 hover:text-[#01bdba]"
+              >
+                MORE ABOUT MILONGAS
+              </a>
+            ) : (
+              <Link
+                href="/#milonga"
+                className="transition-all ease duration-300 hover:text-[#01bdba]"
+              >
+                MORE ABOUT MILONGAS
+              </Link>
+            )}
           </li>
           <li>
             <Link

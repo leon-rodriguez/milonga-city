@@ -33,8 +33,10 @@ const ContactForm = () => {
   return (
     <div className=" max-w-[600px] h-[800px] mx-auto border rounded-md shadow-md pt-4">
       <div className="">
-        <h3 class="text-3xl font-semibold text-center">Send us your message</h3>
-        <h3 class="text-md text-center mt-4 text-[#8d8d8f]">
+        <h3 className="text-3xl font-semibold text-center">
+          Send us your message
+        </h3>
+        <h3 className="text-md text-center mt-4 text-[#8d8d8f]">
           We will be answering in the following days
         </h3>
       </div>

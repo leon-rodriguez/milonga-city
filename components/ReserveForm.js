@@ -128,10 +128,32 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
 
   useEffect(() => {
     if (urlHash) {
-      console.log(urlHash);
+      // console.log(urlHash);
+      fetch('http://localhost:3000/api/send/route', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          reserveType: data.title,
+          name: dataFormValues.name,
+          mail: dataFormValues.mail,
+          date: `${date.$D}-${date.$M}-${date.$y}`,
+          hour: time,
+          phone: dataFormValues.phone,
+          hotel: dataFormValues.hotel,
+          price: price,
+          persons: persons,
+          nationality: dataFormValues.nationality,
+          observations: dataFormValues.observations,
+        }),
+      }).then((response) => {
+        console.log(response);
+      });
       router.push(`/Booking/${urlHash}`);
     }
   }, [urlHash]);
+
   return (
     <div
       className={`${

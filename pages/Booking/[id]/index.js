@@ -20,10 +20,8 @@ const Experience = () => {
         return results.json();
       })
       .then((results) => {
-        console.log('id de boooking ' + id);
         const returnBooking = results.data.find((item) => {
           if (item.url_hash == id) {
-            console.log('coincidio');
             return item;
           }
         });

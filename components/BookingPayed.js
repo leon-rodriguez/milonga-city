@@ -17,7 +17,7 @@ const BookingPayed = ({ data, date, hour }) => {
       >
         <div className="flex flex-col space-y-1.5 p-6">
           <h3 className="font-semibold tracking-tight text-2xl">
-            Payment Successful
+            Contact Successful
           </h3>
         </div>
         <div className=" pt-10 flex flex-col items-center space-y-4">
@@ -35,12 +35,10 @@ const BookingPayed = ({ data, date, hour }) => {
           >
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
-          <p className="text-xl text-gray-700">
-            Your payment has been processed successfully.
-          </p>
+          <p className="text-xl text-gray-700">Your reserve has been sent.</p>
           <p className="w-[425px] text-md text-gray-600">
-            Thank you for your purchase. A receipt has been sent to your email.
-            Please check your inbox.
+            Thank you for your reserve, in a few days an email will be sent with
+            the confirmation.
           </p>
         </div>
         <div
