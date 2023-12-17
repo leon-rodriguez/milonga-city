@@ -136,11 +136,13 @@ export function NavbarMobile() {
         </ul>
       </div>
       <div className=" w-full flex justify-between">
-        <Image
-          src={logo}
-          alt="logo"
-          className="w-24 h-auto object-cover relative z-50 mt-2 ml-2"
-        />
+        <Link href="/">
+          <Image
+            src={logo}
+            alt="logo"
+            className="w-24 h-auto object-cover relative z-50 mt-2 ml-2"
+          />
+        </Link>
         <div className="w-[200px] grid grid-cols-3">
           <div className="relative flex justify-center ">
             <FaShoppingCart
