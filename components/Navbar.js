@@ -75,13 +75,13 @@ export function Navbar() {
         </ul>
         <div className="flex w-24 justify-evenly ">
           <div className="relative">
-            <FaShoppingCart
+            {/* <FaShoppingCart
               className="text-2xl cursor-pointer"
               onClick={handleBookingModal}
             />
-            <ModalBookings isActive={bookingIsActive} />
+            <ModalBookings isActive={bookingIsActive} /> */}
           </div>
-          <MdAccountCircle className="text-2xl cursor-pointer" />
+          {/* <MdAccountCircle className="text-2xl cursor-pointer" /> */}
         </div>
       </div>
       <div
@@ -97,6 +97,8 @@ export function Navbar() {
 
 export function NavbarMobile() {
   const [bookingIsActive, setBookingIsActive] = useState(false);
+  const pathname = usePathname();
+  const [actualUrl, setActualUrl] = useState(pathname);
 
   const handleBookingModal = () => {
     setBookingIsActive(!bookingIsActive);
@@ -113,6 +115,10 @@ export function NavbarMobile() {
     }
   };
 
+  useEffect(() => {
+    setActualUrl(pathname);
+  }, [pathname]);
+
   return (
     <nav className=" text-white font-bold w-full z-[999] fixed">
       <div
@@ -126,7 +132,21 @@ export function NavbarMobile() {
             </li>
           </Link>
           <li className="text-center" onClick={openMenu}>
-            <a href="#milonga">MORE ABOUT MILONGAS</a>
+            {actualUrl === '/' ? (
+              <a
+                href="#milonga"
+                className="transition-all ease duration-300 hover:text-[#01bdba]"
+              >
+                MORE ABOUT MILONGAS
+              </a>
+            ) : (
+              <Link
+                href="/#milonga"
+                className="transition-all ease duration-300 hover:text-[#01bdba]"
+              >
+                MORE ABOUT MILONGAS
+              </Link>
+            )}
           </li>
           <Link href="/contact">
             <li className="text-center" onClick={openMenu}>
@@ -145,14 +165,14 @@ export function NavbarMobile() {
         </Link>
         <div className="w-[200px] grid grid-cols-3">
           <div className="relative flex justify-center ">
-            <FaShoppingCart
+            {/* <FaShoppingCart
               className="text-3xl mt-5 cursor-pointer"
               onClick={handleBookingModal}
             />
-            <ModalBookings isActive={bookingIsActive} />
+            <ModalBookings isActive={bookingIsActive} /> */}
           </div>
           <div className="flex justify-center mt-5">
-            <MdAccountCircle className="text-3xl cursor-pointer" />
+            {/* <MdAccountCircle className="text-3xl cursor-pointer" /> */}
           </div>
 
           <MdOutlineMenu

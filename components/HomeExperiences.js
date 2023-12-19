@@ -28,7 +28,7 @@ const HomeExperiences = () => {
       </h3>
       <div className="flex justify-evenly flex-wrap">
         {!data && <LoaderSpinner size={80} />}
-        {data && data.length === 0 && 'no hay experiencias disponibles'}
+        {data && data.length === 0 && 'Experiences aren`t available'}
         {data &&
           data.length > 0 &&
           data.map((item) => <Card key={item.id} data={item} />)}

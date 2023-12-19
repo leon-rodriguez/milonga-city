@@ -6,6 +6,11 @@ import {
   FaTripadvisor,
   FaInstagramSquare,
 } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { IoMailOutline } from 'react-icons/io5';
+import { MdOutlinePlace } from 'react-icons/md';
+import { RiInstagramFill } from 'react-icons/ri';
+import { CiTwitter } from 'react-icons/ci';
 
 const Footer = () => {
   return (
@@ -53,21 +58,38 @@ const Footer = () => {
           </div>
           <div className="flex justify-start mt-1 leading-8 text-white font-bold max-sm:justify-center">
             <ul>
-              <li>
-                <span className="mr-4">@</span>
-                <span>15 3730 3056</span>
+              <li className="flex items-center">
+                <FaWhatsapp className=" text-xl mr-4" />
+                <a
+                  className=" transition-all duration-300 hover:text-[#01bdba]"
+                  href="https://wa.me/+5491137303056"
+                >
+                  15 3730 3056
+                </a>
               </li>
-              <li>
-                <span className="mr-4">@</span>
-                <span>+54 911 37303056</span>
+              <li className="flex items-center">
+                <FaWhatsapp className=" text-xl mr-4" />
+                <a
+                  className=" transition-all duration-300 hover:text-[#01bdba]"
+                  href="https://wa.me/+5491137303056"
+                >
+                  +54 911 37303056
+                </a>
               </li>
-              <li>
-                <span className="mr-4">@</span>
-                <span>info@milonga-city.com.ar</span>
+              <li className="flex items-center">
+                <IoMailOutline className=" text-xl mr-4" />
+                <a
+                  className=" transition-all duration-300 hover:text-[#01bdba]"
+                  href="mailto:info@milonga-city.com.ar"
+                >
+                  info@milonga-city.com.ar
+                </a>
               </li>
-              <li>
-                <span className="mr-4">@</span>
-                <span>Buenos Aires – Argentina</span>
+              <li className="flex items-center">
+                <MdOutlinePlace className=" text-xl mr-4" />
+                <span className=" cursor-default">
+                  Buenos Aires – Argentina
+                </span>
               </li>
             </ul>
           </div>
@@ -78,17 +100,26 @@ const Footer = () => {
           </div>
           <div className="flex justify-start pb-10 max-sm:justify-center">
             <div className="text-white w-40 text-xl font-bold flex justify-between">
-              <a href="https://www.facebook.com/people/Milonga-City/100063789690031/">
-                <FaFacebookF />
+              <a
+                href="https://www.facebook.com/people/Milonga-City/100063789690031/"
+                className="cursor-default"
+              >
+                <FaFacebookF className=" transition-all duration-300 hover:text-[#01bdba] cursor-pointer" />
               </a>
-              <a href="https://www.instagram.com/milongacity/">
-                <FaInstagramSquare />
+              <a
+                href="https://www.instagram.com/milongacity/"
+                className=" cursor-default"
+              >
+                <RiInstagramFill className="cursor-pointer transition-all duration-300 hover:text-[#01bdba]" />
               </a>
-              <a href="#">
-                <FaTwitter />
+              <a href="#" className="cursor-default">
+                <FaTwitter className="cursor-pointer transition-all duration-300 hover:text-[#01bdba]" />
               </a>
-              <a href="https://www.tripadvisor.com.ar/Attraction_Review-g312741-d5796317-Reviews-Milonga_City-Buenos_Aires_Capital_Federal_District.html">
-                <FaTripadvisor />
+              <a
+                href="https://www.tripadvisor.com.ar/Attraction_Review-g312741-d5796317-Reviews-Milonga_City-Buenos_Aires_Capital_Federal_District.html"
+                className="  cursor-default"
+              >
+                <FaTripadvisor className="cursor-pointer transition-all duration-300 hover:text-[#01bdba]" />
               </a>
             </div>
           </div>
