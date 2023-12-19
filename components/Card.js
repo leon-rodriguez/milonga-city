@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 const Card = ({ data }) => {
-  const { title, body, imgsrc, type, pricefor1, currency, cta, id } = data;
+  const { title, body, imgsrc, type, pricefor2, currency, cta, id } = data;
   return (
     <Link
       href={{
@@ -34,7 +34,7 @@ const Card = ({ data }) => {
           <div className="text-sm">From</div>
           <div className="grid grid-cols-[1fr_2fr]">
             <div className="text-xl font-bold">
-              {currency} {pricefor1}
+              {currency} {pricefor2}
             </div>
             <div className="flex justify-end text-sm">
               <span>

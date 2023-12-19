@@ -7,7 +7,7 @@ import { useParallax } from 'react-scroll-parallax';
 const HomeExperiences = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:3000/api/experiences`)
+    fetch(`/api/experiences`)
       .then((results) => {
         return results.json();
       })
@@ -15,10 +15,6 @@ const HomeExperiences = () => {
         setData(results.data);
       });
   }, []);
-
-  // const parallax = useParallax({
-  //   speed: 100,
-  // });
 
   return (
     <article className=" p-6 bg-[#f0f0f0] min-h-[750px]">

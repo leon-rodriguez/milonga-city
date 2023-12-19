@@ -1,10 +1,7 @@
-import Image from 'next/image';
-import bailarines from '../public/Images/bailarines.jpg';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Carrousel from './Carrousel';
 
 const GalleryExperience = ({ data }) => {
-  const [isCarrouselActive, setIsCarrouselActive] = useState(false);
   const [imageClicked, setImageClicked] = useState(null);
 
   const handleClick = (index) => {
@@ -33,9 +30,11 @@ const GalleryExperience = ({ data }) => {
               <div
                 className={`${
                   index === 0 ? 'col-span-2' : ''
-                } cursor-pointer overflow-hidden max-[720px]:${
-                  index <= 1 ? 'col-span-2' : 'col-span-1'
-                }`}
+                } cursor-pointer overflow-hidden ${
+                  index <= 1
+                    ? 'max-[720px]:col-span-2'
+                    : 'max-[720px]:col-span-1'
+                } `}
                 key={index}
                 onClick={() => {
                   handleClick(index);
