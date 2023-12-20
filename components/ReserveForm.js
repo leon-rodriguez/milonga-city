@@ -100,25 +100,25 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     //     observations: dataFormValues.observations,
     //   };
 
-    //   fetch('/api/bookings', {
-    //     method: 'PUT',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(bookingData),
-    //   }).then((response) => {
-    //     if (response.ok) {
-    //       response.json().then((resJson) => {
-    //         console.log('res ' + resJson.data.url_hash);
-    //         setUrlHash(resJson.data.url_hash);
-    //       });
-    //     } else if (response.ok === false) {
-    //       alert('fallo en la db');
-    //     }
-    //   });
-    // } else {
-    //   alert('fallo en los inputs');
-    // }
+    //     fetch('/api/bookings', {
+    //       method: 'PUT',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify(bookingData),
+    //     }).then((response) => {
+    //       if (response.ok) {
+    //         response.json().then((resJson) => {
+    //           console.log('res ' + resJson.data.url_hash);
+    //           setUrlHash(resJson.data.url_hash);
+    //         });
+    //       } else if (response.ok === false) {
+    //         alert('fallo en la db');
+    //       }
+    //     });
+    //   } else {
+    //     alert('fallo en los inputs');
+    //   }
   };
 
   const handleContinueClick = () => {

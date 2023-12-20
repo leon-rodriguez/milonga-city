@@ -26,7 +26,7 @@ const Carrousel = ({ images, firstIndex, handleClose }) => {
   };
 
   return (
-    <div className="w-full min-h-screen absolute top-0 left-0 bg-[#000000ff] grid grid-rows-[1fr_9fr] z-50 text-white">
+    <div className="w-full min-h-screen absolute top-0 left-0 bg-[#000000ff] grid grid-rows-[1fr_9fr] z-[600] text-white">
       <div className="grid grid-rows-2">
         <button
           className="w-[100px] h-10 border-2 bg-[#ffffff00] border-[#ffffff99] rounded-2xl flex justify-center items-center mt-4 ml-4 transition-all ease-in duration-100 hover:border-[#ffffffff] hover:bg-[#ffffff33]"

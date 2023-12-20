@@ -4,6 +4,9 @@ const ContactForm = () => {
   const [isTextValid, setIsTextValid] = useState(null);
   const [isEmailValid, setIsEmailValid] = useState(null);
   const [message, setMessage] = useState(null);
+  const [name, setName] = useState(null);
+  const [mail, setMail] = useState(null);
+  const [phone, setPhone] = useState(null);
 
   const verifyValidName = (e) => {
     //verifica que solo tenga letras de la a a la z
@@ -12,21 +15,44 @@ const ContactForm = () => {
         !/[0-9\|{}\[\]_\\]/.test(e.target.value) &&
         /[a-zA-Z]/.test(e.target.value)
     );
+    setName(e.target.value);
   };
 
   const verifyValidEmail = (e) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     setIsEmailValid(regex.test(e.target.value));
+    setMail(e.target.value);
   };
 
   const handleMessage = (e) => {
     setMessage(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handlePhone = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const handleSubmit = async () => {
     if (message && isTextValid && isEmailValid) {
-      alert(message);
+      console.log('se ejecuta la poronga esta');
+      const res = await fetch('/api/messages', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: message,
+          name: name,
+          mail: mail,
+          phone: phone,
+        }),
+      });
+      if (res.ok) {
+        alert('se nvio el mensaje');
+      } else {
+        alert('fallo');
+      }
     }
   };
 
@@ -77,7 +103,14 @@ const ContactForm = () => {
         </div>
         <div className="container-input-field">
           <div className="input-field ">
-            <input type="text" autoComplete="off" required />
+            <input
+              type="text"
+              autoComplete="off"
+              required
+              onChange={(e) => {
+                handlePhone(e);
+              }}
+            />
             <label for="phone">Phone: (optional)</label>
           </div>
         </div>

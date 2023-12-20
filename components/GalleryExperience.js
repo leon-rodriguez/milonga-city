@@ -5,6 +5,7 @@ const GalleryExperience = ({ data }) => {
   const [imageClicked, setImageClicked] = useState(null);
 
   const handleClick = (index) => {
+    console.log('index ' + index);
     setImageClicked(index);
   };
 
@@ -25,7 +26,6 @@ const GalleryExperience = ({ data }) => {
             if (index > 2) {
               return;
             }
-            //TODO arreglar como se ven las imagenes en mobile
             return (
               <div
                 className={`${
@@ -48,11 +48,16 @@ const GalleryExperience = ({ data }) => {
               </div>
             );
           })}
-        <div className="absolute w-28 h-12 cursor-pointer bg-slate-50 text-black grid place-items-center rounded-xl left-2 top-4">
+        <div
+          className="absolute w-28 h-12 cursor-pointer bg-slate-50 text-black grid place-items-center rounded-xl left-2 top-4"
+          onClick={() => {
+            handleClick(0);
+          }}
+        >
           Ver galeria
         </div>
       </div>
-      {imageClicked != null ? (
+      {data && imageClicked != null ? (
         <Carrousel
           images={data.images}
           firstIndex={imageClicked}

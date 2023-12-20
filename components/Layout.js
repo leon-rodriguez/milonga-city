@@ -15,7 +15,7 @@ export const scrollContext = createContext();
 
 export default function Layout({ children }) {
   const { scrollY } = useScroll();
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 720px)' });
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 780px)' });
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   useEffect(() => {
     setShowMobileMenu(isTabletOrMobile);
