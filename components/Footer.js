@@ -1,16 +1,10 @@
 import logo from '../assets/logo-milonga-city.svg';
 import Image from 'next/image';
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaTripadvisor,
-  FaInstagramSquare,
-} from 'react-icons/fa';
-import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaTripadvisor } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 import { IoMailOutline } from 'react-icons/io5';
 import { MdOutlinePlace } from 'react-icons/md';
 import { RiInstagramFill } from 'react-icons/ri';
-import { CiTwitter } from 'react-icons/ci';
 
 const Footer = () => {
   return (

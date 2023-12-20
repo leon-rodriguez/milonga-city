@@ -4,7 +4,7 @@ import Card from './Card.js';
 const ContainerExperiences = (props) => {
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:3000/api/experiences`)
+    fetch(`/api/experiences`)
       .then((results) => {
         return results.json();
       })

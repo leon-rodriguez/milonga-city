@@ -1,8 +1,41 @@
 import Link from 'next/link';
+import { useEffect, useState, useRef } from 'react';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 const Card = ({ data }) => {
-  const { title, body, imgsrc, type, pricefor2, currency, cta, id } = data;
+  const { title, body, imgsrc, type, pricefor2, currency, cta, id, images } =
+    data;
+  const [mouseHoverCard, setMouseHoverCard] = useState(false);
+  const [img, setImg] = useState(imgsrc);
+  const interval = useRef(null);
+
+  const handleMouseEnter = () => {
+    setMouseHoverCard(true);
+  };
+
+  const handleMouseLeave = () => {
+    setMouseHoverCard(false);
+  };
+
+  useEffect(() => {
+    if (images) {
+      let index = 0;
+      if (mouseHoverCard) {
+        interval.current = setInterval((e) => {
+          setImg(images[index]);
+          index++;
+          if (index >= images.length - 1) {
+            index = 0;
+          }
+        }, 1400);
+      }
+      if (!mouseHoverCard) {
+        setImg(imgsrc);
+        return clearInterval(interval.current);
+      }
+    }
+  }, [mouseHoverCard]);
+
   return (
     <Link
       href={{
@@ -10,10 +43,14 @@ const Card = ({ data }) => {
         query: { id },
       }}
     >
-      <div className="w-[400px] h-[600px] p-2 mb-8 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300 max-[420px]:w-[300px]">
+      <div
+        className="w-[400px] h-[600px] p-2 mb-8 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300 max-[420px]:w-[300px]"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="overflow-hidden">
           <img
-            src={imgsrc}
+            src={img}
             alt="Dos personas bailando tango"
             className="cursor-pointer w-full h-full mb-4 ease-out duration-300 hover:scale-125"
           />

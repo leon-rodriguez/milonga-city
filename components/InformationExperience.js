@@ -23,7 +23,7 @@ const InformationExperience = ({ id, data }) => {
   }, [data]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/reviewsByExperience?experiences_id=${id}`)
+    fetch(`/api/reviewsByExperience?experiences_id=${id}`)
       .then((results) => {
         return results.json();
       })

@@ -15,7 +15,7 @@ const Experience = () => {
     if (!id) {
       return;
     }
-    fetch(`http://localhost:3000/api/bookings`)
+    fetch(`/api/bookings`)
       .then((results) => {
         return results.json();
       })

@@ -67,7 +67,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
 
   return (
     <div>
-      <div className="w-full h-[400px] mt-4 grid grid-rows-5">
+      <div className="w-full h-[380px] mt-4 grid grid-rows-4">
         <div className="container-input-field">
           <div
             className={`${
@@ -126,17 +126,13 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
           handleDataFormChange={handleDataFormChange}
           dataFormValues={dataFormValues}
         />
-        <div className="container-input-field">
-          <div
-            className={`${
-              isHotelValid ? 'input-field' : 'input-field-incorrect'
-            }`}
-          >
+        {/* <div className="container-input-field">
+          <div className={`input-field ${isHotelValid ? '' : ''}`}>
             <div>
               <input
                 type="text"
+                required={false}
                 id="name"
-                required
                 autoComplete="off"
                 onChange={(e) => {
                   verifyValidHotel(e);
@@ -145,9 +141,20 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
               <label for="name">Hotel / Accommodation:</label>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
-      <div className="w-full flex justify-center items-end mt-9 mb-8">
+      <div className="w-full flex justify-center items-end mt-4 mb-7">
+        <textarea
+          placeholder="Hotel / Accommodation"
+          rows="4"
+          cols="50"
+          className="w-[260px] h-12 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
+          onChange={(e) => {
+            verifyObservations(e);
+          }}
+        ></textarea>
+      </div>
+      <div className="w-full flex justify-center items-end mt-0 mb-8">
         <textarea
           placeholder="Observations"
           rows="4"

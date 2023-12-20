@@ -32,7 +32,6 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, title }) => {
           ref={ref}
         /> */}
         <video
-          autoplay
           controls
           className={`${
             animationShowed ? 'about_left_appear' : ''

@@ -11,7 +11,7 @@ const Experience = () => {
   const id = router.query.id;
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:3000/api/experiences`)
+    fetch(`/api/experiences`)
       .then((results) => {
         return results.json();
       })

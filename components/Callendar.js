@@ -9,7 +9,7 @@ const Callendar = ({ date, onDateChange, id }) => {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:3000/api/experiences/${id}`)
+    fetch(`/api/experiences/${id}`)
       .then((results) => {
         return results.json();
       })

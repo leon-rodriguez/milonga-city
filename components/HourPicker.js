@@ -4,7 +4,7 @@ import { getExperiences } from '../lib/experiences';
 
 const getBookings = (date, experience) => {
   return fetch(
-    `http://localhost:3000/api/bookingsByDate?date=${date}&experience=${experience}`
+    `/api/bookingsByDate?date=${date}&experience=${experience}`
   ).then((results) => {
     return results.json();
   });

@@ -7,7 +7,11 @@ import { useState, useRef } from 'react';
 const CommentForm = ({ onReviewsChange }) => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
+  const [msgWarning, setMsgWarning] = useState(false);
   let lastValue = useRef(0);
+
+  const WARNING =
+    'You need to have completed an experience to be able to comment';
 
   const handleComment = (e) => {
     const currentText = e.target.value;
@@ -37,32 +41,29 @@ const CommentForm = ({ onReviewsChange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    cleanForm();
-
-    const fechaActual = new Date();
-
-    const año = fechaActual.getFullYear();
-    const mes = fechaActual.getMonth() + 1; // Nota: los meses comienzan desde 0
-    const dia = fechaActual.getDate();
-
-    const commentData = {
-      username: 'el admin',
-      body: comment,
-      publisheddate: `${año}-${mes}-${dia}`,
-      rating: rating,
-      bookings_id: 37,
-    };
-
-    // TODO throw error on fail su
-    fetch('http://localhost:3000/api/reviews', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(commentData),
-    }).then((response) => {
-      onReviewsChange(true);
-    });
+    setMsgWarning(true);
+    // cleanForm();
+    // const fechaActual = new Date();
+    // const año = fechaActual.getFullYear();
+    // const mes = fechaActual.getMonth() + 1; // Nota: los meses comienzan desde 0
+    // const dia = fechaActual.getDate();
+    // const commentData = {
+    //   username: 'el admin',
+    //   body: comment,
+    //   publisheddate: `${año}-${mes}-${dia}`,
+    //   rating: rating,
+    //   bookings_id: 37,
+    // };
+    // // TODO throw error on fail su
+    // fetch('/api/reviews', {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(commentData),
+    // }).then((response) => {
+    //   onReviewsChange(true);
+    // });
   };
 
   return (
@@ -114,14 +115,12 @@ const CommentForm = ({ onReviewsChange }) => {
             >
               Cancel
             </button>
-            <button
-              className="w-28 h-10 border rounded-3xl bg-[#0088cc] text-white font-bold transition-all duration-100 ease-in hover:bg-[#0088ccbb]"
-              type="submit"
-            >
+            <button className="w-28 h-10 border rounded-3xl bg-[#0088cc] text-white font-bold transition-all duration-100 ease-in hover:bg-[#0088ccbb]">
               Comment
             </button>
           </div>
         </div>
+        <div className=" text-orange-600">{msgWarning ? WARNING : ''}</div>
       </form>
     </div>
   );

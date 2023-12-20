@@ -43,12 +43,9 @@ const Payment = ({ data, date }) => {
                 color: 'gold',
               }}
               createOrder={async () => {
-                const res = await fetch(
-                  'http://localhost:3000/api/checkout/route',
-                  {
-                    method: 'POST',
-                  }
-                );
+                const res = await fetch('/api/checkout/route', {
+                  method: 'POST',
+                });
                 // const res = await fetch(
                 //   'http://localhost:3000/api/checkout/route',
                 //   {

@@ -6,6 +6,7 @@ import HourPicker from './HourPicker';
 import UserDataForm from './UserDataForm';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [price, setPrice] = useState(0);
@@ -75,49 +76,49 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      date &&
-      time &&
-      price &&
-      persons &&
-      dataFormValues.name &&
-      dataFormValues.mail &&
-      dataFormValues.phone &&
-      dataFormValues.nationality
-    ) {
-      const bookingData = {
-        experiences_id: id,
-        date: `${date.$y}-${date.$M + 1}-${date.$D}`,
-        time: `${time}:00`,
-        price: price,
-        persons: persons,
-        name: dataFormValues.name,
-        mail: dataFormValues.mail,
-        country: dataFormValues.country,
-        phone: dataFormValues.phone,
-        hotel: dataFormValues.hotel,
-        observations: dataFormValues.observations,
-      };
+    // if (
+    //   date &&
+    //   time &&
+    //   price &&
+    //   persons &&
+    //   dataFormValues.name &&
+    //   dataFormValues.mail &&
+    //   dataFormValues.phone &&
+    //   dataFormValues.nationality
+    // ) {
+    //   const bookingData = {
+    //     experiences_id: id,
+    //     date: `${date.$y}-${date.$M + 1}-${date.$D}`,
+    //     time: `${time}:00`,
+    //     price: price,
+    //     persons: persons,
+    //     name: dataFormValues.name,
+    //     mail: dataFormValues.mail,
+    //     country: dataFormValues.country,
+    //     phone: dataFormValues.phone,
+    //     hotel: dataFormValues.hotel,
+    //     observations: dataFormValues.observations,
+    //   };
 
-      fetch('http://localhost:3000/api/bookings', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bookingData),
-      }).then((response) => {
-        if (response.ok) {
-          response.json().then((resJson) => {
-            console.log('res ' + resJson.data.url_hash);
-            setUrlHash(resJson.data.url_hash);
-          });
-        } else if (response.ok === false) {
-          alert('fallo en la db');
-        }
-      });
-    } else {
-      alert('fallo en los inputs');
-    }
+    //   fetch('/api/bookings', {
+    //     method: 'PUT',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(bookingData),
+    //   }).then((response) => {
+    //     if (response.ok) {
+    //       response.json().then((resJson) => {
+    //         console.log('res ' + resJson.data.url_hash);
+    //         setUrlHash(resJson.data.url_hash);
+    //       });
+    //     } else if (response.ok === false) {
+    //       alert('fallo en la db');
+    //     }
+    //   });
+    // } else {
+    //   alert('fallo en los inputs');
+    // }
   };
 
   const handleContinueClick = () => {
@@ -129,7 +130,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   useEffect(() => {
     if (urlHash) {
       // console.log(urlHash);
-      fetch('http://localhost:3000/api/send/route', {
+      fetch('/api/send/route', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -157,7 +158,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   return (
     <div
       className={`${
-        showReservForm ? 'h-[1100px]' : 'h-[550px]'
+        showReservForm ? 'h-[1170px]' : 'h-[550px]'
       } shadow-2xl rounded-3xl relative max-[720px]:order-1 border-2 max-[720px]:top-0 transition-all duration-300 min-[721px]:sticky top-[80px]`}
     >
       <form onSubmit={handleSubmit}>
@@ -211,9 +212,11 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           </button>
         </div>
         <div className="w-full flex justify-center items-end mt-4">
-          <button className="w-[200px] h-12 bg-transparent border-2 border-[#0088cc] rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33] max-[920px]:h-10">
-            Message Milonga city
-          </button>
+          <Link href={'/contact'}>
+            <button className="w-[200px] h-12 bg-transparent border-2 border-[#0088cc] rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33] max-[920px]:h-10">
+              Message Milonga city
+            </button>
+          </Link>
         </div>
       </form>
     </div>
