@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
-import { FaFacebookF, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useIntersectionObserver } from '@uidotdev/usehooks';
 
 const Card = ({ data }) => {
@@ -95,7 +95,7 @@ const Card = ({ data }) => {
                 <FaFacebookF />
               </span>
               <span className="mx-2">
-                <FaTwitter />
+                <FaInstagram />
               </span>
             </div>
           </div>

@@ -12,7 +12,7 @@ const BookingPayed = ({ data, date, hour }) => {
       }`}
     >
       <div
-        className="w-[580px] rounded-lg bg-card text-card-foreground max-w-xl mx-auto text-center"
+        className="w-[580px] max-[550px]:w-full rounded-lg bg-card text-card-foreground mx-auto text-center"
         data-v0-t="card"
       >
         <div className="flex flex-col space-y-1.5 p-6">
@@ -36,7 +36,7 @@ const BookingPayed = ({ data, date, hour }) => {
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
           <p className="text-xl text-gray-700">Your reserve has been sent.</p>
-          <p className="w-[425px] text-md text-gray-600">
+          <p className="max-w-[425px] text-md text-gray-600">
             Thank you for your reserve, in a few days an email will be sent with
             the confirmation.
           </p>
