@@ -127,7 +127,7 @@
 .words span {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%;
   height: 100%;
   padding-right: 40px;
