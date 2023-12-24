@@ -58,7 +58,7 @@ const Card = ({ data }) => {
       }}
     >
       <div
-        className={`w-[400px] h-[600px] p-2 mb-8 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300 max-[420px]:w-[300px] ${
+        className={`w-[400px] h-[600px] p-2 mb-8 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300 max-[420px]:w-full ${
           animationShowed ? 'opacity-100' : 'opacity-0'
         }`}
         onMouseEnter={handleMouseEnter}

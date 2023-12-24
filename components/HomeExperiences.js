@@ -17,7 +17,7 @@ const HomeExperiences = () => {
   }, []);
 
   return (
-    <article className=" p-6 bg-[#f0f0f0] min-h-[750px]">
+    <article className=" p-6 max-[420px]:px-0 bg-[#f0f0f0] min-h-[750px]">
       <h1 className="text-center font-bold text-4xl mb-2">TRENDING TOURS</h1>
       <h3 className="text-center text-lg mb-8">
         JOIN MILONGA CITY TO ENJOY BUENOS AIRES EXPERIENCES
