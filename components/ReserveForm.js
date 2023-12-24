@@ -24,6 +24,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     observations: '',
   });
   const [urlHash, setUrlHash] = useState(null);
+  const [warning, setWarning] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -113,11 +114,11 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             setUrlHash(resJson.data.url_hash);
           });
         } else if (response.ok === false) {
-          alert('fallo en la db');
+          console.log('fallo en la db');
         }
       });
     } else {
-      alert('fallo en los inputs');
+      setWarning('The information you entered is incorrect');
     }
   };
 
@@ -199,6 +200,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             ''
           )}
         </div>
+        <div className="text-sm text-red-600 text-center mt-4">{warning}</div>
         <div className="w-full flex justify-center items-end mt-2 max-[800px]:mt-0">
           <button
             className={`w-[200px] h-12 rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 ${

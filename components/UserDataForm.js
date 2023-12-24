@@ -154,7 +154,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
           }}
         ></textarea>
       </div>
-      <div className="w-full flex justify-center items-end mt-0 mb-8">
+      <div className="w-full flex justify-center items-end mt-0">
         <textarea
           placeholder="Observations"
           rows="4"
