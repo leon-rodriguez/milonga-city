@@ -17,7 +17,7 @@ export default function Contact() {
       <section>
         <HeroExperience id={1} />
       </section>
-      <section className="min-h-[800px]">
+      <section className="min-h-[200px]">
         <ContactForm />
       </section>
       <section>

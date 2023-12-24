@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 
 const ContactForm = () => {
   const [isTextValid, setIsTextValid] = useState(null);
@@ -7,6 +8,8 @@ const ContactForm = () => {
   const [name, setName] = useState(null);
   const [mail, setMail] = useState(null);
   const [phone, setPhone] = useState(null);
+  const [isMailSent, setIsMailSent] = useState(false);
+  const [warning, setWarning] = useState('');
 
   const verifyValidName = (e) => {
     //verifica que solo tenga letras de la a a la z
@@ -35,7 +38,6 @@ const ContactForm = () => {
 
   const handleSubmit = async () => {
     if (message && isTextValid && isEmailValid) {
-      console.log('se ejecuta la poronga esta');
       const res = await fetch('/api/messages', {
         method: 'PUT',
         headers: {
@@ -49,89 +51,134 @@ const ContactForm = () => {
         }),
       });
       if (res.ok) {
-        alert('se nvio el mensaje');
-      } else {
-        alert('fallo');
+        setIsMailSent(true);
+      } else if (!res.ok) {
+        console.log('fail in the database');
       }
+    } else {
+      setWarning('The information you entered is incorrect');
     }
   };
 
   return (
-    <div className=" max-w-[600px] h-[800px] mx-auto border rounded-md shadow-md pt-4">
-      <div className="">
-        <h3 className="text-3xl font-semibold text-center">
-          Send us your message
-        </h3>
-        <h3 className="text-md text-center mt-4 text-[#8d8d8f]">
-          We will be answering in the following days
-        </h3>
-      </div>
-      <div className=" pt-12">
-        <div className="container-input-field">
+    <div>
+      {!isMailSent ? (
+        <div className=" max-w-[600px] h-[800px] mx-auto border rounded-md shadow-md pt-4">
+          <div className="">
+            <h3 className="text-3xl font-semibold text-center">
+              Send us your message
+            </h3>
+            <h3 className="text-md text-center mt-4 text-[#8d8d8f]">
+              We will be answering in the following days
+            </h3>
+          </div>
+          <div className=" pt-12">
+            <div className="container-input-field">
+              <div
+                className={`${
+                  isTextValid ? 'input-field' : 'input-field-incorrect'
+                }`}
+              >
+                <input
+                  type="text"
+                  autoComplete="off"
+                  required
+                  onChange={(e) => {
+                    verifyValidName(e);
+                  }}
+                />
+                <label for="name">Name:</label>
+              </div>
+            </div>
+            <div className="container-input-field my-20">
+              <div
+                className={`${
+                  isEmailValid ? 'input-field' : 'input-field-incorrect'
+                }`}
+              >
+                <input
+                  type="text"
+                  autoComplete="off"
+                  required
+                  onChange={(e) => {
+                    verifyValidEmail(e);
+                  }}
+                />
+                <label for="email">Email:</label>
+              </div>
+            </div>
+            <div className="container-input-field">
+              <div className="input-field ">
+                <input
+                  type="text"
+                  autoComplete="off"
+                  required
+                  onChange={(e) => {
+                    handlePhone(e);
+                  }}
+                />
+                <label for="phone">Phone: (optional)</label>
+              </div>
+            </div>
+            <div className="w-full flex justify-center items-end mt-20">
+              <textarea
+                placeholder="Message"
+                rows="4"
+                cols="50"
+                className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
+                onChange={handleMessage}
+              ></textarea>
+            </div>
+            <div className="text-sm text-red-600 text-center mt-4 mb-14">
+              {warning}
+            </div>
+            <div className="w-full flex justify-center items-end">
+              <button
+                className="w-[130px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-md cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 hover:bg-[#0088ccbb]"
+                onClick={handleSubmit}
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
           <div
-            className={`${
-              isTextValid ? 'input-field' : 'input-field-incorrect'
-            }`}
+            class="rounded-lg border bg-card text-card-foreground shadow-sm mx-auto"
+            data-v0-t="card"
           >
-            <input
-              type="text"
-              autoComplete="off"
-              required
-              onChange={(e) => {
-                verifyValidName(e);
-              }}
-            />
-            <label for="name">Name:</label>
+            <div class="p-6 px-8 py-12 text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-16 h-16 mx-auto mb-4"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <h2 class="text-3xl font-semibold text-gray-900 mb-2">
+                The email has been sent.
+              </h2>
+              <p class="text-gray-600 text-md">
+                We will be answering in the next days.
+              </p>
+              <Link href="/">
+                <button className="w-[200px] mx-auto mt-8 h-12 rounded-3xl flex justify-center items-center border-2 border-black text-black text-xl font-bold cursor-pointer transition-all duration-100 ease-in bg-transparent hover:bg-[#000] hover:text-[#fff] ">
+                  Return to Home
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="container-input-field my-20">
-          <div
-            className={`${
-              isEmailValid ? 'input-field' : 'input-field-incorrect'
-            }`}
-          >
-            <input
-              type="text"
-              autoComplete="off"
-              required
-              onChange={(e) => {
-                verifyValidEmail(e);
-              }}
-            />
-            <label for="email">Email:</label>
-          </div>
-        </div>
-        <div className="container-input-field">
-          <div className="input-field ">
-            <input
-              type="text"
-              autoComplete="off"
-              required
-              onChange={(e) => {
-                handlePhone(e);
-              }}
-            />
-            <label for="phone">Phone: (optional)</label>
-          </div>
-        </div>
-        <div className="w-full flex justify-center items-end mt-20">
-          <textarea
-            placeholder="Message"
-            rows="4"
-            cols="50"
-            className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
-            onChange={handleMessage}
-          ></textarea>
-        </div>
-        <div className="w-full flex justify-center items-end mt-20">
-          <button
-            className="w-[130px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-md cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 hover:bg-[#0088ccbb]"
-            onClick={handleSubmit}
-          >
-            Send
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

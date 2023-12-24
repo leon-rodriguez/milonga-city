@@ -1,13 +1,23 @@
-import { set } from 'date-fns';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 
 const Carrousel = ({ images, firstIndex, handleClose }) => {
+  const flag = useRef(false);
   document.documentElement.style.overflow = 'hidden';
   document.documentElement.scrollTop = 0; // Para navegadores modernos
   document.body.scrollTop = 0; // Para navegadores antiguos
 
   const [index, setIndex] = useState(firstIndex);
+
+  useEffect(() => {
+    return () => {
+      if (flag.current) {
+        document.documentElement.style.overflow = 'visible';
+        console.log('ser ejcuto useRef');
+      }
+      flag.current = true;
+    };
+  }, []);
 
   const handleRightClick = () => {
     if (index + 1 === images.length) {

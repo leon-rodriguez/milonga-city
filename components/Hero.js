@@ -15,7 +15,7 @@ export default function Hero() {
         <p className="underline decoration-3 text-amber-300">BE PART OF</p>
         <p>tango</p>
       </div> */}
-      <div className="h-screen w-screen flex items-center justify-end pt-[250px] pr-[500px] max-[900px]:pr-[350px] max-[700px]:pr-20 max-[450px]:pr-5">
+      <div className="h-screen w-screen flex items-center justify-end pt-[250px] pr-[500px] max-[900px]:pr-[350px] max-[751px]:pr-20 max-[450px]:pr-5">
         <div className="wrapper">
           <div className="words">
             <span>LEARN</span>
