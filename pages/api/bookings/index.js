@@ -4,6 +4,18 @@ import { createKysely } from '@vercel/postgres-kysely';
 export default async function handler(req, res) {
   // new booking
 
+  // Permitir solicitudes desde cualquier origen
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  // Permitir los métodos HTTP que quieres permitir
+  res.setHeader('Access-Control-Allow-Methods', 'GET, PUT');
+
+  // Permitir los encabezados que quieres permitir
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Indicar que la solicitud puede incluir encabezados que no se envían al servidor
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   if (req.method === 'PUT') {
     const params = req.body;
     const newDate = `${params.date} ${params.time}`;
