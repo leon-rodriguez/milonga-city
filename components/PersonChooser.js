@@ -1,10 +1,13 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 
 const PersonChooser = (props) => {
-  const [adults, setAdults] = useState(1);
-
+  const [adults, setAdults] = useState(null);
+  useEffect(() => {
+    setAdults(props.min);
+  }, [props.min]);
+  console.log(props.min);
   const addAdult = () => {
     if (adults < props.max) {
       setAdults(adults + 1);

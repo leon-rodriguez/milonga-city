@@ -54,7 +54,8 @@ const getAvailableHours = (minhour, maxhour, step, takenHours) => {
   return hoursToPrint.map((hour) => {
     return {
       hour,
-      isAvailable: !takenHoursParsed.includes(hour),
+      // isAvailable: !takenHoursParsed.includes(hour),
+      isAvailable: true,
     };
   });
 };

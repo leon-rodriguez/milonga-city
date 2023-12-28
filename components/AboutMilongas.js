@@ -37,7 +37,7 @@ const AboutMilongas = () => {
   ];
 
   return (
-    <div className="min-h-[2000px] w-full grid grid-rows-[1fr_18fr]">
+    <div className="min-h-[2000px] w-full grid grid-rows-[1fr_18fr] overflow-x-hidden">
       <div className="w-full p-6">
         <div id="milonga" className="w-full text-center text-5xl">
           MORE ABOUT TANGO & MILONGAS
