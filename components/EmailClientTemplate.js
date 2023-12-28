@@ -21,7 +21,7 @@ export const EmailClientTemplate = ({
         </ul>
         <p>
           If you have any questions or specific requests leading up to your
-          reservation, please don't hesitate to reach out to us.
+          reservation, please don t hesitate to reach out to us.
         </p>
         <p>Thank you once again for choosing us.</p>
       </div>
