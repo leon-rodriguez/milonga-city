@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [price, setPrice] = useState(0);
-  const [persons, setPersons] = useState(1);
+  const [persons, setPersons] = useState(null);
   const [showReservForm, setShowReservForm] = useState(false);
   const [date, setDate] = useState();
   const [time, setTime] = useState(null);
@@ -110,11 +110,10 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
       }).then((response) => {
         if (response.ok) {
           response.json().then((resJson) => {
-            console.log('res ' + resJson.data.url_hash);
             setUrlHash(resJson.data.url_hash);
           });
         } else if (response.ok === false) {
-          console.log('fallo en la db');
+          console.log('fail on the db');
         }
       });
     } else {
@@ -150,7 +149,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           observations: dataFormValues.observations,
         }),
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       });
       router.push(`/Booking/${urlHash}`);
     }

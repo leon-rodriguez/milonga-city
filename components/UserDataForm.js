@@ -27,7 +27,6 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
 
     setIsEmailValid(regex.test(e.target.value));
     if (regex.test(e.target.value)) {
-      console.log('mail legal');
       handleDataFormChange({
         ...dataFormValues,
         mail: e.target.value,

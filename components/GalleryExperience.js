@@ -5,7 +5,6 @@ const GalleryExperience = ({ data }) => {
   const [imageClicked, setImageClicked] = useState(null);
 
   const handleClick = (index) => {
-    console.log('index ' + index);
     setImageClicked(index);
   };
 

@@ -6,8 +6,9 @@ const PersonChooser = (props) => {
   const [adults, setAdults] = useState(null);
   useEffect(() => {
     setAdults(props.min);
+    props.onPersonChange(props.min);
   }, [props.min]);
-  console.log(props.min);
+
   const addAdult = () => {
     if (adults < props.max) {
       setAdults(adults + 1);

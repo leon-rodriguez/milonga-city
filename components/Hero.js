@@ -21,7 +21,7 @@ export default function Hero() {
             <span>LEARN</span>
             <span>DISCOVER</span>
             <span>ENJOY</span>
-            <span>MESSI</span>
+            <span>LIVE</span>
             <span>BE PART OF</span>
           </div>
           <p>TANGO</p>

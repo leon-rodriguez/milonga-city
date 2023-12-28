@@ -16,7 +16,6 @@ const CommentForm = ({ onReviewsChange }) => {
   const handleComment = (e) => {
     const currentText = e.target.value;
     setComment(currentText);
-    console.log(comment);
   };
 
   const cleanForm = () => {

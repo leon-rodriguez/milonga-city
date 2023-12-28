@@ -61,7 +61,7 @@ const Payment = ({ data, date }) => {
                 // );
 
                 if (!res.ok) {
-                  console.log('errorcinho');
+                  console.log('error');
                   throw new Error('Error creating order');
                 }
 

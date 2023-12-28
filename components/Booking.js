@@ -53,8 +53,6 @@ const Booking = ({ data }) => {
     bookingHour.current = formattedHour;
   }, [data]);
 
-  console.log('estado ' + bookingState);
-
   return (
     <div>
       {bookingState === 'payment' ? (

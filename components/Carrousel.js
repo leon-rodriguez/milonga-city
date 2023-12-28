@@ -13,7 +13,6 @@ const Carrousel = ({ images, firstIndex, handleClose }) => {
     return () => {
       if (flag.current) {
         document.documentElement.style.overflow = 'visible';
-        console.log('ser ejcuto useRef');
       }
       flag.current = true;
     };

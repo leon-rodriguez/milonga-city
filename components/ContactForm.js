@@ -53,7 +53,7 @@ const ContactForm = () => {
       if (res.ok) {
         setIsMailSent(true);
       } else if (!res.ok) {
-        console.log('fail in the database');
+        console.log('fail on the database');
       }
     } else {
       setWarning('The information you entered is incorrect');
