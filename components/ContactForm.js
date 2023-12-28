@@ -38,6 +38,29 @@ const ContactForm = () => {
 
   const handleSubmit = async () => {
     if (message && isTextValid && isEmailValid) {
+      fetch('/api/send/route', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          reserveType: '',
+          name: name,
+          mail: mail,
+          date: ``,
+          hour: '',
+          phone: phone,
+          hotel: '',
+          price: '',
+          persons: '',
+          nationality: '',
+          observations: '',
+          emailType: 'contact',
+          message: message,
+        }),
+      }).then((response) => {
+        // console.log(response);
+      });
       const res = await fetch('/api/messages', {
         method: 'PUT',
         headers: {

@@ -147,6 +147,8 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           persons: persons,
           nationality: dataFormValues.nationality,
           observations: dataFormValues.observations,
+          emailType: 'reserve',
+          message: '',
         }),
       }).then((response) => {
         // console.log(response);
