@@ -51,7 +51,7 @@ const Footer = () => {
             Follow Us
           </div>
           <div className="flex justify-center pb-10 max-sm:justify-center">
-            <div className="text-white w-40 text-xl font-bold flex justify-between">
+            <div className="text-white w-40 text-xl font-bold flex justify-center space-x-7">
               <a
                 href="https://www.facebook.com/people/Milonga-City/100063789690031/"
                 className="cursor-default"
@@ -63,9 +63,6 @@ const Footer = () => {
                 className=" cursor-default"
               >
                 <RiInstagramFill className="cursor-pointer transition-all duration-300 hover:text-[#01bdba]" />
-              </a>
-              <a href="#" className="cursor-default">
-                <FaTwitter className="cursor-pointer transition-all duration-300 hover:text-[#01bdba]" />
               </a>
               <a
                 href="https://www.tripadvisor.com.ar/Attraction_Review-g312741-d5796317-Reviews-Milonga_City-Buenos_Aires_Capital_Federal_District.html"
@@ -81,16 +78,7 @@ const Footer = () => {
             Contact
           </div>
           <div className="flex justify-center mt-1 leading-8 text-white font-bold max-sm:justify-center">
-            <ul>
-              <li className="flex items-center">
-                <FaWhatsapp className=" text-xl mr-4" />
-                <a
-                  className=" transition-all duration-300 hover:text-[#01bdba]"
-                  href="https://wa.me/+5491137303056"
-                >
-                  15 3730 3056
-                </a>
-              </li>
+            <ul className="space-y-4">
               <li className="flex items-center">
                 <FaWhatsapp className=" text-xl mr-4" />
                 <a
@@ -104,9 +92,9 @@ const Footer = () => {
                 <IoMailOutline className=" text-xl mr-4" />
                 <a
                   className=" transition-all duration-300 hover:text-[#01bdba]"
-                  href="mailto:info@milonga-city.com.ar"
+                  href="mailto:info@milonga.city"
                 >
-                  info@milonga-city.com.ar
+                  info@milonga.city
                 </a>
               </li>
               <li className="flex items-center">

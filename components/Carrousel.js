@@ -33,7 +33,7 @@ const Carrousel = ({ images, firstIndex, handleClose }) => {
       setIndex(index - 1);
     }
   };
-
+  console.log(images.length);
   return (
     <div className="w-full min-h-screen absolute top-0 left-0 bg-[#000000ff] grid grid-rows-[1fr_9fr] z-[600] text-white">
       <div className="grid grid-rows-2">
