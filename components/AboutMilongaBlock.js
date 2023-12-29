@@ -17,7 +17,7 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, title }) => {
 
   return (
     <div
-      className="grid grid-cols-2 w-full max-[800px]:grid-cols-1 "
+      className="grid grid-cols-2 w-full  max-[800px]:grid-cols-1 "
       key={index}
     >
       <div
@@ -45,11 +45,11 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, title }) => {
         className={`flex justify-start items-center max-[800px]:justify-center max-[800px]:items-start`}
       > */}
       <div
-        className={`grid grid-rows-[2fr_3fr] max-[800px]:grid-rows-[1fr_9fr]`}
+        className={`min-[800px]:my-auto max-[800px]:grid max-[800px]:grid-rows-[1fr_9fr]`}
       >
         <div className="ml-10 flex justify-start items-end max-[800px]:justify-center max-[800px]:ml-0">
           <div
-            className={`font-semibold tracking-tight text-2xl ${
+            className={`font-semibold tracking-tight text-2xl max-[400px]:text-center ${
               animationShowed ? 'about_right_appear' : ''
             }`}
           >
@@ -88,7 +88,7 @@ const AboutMilongaBlockImgRight = ({ text, src, title }) => {
     <div className="grid grid-cols-2 w-full bg-[#f0f0f0] max-[800px]:grid-cols-1">
       {/* <div className="flex justify-end items-center max-[800px]:justify-center max-[800px]:items-start max-[800px]:order-1"> */}
       <div
-        className={`grid grid-rows-[2fr_3fr] max-[750px]:grid-rows-[1fr_9fr]`}
+        className={`min-[800px]:my-auto max-[800px]:grid max-[800px]:grid-rows-[1fr_9fr]`}
       >
         {/* <div className="ml-10 flex justify-start items-end"> */}
         <div className="mr-10 flex justify-end items-end max-[800px]:justify-center max-[800px]:mr-0">
