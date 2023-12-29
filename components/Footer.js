@@ -16,9 +16,9 @@ const Footer = () => {
           </div>
           <div className="flex justify-center max-sm:justify-center">
             <div className="w-56 text-white font-bold leading-7">
-              We have more than 15 years of trajectory in tango shows and
-              services, combining in our work, commitment, confidence and
-              passion for what we do.
+              We are dedicated to curating exceptional travel experiences that
+              blend the excitement of discovering new landscapes with the allure
+              of the tango rhythm.
             </div>
           </div>
         </div>
