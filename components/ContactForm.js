@@ -92,7 +92,7 @@ const ContactForm = () => {
               Send us your message
             </h3>
             <h3 className="text-md text-center mt-4 text-[#8d8d8f]">
-              We will be answering in the following days
+              We will get back to you as soon as possible
             </h3>
           </div>
           <div className=" pt-12">
@@ -191,7 +191,7 @@ const ContactForm = () => {
                 The email has been sent.
               </h2>
               <p class="text-gray-600 text-md">
-                We will be answering in the next days.
+                We will get back to you as soon as possible
               </p>
               <Link href="/">
                 <button className="w-[200px] mx-auto mt-8 h-12 rounded-3xl flex justify-center items-center border-2 border-black text-black text-xl font-bold cursor-pointer transition-all duration-100 ease-in bg-transparent hover:bg-[#000] hover:text-[#fff] ">

@@ -35,13 +35,13 @@ const Footer = () => {
                 <a>Tango classes</a>
               </li>
               <li>
-                <a>Wine Tastings</a>
+                <a>Tango lesson + Wine Tasting</a>
               </li>
               <li>
-                <a>Visit KAYAK for Air tickets</a>
+                <a>Group Tango Class + Afternoon Snack</a>
               </li>
               <li>
-                <a>Visit MOMONDO for more activities</a>
+                <a>Dinner and Tango Show</a>
               </li>
             </ul>
           </div>

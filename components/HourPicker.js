@@ -103,12 +103,9 @@ const HourPicker = ({
   }, []);
 
   const handleOutsideClick = (e) => {
-    console.log('se ejcuto click');
     if (!picker.current.contains(e.target) && change.current) {
       handlePicker();
-      console.log('clickeo aguera');
     } else {
-      console.log('clickeo adfeentor');
     }
   };
 

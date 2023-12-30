@@ -31,7 +31,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     if (data) {
       if (data.pricepergroup) {
         setPrice(data.pricepergroup);
-      } else {
+      } else if (data.id === 1) {
         switch (persons) {
           case 1:
             setPrice(data.pricefor1);
@@ -39,11 +39,41 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           case 2:
             setPrice(data.pricefor2 * persons);
             break;
-          case 3 || 4:
+          case 3:
             setPrice(data.pricefor3to4 * persons);
             break;
-          case 5 || 6:
+          case 4:
+            setPrice(data.pricefor3to4 * persons);
+            break;
+          case 5:
             setPrice(data.pricefor5to6 * persons);
+            break;
+          case 6:
+            setPrice(data.pricefor5to6 * persons);
+            break;
+          default:
+            setPrice(data.priceforelse * persons);
+            break;
+        }
+      } else {
+        switch (persons) {
+          case 1:
+            setPrice(data.pricefor1);
+            break;
+          case 2:
+            setPrice(data.pricefor2);
+            break;
+          case 3:
+            setPrice(data.pricefor3to4);
+            break;
+          case 4:
+            setPrice(data.pricefor3to4);
+            break;
+          case 5:
+            setPrice(data.pricefor5to6);
+            break;
+          case 6:
+            setPrice(data.pricefor5to6);
             break;
           default:
             setPrice(data.priceforelse * persons);
@@ -124,6 +154,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const handleContinueClick = () => {
     if (showReservForm === false && date && time && price && persons) {
       setShowReservForm(true);
+      setWarning('');
     }
   };
 
@@ -160,8 +191,8 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   return (
     <div
       className={`${
-        showReservForm ? 'h-[1170px]' : 'h-[550px]'
-      } shadow-2xl rounded-3xl relative max-[720px]:order-1 border-2 max-[720px]:top-0 transition-all duration-300 min-[721px]:sticky top-[80px]`}
+        showReservForm ? 'h-[1170px]' : 'h-[590px]'
+      } shadow-2xl rounded-3xl relative max-[735px]:order-1 border-2 max-[735px]:top-0 transition-all duration-300 min-[735px]:sticky top-[80px]`}
     >
       <form onSubmit={handleSubmit}>
         <div className="text-3xl text-center mt-3">
@@ -189,8 +220,13 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
               onTimeChange={handleTimeChange}
             />
           </div>
-          <div className="h-20 flex justify-center items-center">
-            <div className="text-3xl font-bold">${price}</div>
+          <div className="h-[100px] flex justify-center items-center flex-col">
+            <div className="text-xs w-4/5 text-orange-600">
+              {data && data.id === 2
+                ? 'This rate corresponds to the transfer from Ezeiza Airport to Buenos Aires. For other services, send us your message.'
+                : ''}
+            </div>
+            <div className="text-3xl font-bold mt-2">${price}</div>
           </div>
           {showReservForm ? (
             <UserDataForm
@@ -201,8 +237,8 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             ''
           )}
         </div>
-        <div className="text-sm text-red-600 text-center mt-4">{warning}</div>
-        <div className="w-full flex justify-center items-end mt-2 max-[800px]:mt-0">
+        <div className="text-sm text-red-600 text-center mt-0">{warning}</div>
+        <div className="w-full flex justify-center items-end mt-4 max-[800px]:mt-2">
           <button
             className={`w-[200px] h-12 rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 ${
               showContinueAvailable
