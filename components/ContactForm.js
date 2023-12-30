@@ -110,7 +110,7 @@ const ContactForm = () => {
                     verifyValidName(e);
                   }}
                 />
-                <label for="name">Name:</label>
+                <label htmlFor="name">Name:</label>
               </div>
             </div>
             <div className="container-input-field my-20">
@@ -127,7 +127,7 @@ const ContactForm = () => {
                     verifyValidEmail(e);
                   }}
                 />
-                <label for="email">Email:</label>
+                <label htmlFor="email">Email:</label>
               </div>
             </div>
             <div className="container-input-field">
@@ -140,7 +140,7 @@ const ContactForm = () => {
                     handlePhone(e);
                   }}
                 />
-                <label for="phone">Phone: (optional)</label>
+                <label htmlFor="phone">Phone: (optional)</label>
               </div>
             </div>
             <div className="w-full flex justify-center items-end mt-20">
@@ -166,12 +166,12 @@ const ContactForm = () => {
           </div>
         </div>
       ) : (
-        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="relative py-3 sm:max-w-xl sm:mx-auto">
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm mx-auto"
+            className="rounded-lg border bg-card text-card-foreground shadow-sm mx-auto"
             data-v0-t="card"
           >
-            <div class="p-6 px-8 py-12 text-center">
+            <div className="p-6 px-8 py-12 text-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -179,18 +179,18 @@ const ContactForm = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-16 h-16 mx-auto mb-4"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-16 h-16 mx-auto mb-4"
               >
                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
-              <h2 class="text-3xl font-semibold text-gray-900 mb-2">
+              <h2 className="text-3xl font-semibold text-gray-900 mb-2">
                 The email has been sent.
               </h2>
-              <p class="text-gray-600 text-md">
+              <p className="text-gray-600 text-md">
                 We will get back to you as soon as possible
               </p>
               <Link href="/">

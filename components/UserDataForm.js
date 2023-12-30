@@ -82,7 +82,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
                 verifyValidName(e);
               }}
             />
-            <label for="name">Name:</label>
+            <label htmlFor="name">Name:</label>
           </div>
         </div>
         <div className="container-input-field">
@@ -94,13 +94,13 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
             <input
               autoComplete="off"
               type="text"
-              id="name"
+              id="mail"
               required
               onChange={(e) => {
                 verifyValidEmail(e);
               }}
             />
-            <label for="name">Email:</label>
+            <label htmlFor="mail">Email:</label>
           </div>
         </div>
         <div className="container-input-field">
@@ -112,13 +112,13 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
             <input
               type="text"
               autoComplete="off"
-              id="name"
+              id="phone"
               required
               onChange={(e) => {
                 verifyValidPhone(e);
               }}
             />
-            <label for="name">Phone number:</label>
+            <label htmlFor="phone">Phone number:</label>
           </div>
         </div>
         <NationalityPicker

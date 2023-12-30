@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 //TODO mandar por objeto el valor del pais seleccionado
 const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
   const [countries, setCountries] = useState(null);
@@ -33,6 +33,22 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
       });
   }, []);
 
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick, true);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick, true);
+    };
+  }, []);
+
+  const picker = useRef(null);
+
+  const handleOutsideClick = (e) => {
+    if (!picker.current.contains(e.target)) {
+      setShowOptions(false);
+    } else {
+    }
+  };
+
   const handleCountrySelected = (country) => {
     setSelectedCountry(country);
     setShowOptions(false);
@@ -58,7 +74,7 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
   };
 
   return (
-    <div className="container-input-field ">
+    <div className="container-input-field " ref={picker}>
       <div
         className={`${
           isNationalityValid ? 'input-field' : 'input-field-incorrect'
@@ -66,7 +82,7 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
       >
         <input
           type="text"
-          id="name"
+          id="nationality"
           required
           autoComplete="off"
           value={selectedCountry}
@@ -77,7 +93,7 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
             setShowOptions(true);
           }}
         />
-        <label for="name">Nationality:</label>
+        <label htmlFor="nationality">Nationality:</label>
         <div
           className={`absolute top-[45px] w-full max-h-[216px] border bg-white z-20 overflow-y-scroll shadow-2xl  shadow-[-1px 1px 24px -1px rgba(0,0,0,1)] rounded-lg transition-all duration-300 ease-out ${
             showOptions ? 'scale-100 visible' : 'scale-50 invisible'

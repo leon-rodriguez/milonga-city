@@ -88,7 +88,12 @@ const Card = ({ data }) => {
           <div className="text-sm">From</div>
           <div className="grid grid-cols-[1fr_2fr]">
             <div className="text-xl font-bold">
-              {currency} {id === 2 ? data.pricepergroup : pricefor2}
+              {currency}{' '}
+              {id === 2
+                ? data.pricepergroup
+                : id === 1
+                ? data.pricefor2
+                : pricefor2 / 2}
             </div>
             <div className="flex justify-end text-sm">
               <span>

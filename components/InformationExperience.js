@@ -23,6 +23,9 @@ const InformationExperience = ({ id, data }) => {
   }, [data]);
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
     fetch(`/api/reviewsByExperience?experiences_id=${id}`)
       .then((results) => {
         return results.json();

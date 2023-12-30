@@ -125,7 +125,10 @@ export function NavbarMobile() {
       >
         <ul className="h-[222px] text-2xl pb-8 flex flex-col justify-evenly">
           <Link href="/">
-            <li className="text-center" onClick={openMenu}>
+            <li
+              className="text-center transition-all ease duration-300 hover:text-[#01bdba]"
+              onClick={openMenu}
+            >
               HOME
             </li>
           </Link>
@@ -147,7 +150,10 @@ export function NavbarMobile() {
             )}
           </li>
           <Link href="/contact">
-            <li className="text-center" onClick={openMenu}>
+            <li
+              className="text-center transition-all ease duration-300 hover:text-[#01bdba]"
+              onClick={openMenu}
+            >
               CONTACT US
             </li>
           </Link>
@@ -158,7 +164,7 @@ export function NavbarMobile() {
           <Image
             src={logo}
             alt="logo"
-            className="w-24 h-auto object-cover relative z-50 mt-2 ml-2"
+            className="w-24 h-auto object-cover relative z-50 mt-2 ml-2 "
           />
         </Link>
         <div className="w-[200px] grid grid-cols-3">

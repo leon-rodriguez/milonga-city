@@ -50,6 +50,7 @@ const BookingPayed = ({ data, date, hour }) => {
           <div className=" gap-3 grid">
             <div className="text-left pl-[75px]">
               <span className="text-2xl mr-4">Price: </span>
+              <span className="text-xl text-gray-500">$</span>
               <span className="text-xl text-gray-500">{data.price}</span>
             </div>
             <div className="text-left pl-[75px]">

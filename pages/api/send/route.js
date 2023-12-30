@@ -5,6 +5,101 @@ import { Resend } from 'resend';
 
 const resend = new Resend('re_4eo4oooG_FiPMvxJZzyWpQuVmKHBGSRAi');
 export default async function handler(req, res) {
+  //   const {
+  //     reserveType,
+  //     name,
+  //     mail,
+  //     date,
+  //     hour,
+  //     phone,
+  //     hotel,
+  //     price,
+  //     persons,
+  //     nationality,
+  //     observations,
+  //     emailType,
+  //     message,
+  //   } = req.body;
+
+  //   if (emailType === 'reserve') {
+  //     try {
+  //       const data = await resend.emails.send({
+  //         from: 'milonga.city<info@milonga.city>',
+  //         to: ['info@milonga.city'],
+  //         subject: `Reserva de ${reserveType}`,
+  //         react: EmailTemplate({
+  //           reserveType,
+  //           name,
+  //           mail,
+  //           date,
+  //           hour,
+  //           phone,
+  //           hotel,
+  //           price,
+  //           persons,
+  //           nationality,
+  //           observations,
+  //           message,
+  //         }),
+  //       });
+
+  //       res.status(200).json({
+  //         data: data,
+  //       });
+  //     } catch (error) {
+  //       console.error(error);
+  //       res.status(500).json({ error: 'Internal Server Error' });
+  //     }
+  //   }
+
+  //   if (emailType === 'reserve') {
+  //     try {
+  //       const data = await resend.emails.send({
+  //         from: 'milonga.city<info@milonga.city>',
+  //         to: [mail],
+  //         subject: `Reserva de ${reserveType}`,
+  //         react: EmailClientTemplate({
+  //           reserveType,
+  //           name,
+  //           date,
+  //           hour,
+  //           price,
+  //         }),
+  //       });
+
+  //       res.status(200).json({
+  //         data: data,
+  //       });
+  //     } catch (error) {
+  //       console.error(error);
+  //       res.status(500).json({ error: 'Internal Server Error' });
+  //     }
+  //   }
+
+  //   if (emailType === 'contact') {
+  //     try {
+  //       const data = await resend.emails.send({
+  //         from: 'milonga.city<info@milonga.city>',
+  //         to: ['info@milonga.city'],
+  //         subject: `Consulta`,
+  //         react: EmailContactTemplate({
+  //           name,
+  //           mail,
+  //           phone,
+  //           message,
+  //         }),
+  //       });
+
+  //       res.status(200).json({
+  //         data: data,
+  //       });
+  //     } catch (error) {
+  //       console.error(error);
+  //       res.status(500).json({ error: 'Internal Server Error' });
+  //     }
+  //   }
+  // }
+
   const {
     reserveType,
     name,
@@ -21,9 +116,9 @@ export default async function handler(req, res) {
     message,
   } = req.body;
 
-  if (emailType === 'reserve') {
-    try {
-      const data = await resend.emails.send({
+  try {
+    if (emailType === 'reserve') {
+      const dataToMilongaCity = await resend.emails.send({
         from: 'milonga.city<info@milonga.city>',
         to: ['info@milonga.city'],
         subject: `Reserva de ${reserveType}`,
@@ -43,18 +138,7 @@ export default async function handler(req, res) {
         }),
       });
 
-      res.status(200).json({
-        data: data,
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  }
-
-  if (emailType === 'reserve') {
-    try {
-      const data = await resend.emails.send({
+      const dataToClient = await resend.emails.send({
         from: 'milonga.city<info@milonga.city>',
         to: [mail],
         subject: `Reserva de ${reserveType}`,
@@ -68,16 +152,10 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json({
-        data: data,
+        dataToMilongaCity,
+        dataToClient,
       });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  }
-
-  if (emailType === 'contact') {
-    try {
+    } else if (emailType === 'contact') {
       const data = await resend.emails.send({
         from: 'milonga.city<info@milonga.city>',
         to: ['info@milonga.city'],
@@ -91,11 +169,13 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json({
-        data: data,
+        data,
       });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.status(400).json({ error: 'Invalid emailType' });
     }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
