@@ -95,6 +95,23 @@ const HourPicker = ({
     });
   }, [id, selectedDay]);
 
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick, true);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick, true);
+    };
+  }, []);
+
+  const handleOutsideClick = (e) => {
+    console.log('se ejcuto click');
+    if (!picker.current.contains(e.target) && change.current) {
+      handlePicker();
+      console.log('clickeo aguera');
+    } else {
+      console.log('clickeo adfeentor');
+    }
+  };
+
   const handlePicker = () => {
     if (change.current === false) {
       picker.current.classList.remove('opacity-0', 'scale-0');

@@ -9,6 +9,24 @@ const PersonChooser = (props) => {
     props.onPersonChange(props.min);
   }, [props.min]);
 
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick, true);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick, true);
+    };
+  }, []);
+
+  const handleOutsideClick = (e) => {
+    if (
+      !outline.current.contains(e.target) &&
+      !adultSelecter.current.contains(e.target) &&
+      change.current
+    ) {
+      openSelecter();
+    } else {
+    }
+  };
+
   const addAdult = () => {
     if (adults < props.max) {
       setAdults(adults + 1);
