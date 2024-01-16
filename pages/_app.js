@@ -14,7 +14,10 @@ export default function App({ Component, pageProps }) {
           property="og:description"
           content="Discover the magic of tango with our exclusive services. Authentic classes, unforgettable events, and unique experiences in the heart of tango. Immerse yourself in the passion and elegance of the world's most passionate dance!"
         />
-        <meta property="og:image" content="/Images/bailarines.jpg" />
+        <meta
+          property="og:image"
+          content="https://milonga.city/Images/bailarines.jpg"
+        />
         <meta property="og:url" content="milonga.city" />
         {/* Otras meta etiquetas si es necesario */}
       </Head>
