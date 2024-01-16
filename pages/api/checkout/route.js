@@ -54,8 +54,8 @@ const client = new paypal.core.PayPalHttpClient(enviroment);
 //   });
 // }
 export default async function handler(req, res) {
-  // let { price, name } = req.body;
-  // price = price.toString();
+  let { price, name, body } = req.body;
+  price = price.toString();
 
   // console.log(price);
   try {
@@ -67,22 +67,22 @@ export default async function handler(req, res) {
         {
           amount: {
             currency_code: 'USD',
-            value: '100.00',
+            value: price,
             breakdown: {
               item_total: {
                 currency_code: 'USD',
-                value: '100.00',
+                value: price,
               },
             },
           },
           items: [
             {
-              name: 'milonga',
-              description: 'ola',
+              name: name,
+              description: body,
               quantity: '1',
               unit_amount: {
                 currency_code: 'USD',
-                value: '100.00',
+                value: price,
               },
             },
           ],

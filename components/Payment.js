@@ -1,7 +1,9 @@
 'use client';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { useRef } from 'react';
 
 const Payment = ({ data, date }) => {
+  const url_hash = useRef(data.url_hash);
   return (
     <div className="h-[55 0px] w-full flex justify-center">
       <div className="w-[500px] h-full shadow-2xl bg-white">
@@ -45,20 +47,14 @@ const Payment = ({ data, date }) => {
               createOrder={async () => {
                 const res = await fetch('/api/checkout/route', {
                   method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    price: data.price,
+                    name: 'Milonga tour',
+                  }),
                 });
-                // const res = await fetch(
-                //   'http://localhost:3000/api/checkout/route',
-                //   {
-                //     method: 'POST',
-                //     headers: {
-                //       'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify({
-                //       price: data.price,
-                //       name: 'Milonga tour',
-                //     }),
-                //   }
-                // );
 
                 if (!res.ok) {
                   console.log('error');
@@ -68,8 +64,21 @@ const Payment = ({ data, date }) => {
                 const order = await res.json();
                 return order.id;
               }}
-              onApprove={(data) => {
-                console.log('se aprobo la compra ' + data);
+              onApprove={async (data, actions) => {
+                actions.order.capture();
+                // router.push(`/Booking/${urlHash}`);
+                const res = await fetch('/api/bookings', {
+                  method: 'PATCH',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    url: url_hash.current,
+                  }),
+                });
+                if (res.ok) {
+                  window.location.reload();
+                }
               }}
               onCancel={(data) => {
                 console.log('se aborto la operacion ' + data);

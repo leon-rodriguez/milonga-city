@@ -11,30 +11,32 @@ const Booking = ({ data }) => {
     if (!data) {
       return;
     }
+    console.log(data.url_hash);
+    const currentDate = new Date();
+    const dateFromString = new Date(data?.date);
 
-    // if (data.confirmed === false && fechaActual < dateFromString) {
-    //   //no pagado todavia
-    //   setBookingState('payment');
-    // }
+    if (data.confirmed === false && currentDate < dateFromString) {
+      //no pagado todavia
+      setBookingState('payment');
+    }
 
-    // if (data.confirmed === false && fechaActual > dateFromString) {
-    //   //caducado
-    //   setBookingState('caducated');
-    // }
+    if (data.confirmed === false && currentDate > dateFromString) {
+      //caducado
+      setBookingState('caducated');
+    }
 
-    // if (data.cofirmed && fechaActual < dateFromString) {
-    //   //pagado pero no realizado
-    //   setBookingState('information');
-    // }
+    if (data.confirmed && currentDate < dateFromString) {
+      //pagado pero no realizado
+      setBookingState('information');
+    }
 
-    // if (data.cofirmed && fechaActual > dateFromString) {
-    //   //pagado y realizado
-    //   setBookingState('review');
-    // }
+    if (data.confirmed && currentDate > dateFromString) {
+      //pagado y realizado
+      setBookingState('review');
+    }
 
     //parse date and hour
 
-    setBookingState('information');
     const date = new Date(data?.date);
     const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = date.toLocaleDateString('en-EN', formatOptions);
@@ -51,6 +53,7 @@ const Booking = ({ data }) => {
 
     bookingDate.current = formattedDate;
     bookingHour.current = formattedHour;
+    console.log(bookingState);
   }, [data]);
 
   return (

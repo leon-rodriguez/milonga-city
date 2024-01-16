@@ -16,8 +16,8 @@ export default async function handler(req, res) {
   // Indicar que la solicitud puede incluir encabezados que no se envían al servidor
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  const params = req.body;
   if (req.method === 'PUT') {
-    const params = req.body;
     const newDate = `${params.date} ${params.time}`;
     // res.status(200).json({ data: params });
 
@@ -68,6 +68,23 @@ export default async function handler(req, res) {
         })
         .returning(['url_hash'])
         .executeTakeFirstOrThrow();
+      res.status(200).json({ data: response });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ error: error });
+    }
+    return;
+  } else if (req.method === 'PATCH') {
+    try {
+      const db = createKysely();
+
+      const response = await db
+        .updateTable('bookings')
+        .set({
+          confirmed: true,
+        })
+        .where('url_hash', '=', params.url)
+        .executeTakeFirst();
       res.status(200).json({ data: response });
     } catch (error) {
       console.log(error);
