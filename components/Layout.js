@@ -4,6 +4,10 @@ import { Roboto } from '@next/font/google';
 import { useState, useEffect, createContext } from 'react';
 import { useScroll } from '../hooks/useScroll';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import es from '../i18n/Spanish/es.json';
+import en from '../i18n/English/en.json';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -12,6 +16,21 @@ const roboto = Roboto({
 });
 
 export const scrollContext = createContext();
+
+i18next.use(initReactI18next).init({
+  lng: 'en',
+  interpolation: {
+    escapeValue: 'false',
+  },
+  resources: {
+    en: {
+      translation: en,
+    },
+    es: {
+      translation: es,
+    },
+  },
+});
 
 export default function Layout({ children }) {
   const { scrollY } = useScroll();

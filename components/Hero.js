@@ -1,10 +1,14 @@
 import { observe } from 'react-intersection-observer';
 import { useParallax } from 'react-scroll-parallax';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   const parallax = useParallax({
     speed: -50,
   });
+
   return (
     <div className="w-full h-screen overflow-hidden relative">
       <div className="absolute top-0 left-0 z-20 w-screen h-screen bg-[#00000066]"></div>
@@ -18,11 +22,11 @@ export default function Hero() {
       <div className="h-screen w-screen flex items-center justify-end pt-[250px] pr-[500px] max-[900px]:pr-[350px] max-[751px]:pr-20 max-[450px]:pr-5">
         <div className="wrapper">
           <div className="words">
-            <span>LEARN</span>
-            <span>DISCOVER</span>
-            <span>ENJOY</span>
-            <span>LIVE</span>
-            <span>BE PART OF</span>
+            <span>{t('heroWord1')}</span>
+            <span>{t('heroWord2')}</span>
+            <span>{t('heroWord3')}</span>
+            <span>{t('heroWord4')}</span>
+            <span>{t('heroWord5')}</span>
           </div>
           <p>TANGO</p>
         </div>

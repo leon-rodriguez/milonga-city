@@ -2,9 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../assets/logo-milonga-city.svg';
 import { MdOutlineMenu } from 'react-icons/md';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { useRef, useState, useContext, useEffect } from 'react';
 import { scrollContext } from './Layout';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 export function Navbar() {
   const [bookingIsActive, setBookingIsActive] = useState(false);
@@ -12,13 +14,43 @@ export function Navbar() {
   const maxYScroll = 190;
   const pathname = usePathname();
   const [actualUrl, setActualUrl] = useState(pathname);
-  const handleBookingModal = () => {
-    setBookingIsActive(!bookingIsActive);
-  };
+  // const handleBookingModal = () => {
+  //   setBookingIsActive(!bookingIsActive);
+  // };
+  const [showLangOptions, setShowLangOptions] = useState(false);
+  const [selectedLang, setSelectedLang] = useState(0);
+
+  const FLAGS_LANG = [
+    {
+      flagImg: 'Images/flags/united-kingdom.png',
+      language: 'En',
+    },
+    {
+      flagImg: 'Images/flags/argentina.png',
+      language: 'Es',
+    },
+  ];
+  const langPicker = useRef(null);
 
   useEffect(() => {
     setActualUrl(pathname);
   }, [pathname]);
+
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick, true);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick, true);
+    };
+  }, []);
+
+  const handleOutsideClick = (e) => {
+    if (!langPicker.current.contains(e.target) && !showLangOptions) {
+      setShowLangOptions(false);
+    } else {
+    }
+  };
 
   return (
     <nav
@@ -42,7 +74,7 @@ export function Navbar() {
               href="/"
               className="transition-all ease duration-300 hover:text-[#01bdba]"
             >
-              HOME
+              {t('navHome')}
             </Link>
           </li>
           <li className="flex justify-start  px-4 mx-4">
@@ -51,14 +83,14 @@ export function Navbar() {
                 href="#milonga"
                 className="transition-all ease duration-300 hover:text-[#01bdba]"
               >
-                MORE ABOUT MILONGAS
+                {t('navMilongas')}
               </a>
             ) : (
               <Link
                 href="/#milonga"
                 className="transition-all ease duration-300 hover:text-[#01bdba]"
               >
-                MORE ABOUT MILONGAS
+                {t('navMilongas')}
               </Link>
             )}
           </li>
@@ -67,18 +99,74 @@ export function Navbar() {
               href="/contact"
               className="transition-all ease duration-300 hover:text-[#01bdba]"
             >
-              CONTACT US
+              {t('navContact')}
             </Link>
           </li>
         </ul>
-        <div className="flex w-24 justify-evenly ">
-          <div className="relative">
-            {/* <FaShoppingCart
+        <div className="w-32 h-7 justify-evenly grid grid-cols-[1fr_3fr_3fr] ">
+          <div
+            className="flex justify-end items-center cursor-pointer"
+            onClick={() => {
+              setShowLangOptions(!showLangOptions);
+            }}
+          >
+            {showLangOptions ? <IoIosArrowUp /> : <IoIosArrowDown />}
+          </div>
+          <div
+            className=" h-7 flex justify-center cursor-pointer"
+            onClick={() => {
+              setShowLangOptions(!showLangOptions);
+            }}
+          >
+            <img
+              src={FLAGS_LANG[selectedLang].flagImg}
+              className="h-full object-cover"
+            />
+          </div>
+          <div
+            className="h-7 flex items-center cursor-pointer"
+            onClick={() => {
+              setShowLangOptions(!showLangOptions);
+            }}
+          >
+            {FLAGS_LANG[selectedLang].language}
+          </div>
+          <div
+            className={`absolute top-10  w-28 min-h-7 bg-white shadow-2xl rounded-lg transition-all duration-300 ease-out overflow-hidden ${
+              !showLangOptions ? 'opacity-0 scale-0' : 'opacity-1 scale-1'
+            }`}
+            ref={langPicker}
+          >
+            {FLAGS_LANG &&
+              FLAGS_LANG.map((item, index) => {
+                return (
+                  <div
+                    className="h-14 grid py-2 grid-cols-2 cursor-pointer hover:bg-[#f5f5f5]"
+                    key={index}
+                    onClick={() => {
+                      i18n.changeLanguage(item.language.toLowerCase());
+                      setSelectedLang(index);
+                      setShowLangOptions(false);
+                    }}
+                  >
+                    <div className="flex justify-center items-center">
+                      <img className="h-8 object-cover" src={item.flagImg} />
+                    </div>
+                    <div className="text-black flex items-center text-lg">
+                      {item.language}
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+          {/* <div className="relative"> */}
+          {/* <FaShoppingCart
               className="text-2xl cursor-pointer"
               onClick={handleBookingModal}
             />
             <ModalBookings isActive={bookingIsActive} /> */}
-          </div>
+
+          {/* </div> */}
           {/* <MdAccountCircle className="text-2xl cursor-pointer" /> */}
         </div>
       </div>
@@ -97,6 +185,7 @@ export function NavbarMobile() {
   const [bookingIsActive, setBookingIsActive] = useState(false);
   const pathname = usePathname();
   const [actualUrl, setActualUrl] = useState(pathname);
+  const { t } = useTranslation();
 
   const handleBookingModal = () => {
     setBookingIsActive(!bookingIsActive);
@@ -129,7 +218,7 @@ export function NavbarMobile() {
               className="text-center transition-all ease duration-300 hover:text-[#01bdba]"
               onClick={openMenu}
             >
-              HOME
+              {t('navHome')}
             </li>
           </Link>
           <li className="text-center" onClick={openMenu}>
@@ -138,14 +227,14 @@ export function NavbarMobile() {
                 href="#milonga"
                 className="transition-all ease duration-300 hover:text-[#01bdba]"
               >
-                MORE ABOUT MILONGAS
+                {t('navMilongas')}
               </a>
             ) : (
               <Link
                 href="/#milonga"
                 className="transition-all ease duration-300 hover:text-[#01bdba]"
               >
-                MORE ABOUT MILONGAS
+                {t('navMilongas')}
               </Link>
             )}
           </li>
@@ -154,7 +243,7 @@ export function NavbarMobile() {
               className="text-center transition-all ease duration-300 hover:text-[#01bdba]"
               onClick={openMenu}
             >
-              CONTACT US
+              {t('navContact')}
             </li>
           </Link>
         </ul>
