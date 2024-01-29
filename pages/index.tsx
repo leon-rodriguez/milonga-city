@@ -4,6 +4,7 @@ import HomeExperiences from '../components/HomeExperiences';
 import Footer from '../components/Footer';
 import WhatsappButton from '../components/WhatsappButton';
 import AboutMilongas from '../components/AboutMilongas';
+import React from 'react';
 
 export default function Home() {
   return (

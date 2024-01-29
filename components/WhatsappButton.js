@@ -2,7 +2,7 @@
 import logo from '../assets/logo-whatsapp.svg';
 import Image from 'next/image';
 
-const WhatsappButton = ({ hola }) => {
+const WhatsappButton = () => {
   return (
     <div className="select-none">
       <a href="https://wa.me/+5491137303056">

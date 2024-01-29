@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "HTTPS=TRUE SSL_CRT_FILE=./cert.crt SSL_KEY_FILE=./cert.key next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -28,7 +28,9 @@
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "kysely": "^0.24.2",
+    "mkcert": "^3.2.0",
     "next": "13.1.1",
+    "next-auth": "^4.24.5",
     "react": "18.2.0",
     "react-calendar": "^4.6.0",
     "react-day-picker": "^8.8.0",
@@ -43,8 +45,12 @@
     "resend": "^2.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.4",
+    "typescript": "^5"
   }
 }
