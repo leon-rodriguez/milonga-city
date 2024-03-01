@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useIntersectionObserver } from '@uidotdev/usehooks';
+import { useTranslation } from 'react-i18next';
 
 const AboutMilongaBlockImgLeft = ({ index, text, src, title }) => {
   const [animationShowed, setAnimationShowed] = useState(false);
@@ -23,14 +24,6 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, title }) => {
       <div
         className={`flex justify-end items-center max-[800px]:justify-center transition-all duration-300 ease-out`}
       >
-        {/* <img
-          className={`${
-            animationShowed ? 'about_left_appear' : ''
-          } object-cover h-[350px] w-3/4 mr-10 border-4 border-[#01bdba] max-[800px]:mr-0 max-[800px]:w-10/12 opacity-0 `}
-          src={src}
-          alt="bailarines de tango"
-          ref={ref}
-        /> */}
         <video
           controls
           className={`${
@@ -41,9 +34,6 @@ const AboutMilongaBlockImgLeft = ({ index, text, src, title }) => {
           <source src={src} type="video/mp4"></source>
         </video>
       </div>
-      {/* <div
-        className={`flex justify-start items-center max-[800px]:justify-center max-[800px]:items-start`}
-      > */}
       <div
         className={`min-[800px]:my-auto max-[800px]:grid max-[800px]:grid-rows-[1fr_9fr]`}
       >

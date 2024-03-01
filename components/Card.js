@@ -2,10 +2,29 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useIntersectionObserver } from '@uidotdev/usehooks';
+import { useTranslation } from 'react-i18next';
 
 const Card = ({ data }) => {
-  const { title, body, imgsrc, type, pricefor2, currency, cta, id, images } =
-    data;
+  const {
+    imgsrc,
+    pricefor2,
+    currency,
+    id,
+    images,
+    type_en,
+    cta_en,
+    title_en,
+    body_en,
+    type_es,
+    title_es,
+    body_es,
+    cta_es,
+  } = data;
+
+  const [type, setType] = useState(type_en);
+  const [cta, setCta] = useState(cta_en);
+  const [title, setTitle] = useState(title_en);
+  const [body, setBody] = useState(body_en);
 
   const [mouseHoverCard, setMouseHoverCard] = useState(false);
   const [img, setImg] = useState(imgsrc);
@@ -17,6 +36,9 @@ const Card = ({ data }) => {
     root: null,
     rootMargin: '0px',
   });
+
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     if (entry?.isIntersecting === true) {
       setAnimationShowed(true);
@@ -49,6 +71,20 @@ const Card = ({ data }) => {
       }
     }
   }, [mouseHoverCard]);
+
+  useEffect(() => {
+    if (i18n.language === 'es') {
+      setType(type_es);
+      setCta(cta_es);
+      setTitle(title_es);
+      setBody(body_es);
+    } else if (i18n.language === 'en') {
+      setType(type_en);
+      setCta(cta_en);
+      setTitle(title_en);
+      setBody(body_en);
+    }
+  }, [i18n.language]);
 
   return (
     <Link
@@ -85,7 +121,7 @@ const Card = ({ data }) => {
           </div>
         </div>
         <div className="grid grid-rows-{2} ">
-          <div className="text-sm">From</div>
+          <div className="text-sm">{t('cardPrice')}</div>
           <div className="grid grid-cols-[1fr_2fr]">
             <div className="text-xl font-bold">
               {currency}{' '}
