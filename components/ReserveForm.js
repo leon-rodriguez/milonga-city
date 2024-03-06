@@ -7,11 +7,13 @@ import UserDataForm from './UserDataForm';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [price, setPrice] = useState(0);
   const [persons, setPersons] = useState(null);
   const [showReservForm, setShowReservForm] = useState(false);
+  const [title, setTitle] = useState(null);
   const [date, setDate] = useState();
   const [time, setTime] = useState(null);
   const [showContinueAvailable, setShowContinueAvailable] = useState(false);
@@ -26,6 +28,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [urlHash, setUrlHash] = useState(null);
   const [warning, setWarning] = useState('');
   const router = useRouter();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (data) {
@@ -88,6 +91,16 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
       setShowContinueAvailable(true);
     }
   }, [date, time, persons, price]);
+
+  useEffect(() => {
+    if (!data) return;
+    if (i18n.language === 'en') {
+      setTitle(data.title_en);
+    }
+    if (i18n.language === 'es') {
+      setTitle(data.title_es);
+    }
+  }, [data, i18n.language]);
 
   const handleDateChange = (newValue) => {
     setDate(newValue);
@@ -195,9 +208,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
       } shadow-2xl rounded-3xl relative max-[735px]:order-1 border-2 max-[735px]:top-0 transition-all duration-300 min-[735px]:sticky top-[80px]`}
     >
       <form onSubmit={handleSubmit}>
-        <div className="text-3xl text-center mt-3">
-          {!data ? '' : data.title}
-        </div>
+        <div className="text-3xl text-center mt-3">{title}</div>
         <div className="mt-8">
           <div className="flex justify-center">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
