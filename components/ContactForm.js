@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 const ContactForm = () => {
   const [isTextValid, setIsTextValid] = useState(null);
@@ -10,6 +11,8 @@ const ContactForm = () => {
   const [phone, setPhone] = useState(null);
   const [isMailSent, setIsMailSent] = useState(false);
   const [warning, setWarning] = useState('');
+
+  const { t } = useTranslation();
 
   const verifyValidName = (e) => {
     //verifica que solo tenga letras de la a a la z
@@ -79,7 +82,7 @@ const ContactForm = () => {
         console.log('fail on the database');
       }
     } else {
-      setWarning('The information you entered is incorrect');
+      setWarning(t('contact_info_incorrect'));
     }
   };
 
@@ -89,10 +92,10 @@ const ContactForm = () => {
         <div className=" max-w-[600px] h-[800px] mx-auto border rounded-md shadow-md pt-4">
           <div className="">
             <h3 className="text-3xl font-semibold text-center">
-              Send us your message
+              {t('contact_title')}
             </h3>
             <h3 className="text-md text-center mt-4 text-[#8d8d8f]">
-              We will get back to you as soon as possible
+              {t('contact_subtitle')}
             </h3>
           </div>
           <div className=" pt-12">
@@ -110,7 +113,7 @@ const ContactForm = () => {
                     verifyValidName(e);
                   }}
                 />
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">{t('contact_name')}:</label>
               </div>
             </div>
             <div className="container-input-field my-20">
@@ -127,7 +130,7 @@ const ContactForm = () => {
                     verifyValidEmail(e);
                   }}
                 />
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">{t('contact_email')}:</label>
               </div>
             </div>
             <div className="container-input-field">
@@ -140,12 +143,12 @@ const ContactForm = () => {
                     handlePhone(e);
                   }}
                 />
-                <label htmlFor="phone">Phone: (optional)</label>
+                <label htmlFor="phone">{t('contact_phone')}</label>
               </div>
             </div>
             <div className="w-full flex justify-center items-end mt-20">
               <textarea
-                placeholder="Message"
+                placeholder={t('contact_placeholder')}
                 rows="4"
                 cols="50"
                 className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
@@ -160,7 +163,7 @@ const ContactForm = () => {
                 className="w-[130px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-md cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 hover:bg-[#0088ccbb]"
                 onClick={handleSubmit}
               >
-                Send
+                {t('contact_cta')}
               </button>
             </div>
           </div>

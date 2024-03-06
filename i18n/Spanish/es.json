@@ -26,5 +26,21 @@
   "footer_activities_item4": "Clase De Tango Grupal Con Mate Y Mesa Dulce",
   "footer_activities_item5": "Cena Show De Tango",
   "footer_contact": "Contacto",
-  "footer_followus": "Seguinos"
+  "footer_followus": "Seguinos",
+  "information_experience_description": "Descripcion",
+  "information_experience_details": "Detalles",
+  "information_experience_reviews": "Reviews",
+  "comment_cancel": "Cancelar",
+  "comment_publish": "Comentar",
+  "comment_noreviews": "No hay valoraciones",
+  "comment_nocomments": "No hay comentarios",
+  "comment_placeholder": "Añadir comentario",
+  "contact_title": "Envianos un mensaje",
+  "contact_subtitle": "Estaremos respondiendo lo antes posible",
+  "contact_name": "Nombre",
+  "contact_email": "Email",
+  "contact_phone": "Telefono: (opcional)",
+  "contact_placeholder": "Mensaje",
+  "contact_cta": "Enviar",
+  "contact_info_incorrect": "Los datos introducidos son incorrectos"
 }

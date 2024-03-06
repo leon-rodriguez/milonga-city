@@ -26,5 +26,21 @@
   "footer_activities_item4": "Group Tango Class + Afternoon Snack",
   "footer_activities_item5": "Dinner and Tango Show",
   "footer_contact": "Contact",
-  "footer_followus": "Follow us"
+  "footer_followus": "Follow us",
+  "information_experience_description": "Description",
+  "information_experience_details": "Details",
+  "information_experience_reviews": "Reviews",
+  "comment_cancel": "Cancel",
+  "comment_publish": "Comment",
+  "comment_noreviews": "No reviews yet",
+  "comment_nocomments": "No comments yet",
+  "comment_placeholder": "Add comment",
+  "contact_title": "Send us your message",
+  "contact_subtitle": "We will get back to you as soon as possible",
+  "contact_name": "Name",
+  "contact_email": "Email",
+  "contact_phone": "Phone: (optional)",
+  "contact_placeholder": "Message",
+  "contact_cta": "Send",
+  "contact_info_incorrect": "The information you entered is incorrect"
 }
