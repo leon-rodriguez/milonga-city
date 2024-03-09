@@ -160,7 +160,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
         }
       });
     } else {
-      setWarning('The information you entered is incorrect');
+      setWarning(t('info_incorrect'));
     }
   };
 
@@ -226,7 +226,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             <HourPicker
               id={id}
               dataExperience={data}
-              placeHolder={'Select hour'}
+              placeHolder={t('input_hour')}
               selectedDay={date}
               onTimeChange={handleTimeChange}
             />
@@ -258,13 +258,13 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             }`}
             onClick={handleContinueClick}
           >
-            {showReservForm ? 'Reserve' : 'Continue'}
+            {showReservForm ? t('reserve_reserve') : t('reserve_continue')}
           </button>
         </div>
         <div className="w-full flex justify-center items-end mt-4">
           <Link href={'/contact'}>
             <button className="w-[200px] h-12 bg-transparent border-2 border-[#0088cc] rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33] max-[920px]:h-10">
-              Message Milonga city
+              {t('reserve_message')}
             </button>
           </Link>
         </div>

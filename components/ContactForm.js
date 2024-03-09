@@ -82,7 +82,7 @@ const ContactForm = () => {
         console.log('fail on the database');
       }
     } else {
-      setWarning(t('contact_info_incorrect'));
+      setWarning(t('info_incorrect'));
     }
   };
 
@@ -191,14 +191,14 @@ const ContactForm = () => {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
               <h2 className="text-3xl font-semibold text-gray-900 mb-2">
-                The email has been sent.
+                {t('contact_succes_title')}
               </h2>
               <p className="text-gray-600 text-md">
-                We will get back to you as soon as possible
+                {t('contact_succes_subtitle')}
               </p>
               <Link href="/">
                 <button className="w-[200px] mx-auto mt-8 h-12 rounded-3xl flex justify-center items-center border-2 border-black text-black text-xl font-bold cursor-pointer transition-all duration-100 ease-in bg-transparent hover:bg-[#000] hover:text-[#fff] ">
-                  Return to Home
+                  {t('contact_succes_cta')}
                 </button>
               </Link>
             </div>

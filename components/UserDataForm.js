@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import NationalityPicker from './NationalityPicker';
+import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
   const [isTextValid, setIsTextValid] = useState(null);
   const [isEmailValid, setIsEmailValid] = useState(null);
   const [isPhoneValid, setIsPhoneValid] = useState(null);
   const [isHotelValid, setIsHotelValid] = useState(null);
+  const { t } = useTranslation();
 
   const verifyValidName = (e) => {
     //verifica que solo tenga letras de la a a la z
@@ -82,7 +85,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
                 verifyValidName(e);
               }}
             />
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">{t('contact_name')}:</label>
           </div>
         </div>
         <div className="container-input-field">
@@ -118,33 +121,17 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
                 verifyValidPhone(e);
               }}
             />
-            <label htmlFor="phone">Phone number:</label>
+            <label htmlFor="phone">{t('reserve_phone')}:</label>
           </div>
         </div>
         <NationalityPicker
           handleDataFormChange={handleDataFormChange}
           dataFormValues={dataFormValues}
         />
-        {/* <div className="container-input-field">
-          <div className={`input-field ${isHotelValid ? '' : ''}`}>
-            <div>
-              <input
-                type="text"
-                required={false}
-                id="name"
-                autoComplete="off"
-                onChange={(e) => {
-                  verifyValidHotel(e);
-                }}
-              />
-              <label for="name">Hotel / Accommodation:</label>
-            </div>
-          </div>
-        </div> */}
       </div>
       <div className="w-full flex justify-center items-end mt-4 mb-7">
         <textarea
-          placeholder="Hotel / Accommodation"
+          placeholder={t('reserve_hotel')}
           rows="4"
           cols="50"
           className="w-[260px] h-12 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
@@ -155,7 +142,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
       </div>
       <div className="w-full flex justify-center items-end mt-0">
         <textarea
-          placeholder="Observations"
+          placeholder={t('reserve_observation')}
           rows="4"
           cols="50"
           className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"

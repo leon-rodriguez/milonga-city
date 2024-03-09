@@ -1,10 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 //TODO mandar por objeto el valor del pais seleccionado
 const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
   const [countries, setCountries] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState('');
   const [showOptions, setShowOptions] = useState(false);
   const [isNationalityValid, setIsNationalityValid] = useState(false);
+  const { t } = useTranslation();
 
   const urlCountries =
     'https://referential.p.rapidapi.com/v1/country?fields=currency%2Ccurrency_num_code%2Ccurrency_code%2Ccontinent_code%2Ccurrency%2Ciso_a3%2Cdial_code&limit=250';
@@ -93,7 +95,7 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
             setShowOptions(true);
           }}
         />
-        <label htmlFor="nationality">Nationality:</label>
+        <label htmlFor="nationality">{t('reserve_nationality')}:</label>
         <div
           className={`absolute top-[45px] w-full max-h-[216px] border bg-white z-20 overflow-y-scroll shadow-2xl  shadow-[-1px 1px 24px -1px rgba(0,0,0,1)] rounded-lg transition-all duration-300 ease-out ${
             showOptions ? 'scale-100 visible' : 'scale-50 invisible'

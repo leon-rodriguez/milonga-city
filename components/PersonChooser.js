@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 
 const PersonChooser = (props) => {
   const [adults, setAdults] = useState(null);
+  const { t } = useTranslation();
   useEffect(() => {
     setAdults(props.min);
     props.onPersonChange(props.min);
@@ -71,7 +73,9 @@ const PersonChooser = (props) => {
         onClick={openSelecter}
         ref={outline}
       >
-        <div>{adults} Adults</div>
+        <div>
+          {adults} {t('input_adults')}
+        </div>
         <div className="text-xl">
           <BsFillPersonFill />
         </div>
@@ -81,7 +85,7 @@ const PersonChooser = (props) => {
         ref={adultSelecter}
       >
         <div className="flex justify-center items-center text-xl ml-4">
-          Adults
+          {t('input_adults')}
         </div>
         <div className="flex items-center justify-end">
           <div
