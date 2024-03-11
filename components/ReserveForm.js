@@ -34,7 +34,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     if (data) {
       if (data.pricepergroup) {
         setPrice(data.pricepergroup);
-      } else if (data.id === 1) {
+      } else if (data.id === 1 || data.id === 7) {
         switch (persons) {
           case 1:
             setPrice(data.pricefor1);
