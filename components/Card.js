@@ -129,6 +129,8 @@ const Card = ({ data }) => {
                 ? data.pricepergroup
                 : id === 1
                 ? data.pricefor2
+                : id === 7
+                ? data.pricefor2
                 : pricefor2 / 2}
             </div>
             <div className="flex justify-end text-sm">
