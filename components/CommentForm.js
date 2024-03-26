@@ -43,7 +43,28 @@ const CommentForm = ({ onReviewsChange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMsgWarning(true);
+    // setMsgWarning(true);
+    // const review = {
+    //   username: 'Catherine H',
+    //   body: comment,
+    //   publisheddate: '12-03-2023',
+    //   rating: rating,
+    //   bookings_id: 174,
+    // };
+
+    // fetch('/api/reviews', {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(review),
+    // }).then((response) => {
+    //   if (response.ok) {
+    //     console.log('tobo bom');
+    //   } else if (response.ok === false) {
+    //     console.log('fail on the db');
+    //   }
+    // });
   };
 
   return (
