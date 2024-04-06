@@ -36,6 +36,9 @@ const InformationExperience = ({ id, data }) => {
     } else if (i18n.language === 'en') {
       setDescription(data.extendeddescription_en);
       setDetails(data.extendeddetails_en);
+    } else if (i18n.language === 'de') {
+      setDescription(data.extendeddescription_de);
+      setDetails(data.extendeddetails_de);
     }
   }, [data, i18n.language]);
 

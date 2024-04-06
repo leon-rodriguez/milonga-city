@@ -19,6 +19,10 @@ const Card = ({ data }) => {
     title_es,
     body_es,
     cta_es,
+    // type_de,
+    title_de,
+    body_de,
+    cta_de,
   } = data;
 
   const [type, setType] = useState(type_en);
@@ -83,6 +87,11 @@ const Card = ({ data }) => {
       setCta(cta_en);
       setTitle(title_en);
       setBody(body_en);
+    } else if (i18n.language === 'de') {
+      // setType(type_de);
+      setCta(cta_de);
+      setTitle(title_de);
+      setBody(body_de);
     }
   }, [i18n.language]);
 

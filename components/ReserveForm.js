@@ -100,6 +100,9 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
     if (i18n.language === 'es') {
       setTitle(data.title_es);
     }
+    if (i18n.language === 'de') {
+      setTitle(data.title_de);
+    }
   }, [data, i18n.language]);
 
   const handleDateChange = (newValue) => {

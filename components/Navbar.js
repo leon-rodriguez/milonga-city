@@ -29,6 +29,10 @@ export function Navbar() {
       flagImg: 'Images/flags/argentina.png',
       language: 'Es',
     },
+    {
+      flagImg: 'Images/flags/germany.png',
+      language: 'De',
+    },
   ];
   const langPicker = useRef(null);
 

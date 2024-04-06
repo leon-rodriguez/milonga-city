@@ -8,6 +8,7 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import es from '../i18n/Spanish/es.json';
 import en from '../i18n/English/en.json';
+import de from '../i18n/German/de.json';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -28,6 +29,9 @@ i18next.use(initReactI18next).init({
     },
     es: {
       translation: es,
+    },
+    de: {
+      translation: de,
     },
   },
 });
