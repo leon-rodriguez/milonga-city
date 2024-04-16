@@ -1,11 +1,11 @@
-import logo from '../assets/logo-milonga-city.svg';
-import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
-import { FaFacebookF, FaTwitter, FaTripadvisor } from 'react-icons/fa';
-import { FaWhatsapp } from 'react-icons/fa';
-import { IoMailOutline } from 'react-icons/io5';
-import { MdOutlinePlace } from 'react-icons/md';
-import { RiInstagramFill } from 'react-icons/ri';
+import logo from "../assets/logo-milonga-city.svg";
+import Image from "next/image";
+import { useTranslation } from "react-i18next";
+import { FaFacebookF, FaTripadvisor } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoMailOutline, IoDocumentTextOutline } from "react-icons/io5";
+import { MdOutlinePlace } from "react-icons/md";
+import { RiInstagramFill } from "react-icons/ri";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -15,41 +15,41 @@ const Footer = () => {
       <div className=" min-[1300px]:px-[100px] bg-[#0088cc] h-96 grid grid-cols-4 max-lg:grid-cols-2 max-lg:grid-rows-2 max-lg:min-h-[750px] max-sm:grid-cols-1 max-sm:grid-rows-[2fr_2fr_1fr_2fr] max-sm:min-h-[1000px]">
         <div className="grid grid-rows-[128px_auto]  max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-center items-center text-3xl font-bold text-white max-sm:justify-center">
-            {t('footer_aboutus')}
+            {t("footer_aboutus")}
           </div>
           <div className="flex justify-center max-sm:justify-center">
             <div className="w-56 text-white font-bold leading-7">
-              {t('footer_aboutus_body')}
+              {t("footer_aboutus_body")}
             </div>
           </div>
         </div>
         <div className="grid grid-rows-[128px_auto]  max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-center items-center text-3xl font-bold text-white max-sm:justify-center">
-            {t('footer_activities')}
+            {t("footer_activities")}
           </div>
           <div className="flex justify-center max-sm:justify-center">
             <ul className="list-disc text-white font-bold list-inside leading-8">
               <li className="max-sm:flex justify-center">
-                <a>{t('footer_activities_item1')}</a>
+                <a>{t("footer_activities_item1")}</a>
               </li>
               <li className="max-sm:flex justify-center">
-                <a>{t('footer_activities_item2')}</a>
+                <a>{t("footer_activities_item2")}</a>
               </li>
               <li className="max-sm:flex justify-center">
-                <a>{t('footer_activities_item3')}</a>
+                <a>{t("footer_activities_item3")}</a>
               </li>
               <li className="max-sm:flex justify-center">
-                <a>{t('footer_activities_item4')}</a>
+                <a>{t("footer_activities_item4")}</a>
               </li>
               <li className="max-sm:flex justify-center">
-                <a>{t('footer_activities_item5')}</a>
+                <a>{t("footer_activities_item5")}</a>
               </li>
             </ul>
           </div>
         </div>
         <div className="grid grid-rows-[128px_auto] max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-center items-center text-3xl font-bold text-white max-sm:justify-center">
-            {t('footer_followus')}
+            {t("footer_followus")}
           </div>
           <div className="flex justify-center pb-10 max-sm:justify-center">
             <div className="text-white w-40 text-xl font-bold flex justify-center space-x-7">
@@ -76,7 +76,7 @@ const Footer = () => {
         </div>
         <div className="grid grid-rows-[128px_auto] max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-center items-center text-3xl font-bold text-white max-sm:justify-center">
-            {t('footer_contact')}
+            {t("footer_contact")}
           </div>
           <div className="flex justify-center mt-1 leading-8 text-white font-bold max-sm:justify-center">
             <ul className="space-y-4">
@@ -102,6 +102,12 @@ const Footer = () => {
                 <MdOutlinePlace className=" text-xl mr-4" />
                 <span className=" cursor-default">
                   Buenos Aires – Argentina
+                </span>
+              </li>
+              <li className="flex items-center">
+                <IoDocumentTextOutline className=" text-xl mr-4" />
+                <span className=" cursor-default">
+                  {t("footer_contact_file")}
                 </span>
               </li>
             </ul>
