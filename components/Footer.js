@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <div className="w-full">
-      <div className=" min-[1300px]:px-[100px] bg-[#0088cc] h-96 grid grid-cols-4 max-lg:grid-cols-2 max-lg:grid-rows-2 max-lg:min-h-[750px] max-sm:grid-cols-1 max-sm:grid-rows-[2fr_2fr_1fr_2fr] max-sm:min-h-[1000px]">
+      <div className=" min-[1300px]:px-[100px] bg-primary h-96 grid grid-cols-4 max-lg:grid-cols-2 max-lg:grid-rows-2 max-lg:min-h-[750px] max-sm:grid-cols-1 max-sm:grid-rows-[2fr_2fr_1fr_2fr] max-sm:min-h-[1000px]">
         <div className="grid grid-rows-[128px_auto]  max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-center items-center text-3xl font-bold text-white max-sm:justify-center">
             {t("footer_aboutus")}
@@ -57,13 +57,13 @@ const Footer = () => {
                 href="https://www.facebook.com/people/Milonga-City/100063789690031/"
                 className="cursor-default"
               >
-                <FaFacebookF className=" transition-all duration-300 hover:text-[#01bdba] cursor-pointer" />
+                <FaFacebookF className=" transition-all duration-300 hover:text-secondary cursor-pointer" />
               </a>
               <a
                 href="https://www.instagram.com/milongacity/"
                 className=" cursor-default"
               >
-                <RiInstagramFill className="cursor-pointer transition-all duration-300 hover:text-[#01bdba]" />
+                <RiInstagramFill className="cursor-pointer transition-all duration-300 hover:text-secondary" />
               </a>
               <a
                 href="https://www.tripadvisor.com.ar/Attraction_Review-g312741-d5796317-Reviews-Milonga_City-Buenos_Aires_Capital_Federal_District.html"
@@ -114,7 +114,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="h-20 bg-[#01bdba] max-sm:h-24 max-[420px]:h-36 w-full">
+      <div className="h-20 bg-secondary max-sm:h-24 max-[420px]:h-36 w-full">
         <div className="text-white h-20 w-full pl-14 pr-6 flex items-center justify-between max-[420px]:grid max-[420px]:grid-rows-2 max-[420px]:h-36 max-[420px]:p-0">
           <div className="flex flex-wrap  max-[420px]:justify-center">
             <div>Copyright 2023 - All Rights Reserved.</div>

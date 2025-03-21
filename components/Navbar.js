@@ -59,7 +59,7 @@ export function Navbar() {
 
   return (
     <div className="fixed z-[500] w-full">
-      <div className="h-8 bg-blue-600 flex justify-end space-x-3 pr-4 pt-1 text-white w-full">
+      <div className="h-8 bg-primary flex justify-end space-x-3 pr-4 pt-1 text-white w-full">
         <div>Milonga Travel</div>
         <div>1137303056</div>
         <div>+59 1137303056</div>
@@ -84,7 +84,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/"
-                className="transition-all ease duration-300 hover:text-[#01bdba]"
+                className="transition-all ease duration-300 hover:text-secondary"
               >
                 {t("navHome")}
               </Link>
@@ -93,14 +93,14 @@ export function Navbar() {
               {actualUrl === "/" ? (
                 <a
                   href="#milonga"
-                  className="transition-all ease duration-300 hover:text-[#01bdba]"
+                  className="transition-all ease duration-300 hover:text-secondary"
                 >
                   {t("navMilongas")}
                 </a>
               ) : (
                 <Link
                   href="/#milonga"
-                  className="transition-all ease duration-300 hover:text-[#01bdba]"
+                  className="transition-all ease duration-300 hover:text-secondary"
                 >
                   {t("navMilongas")}
                 </Link>
@@ -109,7 +109,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/contact"
-                className="transition-all ease duration-300 hover:text-[#01bdba]"
+                className="transition-all ease duration-300 hover:text-secondary"
               >
                 {t("navContact")}
               </Link>
@@ -228,7 +228,7 @@ export function NavbarMobile() {
         <ul className="h-[222px] text-2xl pb-8 flex flex-col justify-evenly">
           <Link href="/">
             <li
-              className="text-center transition-all ease duration-300 hover:text-[#01bdba]"
+              className="text-center transition-all ease duration-300 hover:text-secondary"
               onClick={openMenu}
             >
               {t("navHome")}
@@ -238,14 +238,14 @@ export function NavbarMobile() {
             {actualUrl === "/" ? (
               <a
                 href="#milonga"
-                className="transition-all ease duration-300 hover:text-[#01bdba]"
+                className="transition-all ease duration-300 hover:text-secondary"
               >
                 {t("navMilongas")}
               </a>
             ) : (
               <Link
                 href="/#milonga"
-                className="transition-all ease duration-300 hover:text-[#01bdba]"
+                className="transition-all ease duration-300 hover:text-secondary"
               >
                 {t("navMilongas")}
               </Link>
@@ -253,7 +253,7 @@ export function NavbarMobile() {
           </li>
           <Link href="/contact">
             <li
-              className="text-center transition-all ease duration-300 hover:text-[#01bdba]"
+              className="text-center transition-all ease duration-300 hover:text-secondary"
               onClick={openMenu}
             >
               {t("navContact")}

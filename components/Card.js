@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { useEffect, useState, useRef } from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-import { useIntersectionObserver } from '@uidotdev/usehooks';
-import { useTranslation } from 'react-i18next';
+import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useTranslation } from "react-i18next";
 
 const Card = ({ data }) => {
   const {
@@ -38,7 +38,7 @@ const Card = ({ data }) => {
   const [ref, entry] = useIntersectionObserver({
     threshold: 0,
     root: null,
-    rootMargin: '0px',
+    rootMargin: "0px",
   });
 
   const { t, i18n } = useTranslation();
@@ -77,17 +77,17 @@ const Card = ({ data }) => {
   }, [mouseHoverCard]);
 
   useEffect(() => {
-    if (i18n.language === 'es') {
+    if (i18n.language === "es") {
       setType(type_es);
       setCta(cta_es);
       setTitle(title_es);
       setBody(body_es);
-    } else if (i18n.language === 'en') {
+    } else if (i18n.language === "en") {
       setType(type_en);
       setCta(cta_en);
       setTitle(title_en);
       setBody(body_en);
-    } else if (i18n.language === 'de') {
+    } else if (i18n.language === "de") {
       // setType(type_de);
       setCta(cta_de);
       setTitle(title_de);
@@ -98,13 +98,13 @@ const Card = ({ data }) => {
   return (
     <Link
       href={{
-        pathname: '/Experience/[id]',
+        pathname: "/Experience/[id]",
         query: { id },
       }}
     >
       <div
         className={`w-[400px] h-[600px] p-2 mb-8 grid grid-rows-[5fr_2fr_5fr_auto] bg-[#fff] ease-out duration-500 hover:shadow-xl hover:shadow-gray-300 max-[420px]:w-full ${
-          animationShowed ? 'opacity-100' : 'opacity-0'
+          animationShowed ? "opacity-100" : "opacity-0"
         }`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -124,16 +124,16 @@ const Card = ({ data }) => {
         <div className="border-b border-gray-400 pt-2 grid grid-rows-[3fr_1fr]">
           <div className="text-sm text-[##1f2933] leading-7">{body}</div>
           <div className="flex items-start">
-            <button className="bg-[#0195e0] w-36 h-7 text-white text-center leading-7 text-xl rounded-md cursor-pointer ease-out duration-300 hover:bg-[#01bdba]">
+            <button className="bg-primary w-36 h-7 text-white text-center leading-7 text-xl rounded-md cursor-pointer ease-out duration-300 hover:bg-secondary">
               {cta}
             </button>
           </div>
         </div>
         <div className="grid grid-rows-{2} ">
-          <div className="text-sm">{t('cardPrice')}</div>
+          <div className="text-sm">{t("cardPrice")}</div>
           <div className="grid grid-cols-[1fr_2fr]">
             <div className="text-xl font-bold">
-              {currency}{' '}
+              {currency}{" "}
               {id === 2
                 ? data.pricepergroup
                 : id === 1
