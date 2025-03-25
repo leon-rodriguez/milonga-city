@@ -69,7 +69,7 @@ const Footer = () => {
                 href="https://www.tripadvisor.com.ar/Attraction_Review-g312741-d5796317-Reviews-Milonga_City-Buenos_Aires_Capital_Federal_District.html"
                 className="  cursor-default"
               >
-                <FaTripadvisor className="cursor-pointer transition-all duration-300 hover:text-[#01bdba]" />
+                <FaTripadvisor className="cursor-pointer transition-all duration-300 hover:text-secondary" />
               </a>
             </div>
           </div>
@@ -83,7 +83,7 @@ const Footer = () => {
               <li className="flex items-center">
                 <FaWhatsapp className=" text-xl mr-4" />
                 <a
-                  className=" transition-all duration-300 hover:text-[#01bdba]"
+                  className=" transition-all duration-300 hover:text-secondary"
                   href="https://wa.me/+5491137303056"
                 >
                   +54 911 37303056
@@ -92,7 +92,7 @@ const Footer = () => {
               <li className="flex items-center">
                 <IoMailOutline className=" text-xl mr-4" />
                 <a
-                  className=" transition-all duration-300 hover:text-[#01bdba]"
+                  className=" transition-all duration-300 hover:text-secondary"
                   href="mailto:info@milonga.city"
                 >
                   info@milonga.city

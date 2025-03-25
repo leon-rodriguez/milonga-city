@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         primary: "#1546CF",
         secondary: "#F15A24",
+        primary_light: "#3b6fff",
       },
       keyframes: {
         zoomOut: {

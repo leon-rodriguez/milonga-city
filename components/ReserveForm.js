@@ -1,13 +1,13 @@
-import Callendar from './Callendar';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import PersonChooser from './PersonChooser';
-import HourPicker from './HourPicker';
-import UserDataForm from './UserDataForm';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import Callendar from "./Callendar";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import PersonChooser from "./PersonChooser";
+import HourPicker from "./HourPicker";
+import UserDataForm from "./UserDataForm";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [price, setPrice] = useState(0);
@@ -18,15 +18,15 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   const [time, setTime] = useState(null);
   const [showContinueAvailable, setShowContinueAvailable] = useState(false);
   const [dataFormValues, setDataFormValues] = useState({
-    name: '',
-    mail: '',
-    phone: '',
-    nationality: '',
-    hotel: '',
-    observations: '',
+    name: "",
+    mail: "",
+    phone: "",
+    nationality: "",
+    hotel: "",
+    observations: "",
   });
   const [urlHash, setUrlHash] = useState(null);
-  const [warning, setWarning] = useState('');
+  const [warning, setWarning] = useState("");
   const router = useRouter();
   const { t, i18n } = useTranslation();
 
@@ -94,13 +94,13 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
 
   useEffect(() => {
     if (!data) return;
-    if (i18n.language === 'en') {
+    if (i18n.language === "en") {
       setTitle(data.title_en);
     }
-    if (i18n.language === 'es') {
+    if (i18n.language === "es") {
       setTitle(data.title_es);
     }
-    if (i18n.language === 'de') {
+    if (i18n.language === "de") {
       setTitle(data.title_de);
     }
   }, [data, i18n.language]);
@@ -147,10 +147,10 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
         observations: dataFormValues.observations,
       };
 
-      fetch('/api/bookings', {
-        method: 'PUT',
+      fetch("/api/bookings", {
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(bookingData),
       }).then((response) => {
@@ -159,28 +159,28 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             setUrlHash(resJson.data.url_hash);
           });
         } else if (response.ok === false) {
-          console.log('fail on the db');
+          console.log("fail on the db");
         }
       });
     } else {
-      setWarning(t('info_incorrect'));
+      setWarning(t("info_incorrect"));
     }
   };
 
   const handleContinueClick = () => {
     if (showReservForm === false && date && time && price && persons) {
       setShowReservForm(true);
-      setWarning('');
+      setWarning("");
     }
   };
 
   useEffect(() => {
     if (urlHash) {
       // console.log(urlHash);
-      fetch('/api/send/route', {
-        method: 'POST',
+      fetch("/api/send/route", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           reserveType: data.title,
@@ -194,8 +194,8 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           persons: persons,
           nationality: dataFormValues.nationality,
           observations: dataFormValues.observations,
-          emailType: 'reserve',
-          message: '',
+          emailType: "reserve",
+          message: "",
         }),
       }).then((response) => {
         // console.log(response);
@@ -207,7 +207,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
   return (
     <div
       className={`${
-        showReservForm ? 'h-[1170px]' : 'h-[590px]'
+        showReservForm ? "h-[1170px]" : "h-[590px]"
       } shadow-2xl rounded-3xl relative max-[735px]:order-1 border-2 max-[735px]:top-0 transition-all duration-300 min-[735px]:sticky top-[80px]`}
     >
       <form onSubmit={handleSubmit}>
@@ -229,7 +229,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
             <HourPicker
               id={id}
               dataExperience={data}
-              placeHolder={t('input_hour')}
+              placeHolder={t("input_hour")}
               selectedDay={date}
               onTimeChange={handleTimeChange}
             />
@@ -237,8 +237,8 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           <div className="h-[100px] flex justify-center items-center flex-col">
             <div className="text-xs w-4/5 text-orange-600">
               {data && data.id === 2
-                ? 'This rate corresponds to the transfer from Ezeiza Airport to Buenos Aires. For other services, send us your message.'
-                : ''}
+                ? "This rate corresponds to the transfer from Ezeiza Airport to Buenos Aires. For other services, send us your message."
+                : ""}
             </div>
             <div className="text-3xl font-bold mt-2">${price}</div>
           </div>
@@ -248,7 +248,7 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
               dataFormValues={dataFormValues}
             />
           ) : (
-            ''
+            ""
           )}
         </div>
         <div className="text-sm text-red-600 text-center mt-0">{warning}</div>
@@ -256,18 +256,18 @@ const ReserveForm = ({ data, id, minPersons, maxPersons }) => {
           <button
             className={`w-[200px] h-12 rounded-3xl flex justify-center items-center text-white text-xl cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 ${
               showContinueAvailable
-                ? 'bg-[#0088cc] hover:bg-[#0088ccbb]'
-                : 'bg-[#0088cc48] cursor-default'
+                ? "bg-primary hover:bg-primary_light"
+                : "bg-[#0088cc48] cursor-default"
             }`}
             onClick={handleContinueClick}
           >
-            {showReservForm ? t('reserve_reserve') : t('reserve_continue')}
+            {showReservForm ? t("reserve_reserve") : t("reserve_continue")}
           </button>
         </div>
         <div className="w-full flex justify-center items-end mt-4">
-          <Link href={'/contact'}>
-            <button className="w-[200px] h-12 bg-transparent border-2 border-[#0088cc] rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33] max-[920px]:h-10">
-              {t('reserve_message')}
+          <Link href={"/contact"}>
+            <button className="w-[200px] h-12 bg-transparent border-2 border-primary_light rounded-3xl flex justify-center items-center text-gray-700 text-md cursor-pointer transition-all duration-100 ease-in hover:bg-[#dddddd33] max-[920px]:h-10">
+              {t("reserve_message")}
             </button>
           </Link>
         </div>

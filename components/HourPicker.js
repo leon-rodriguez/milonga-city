@@ -1,6 +1,6 @@
-import { AiOutlineClockCircle } from 'react-icons/ai';
-import { useState, useEffect, useRef } from 'react';
-import { getExperiences } from '../lib/experiences';
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { useState, useEffect, useRef } from "react";
+import { getExperiences } from "../lib/experiences";
 
 const getBookings = (date, experience) => {
   return fetch(
@@ -12,14 +12,14 @@ const getBookings = (date, experience) => {
 
 const getAvailableHours = (minhour, maxhour, step, takenHours) => {
   const takenHoursParsed = takenHours.map((item) => {
-    const [_, time] = item.date.split('T');
-    const [hour, minute] = time.split(':');
+    const [_, time] = item.date.split("T");
+    const [hour, minute] = time.split(":");
     return `${hour}:${minute}`;
   });
 
   const hoursToPrint = [];
-  let [parsedMinHour, parsedMinMinute] = minhour.split(':');
-  let [parsedMaxHour, parsedMaxMinute] = maxhour.split(':');
+  let [parsedMinHour, parsedMinMinute] = minhour.split(":");
+  let [parsedMaxHour, parsedMaxMinute] = maxhour.split(":");
   parsedMinHour = parseInt(parsedMinHour);
   parsedMaxHour = parseInt(parsedMaxHour);
   parsedMinMinute = parseInt(parsedMinMinute);
@@ -96,9 +96,9 @@ const HourPicker = ({
   }, [id, selectedDay]);
 
   useEffect(() => {
-    document.addEventListener('click', handleOutsideClick, true);
+    document.addEventListener("click", handleOutsideClick, true);
     return () => {
-      document.removeEventListener('click', handleOutsideClick, true);
+      document.removeEventListener("click", handleOutsideClick, true);
     };
   }, []);
 
@@ -111,12 +111,12 @@ const HourPicker = ({
 
   const handlePicker = () => {
     if (change.current === false) {
-      picker.current.classList.remove('opacity-0', 'scale-0');
-      picker.current.classList.add('opacity-100', 'scale-100');
+      picker.current.classList.remove("opacity-0", "scale-0");
+      picker.current.classList.add("opacity-100", "scale-100");
       change.current = true;
     } else {
-      picker.current.classList.remove('opacity-100', 'scale-100');
-      picker.current.classList.add('opacity-0', 'scale-0');
+      picker.current.classList.remove("opacity-100", "scale-100");
+      picker.current.classList.add("opacity-0", "scale-0");
       change.current = false;
     }
   };
@@ -135,7 +135,7 @@ const HourPicker = ({
     >
       <div
         className={`cursor-pointer ${
-          hours ? '' : 'text-gray-300 cursor-default'
+          hours ? "" : "text-gray-300 cursor-default"
         }`}
       >
         {hourSelected === null ? placeHolder : hourSelected}
@@ -152,11 +152,11 @@ const HourPicker = ({
           hours.map((item, index) => (
             <div
               className={`w-full h-12 p-4 flex justify-start items-center hover:bg-[#f5f5f5] ${
-                item.hour === hourSelected ? 'text-[#0088cc]' : ''
+                item.hour === hourSelected ? "text-primary" : ""
               } ${
                 item.isAvailable === false
-                  ? 'bg-[#f5f5f5] cursor-default text-gray-400'
-                  : 'bg-white cursor-pointer text-black'
+                  ? "bg-[#f5f5f5] cursor-default text-gray-400"
+                  : "bg-white cursor-pointer text-black"
               }`}
               key={index}
               onClick={() => {
@@ -165,7 +165,7 @@ const HourPicker = ({
             >
               <div
                 className={`w-5 h-5 rounded-full border border-slate-300 ${
-                  item.hour === hourSelected ? 'bg-[#0088cc]' : 'bg-transparent'
+                  item.hour === hourSelected ? "bg-primary" : "bg-transparent"
                 }`}
               ></div>
               <div className="ml-3">{item.hour}</div>
