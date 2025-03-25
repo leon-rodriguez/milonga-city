@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useState } from "react";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {
   const [isTextValid, setIsTextValid] = useState(null);
@@ -10,7 +10,7 @@ const ContactForm = () => {
   const [mail, setMail] = useState(null);
   const [phone, setPhone] = useState(null);
   const [isMailSent, setIsMailSent] = useState(false);
-  const [warning, setWarning] = useState('');
+  const [warning, setWarning] = useState("");
 
   const { t } = useTranslation();
 
@@ -41,33 +41,33 @@ const ContactForm = () => {
 
   const handleSubmit = async () => {
     if (message && isTextValid && isEmailValid) {
-      fetch('/api/send/route', {
-        method: 'POST',
+      fetch("/api/send/route", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          reserveType: '',
+          reserveType: "",
           name: name,
           mail: mail,
           date: ``,
-          hour: '',
+          hour: "",
           phone: phone,
-          hotel: '',
-          price: '',
-          persons: '',
-          nationality: '',
-          observations: '',
-          emailType: 'contact',
+          hotel: "",
+          price: "",
+          persons: "",
+          nationality: "",
+          observations: "",
+          emailType: "contact",
           message: message,
         }),
       }).then((response) => {
         // console.log(response);
       });
-      const res = await fetch('/api/messages', {
-        method: 'PUT',
+      const res = await fetch("/api/messages", {
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           message: message,
@@ -79,10 +79,10 @@ const ContactForm = () => {
       if (res.ok) {
         setIsMailSent(true);
       } else if (!res.ok) {
-        console.log('fail on the database');
+        console.log("fail on the database");
       }
     } else {
-      setWarning(t('info_incorrect'));
+      setWarning(t("info_incorrect"));
     }
   };
 
@@ -92,17 +92,17 @@ const ContactForm = () => {
         <div className=" max-w-[600px] h-[800px] mx-auto border rounded-md shadow-md pt-4">
           <div className="">
             <h3 className="text-3xl font-semibold text-center">
-              {t('contact_title')}
+              {t("contact_title")}
             </h3>
             <h3 className="text-md text-center mt-4 text-[#8d8d8f]">
-              {t('contact_subtitle')}
+              {t("contact_subtitle")}
             </h3>
           </div>
           <div className=" pt-12">
             <div className="container-input-field">
               <div
                 className={`${
-                  isTextValid ? 'input-field' : 'input-field-incorrect'
+                  isTextValid ? "input-field" : "input-field-incorrect"
                 }`}
               >
                 <input
@@ -113,13 +113,13 @@ const ContactForm = () => {
                     verifyValidName(e);
                   }}
                 />
-                <label htmlFor="name">{t('contact_name')}:</label>
+                <label htmlFor="name">{t("contact_name")}:</label>
               </div>
             </div>
             <div className="container-input-field my-20">
               <div
                 className={`${
-                  isEmailValid ? 'input-field' : 'input-field-incorrect'
+                  isEmailValid ? "input-field" : "input-field-incorrect"
                 }`}
               >
                 <input
@@ -130,7 +130,7 @@ const ContactForm = () => {
                     verifyValidEmail(e);
                   }}
                 />
-                <label htmlFor="email">{t('contact_email')}:</label>
+                <label htmlFor="email">{t("contact_email")}:</label>
               </div>
             </div>
             <div className="container-input-field">
@@ -143,12 +143,12 @@ const ContactForm = () => {
                     handlePhone(e);
                   }}
                 />
-                <label htmlFor="phone">{t('contact_phone')}</label>
+                <label htmlFor="phone">{t("contact_phone")}</label>
               </div>
             </div>
             <div className="w-full flex justify-center items-end mt-20">
               <textarea
-                placeholder={t('contact_placeholder')}
+                placeholder={t("contact_placeholder")}
                 rows="4"
                 cols="50"
                 className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
@@ -160,10 +160,10 @@ const ContactForm = () => {
             </div>
             <div className="w-full flex justify-center items-end">
               <button
-                className="w-[130px] h-12 bg-[#0088cc] rounded-3xl flex justify-center items-center text-white text-md cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 hover:bg-[#0088ccbb]"
+                className="w-[130px] h-12 bg-primary rounded-3xl flex justify-center items-center text-white text-md cursor-pointer transition-all duration-100 ease-in max-[920px]:h-10 hover:bg-primary_light"
                 onClick={handleSubmit}
               >
-                {t('contact_cta')}
+                {t("contact_cta")}
               </button>
             </div>
           </div>
@@ -191,14 +191,14 @@ const ContactForm = () => {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
               <h2 className="text-3xl font-semibold text-gray-900 mb-2">
-                {t('contact_succes_title')}
+                {t("contact_succes_title")}
               </h2>
               <p className="text-gray-600 text-md">
-                {t('contact_succes_subtitle')}
+                {t("contact_succes_subtitle")}
               </p>
               <Link href="/">
                 <button className="w-[200px] mx-auto mt-8 h-12 rounded-3xl flex justify-center items-center border-2 border-black text-black text-xl font-bold cursor-pointer transition-all duration-100 ease-in bg-transparent hover:bg-[#000] hover:text-[#fff] ">
-                  {t('contact_succes_cta')}
+                  {t("contact_succes_cta")}
                 </button>
               </Link>
             </div>

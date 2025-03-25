@@ -39,13 +39,15 @@
 
 .input-field input:focus,
 .input-field input:valid {
-  border-color: #0088cc;
+  /*border-color: #0088cc;*/
+  @apply border-primary_light;
 }
 .input-field input:focus ~ label,
 .input-field input:valid ~ label {
   font-size: 14px;
   top: -24px;
-  color: #0088cc;
+  /*color: #0088cc*/
+  @apply text-primary_light;
 }
 
 /*******************************/
