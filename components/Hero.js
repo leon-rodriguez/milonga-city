@@ -28,7 +28,7 @@ export default function Hero() {
   }, []);
   return (
     <div className="w-full h-screen overflow-hidden relative">
-      <div className="absolute top-0 left-0 z-20 w-screen h-screen bg-[#00000066]"></div>
+      <div className="absolute top-0 left-0 z-20 w-screen h-screen bg-[#00000022]"></div>
       <div className="h-screen w-screen flex items-center justify-end pt-[250px] pr-[500px] max-[900px]:pr-[350px] max-[751px]:pr-20 max-[450px]:pr-5">
         <div className="wrapper">
           <div className="words">
@@ -41,41 +41,18 @@ export default function Hero() {
           <p>TANGO</p>
         </div>
       </div>
-      {/* <video
-        muted
-        loop
-        autoPlay
-        className="w-full h-full object-cover absolute top-0 left-0"
-        ref={parallax.ref}
-      >
-        <source src="/Images/background.mp4" type="video/mp4"></source>
-      </video> */}
-      {/* <img
-        src="/Images/home/home1.jpg"
-        ref={parallax.ref}
-        className="w-full h-full object-cover absolute top-0 left-0"
-      />{" "} */}
-      {IMAGES.map((src, index) => (
-        <img
-          key={index}
-          ref={parallax.ref}
-          src={src}
-          alt={`Imagen ${index + 1}`}
-          className={`absolute w-full h-full top-0 left-0 object-cover transition-all duration-1000 ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
-      {/* {IMAGES.map((image, index) => {
-        return (
+      <div className="w-full h-full absolute top-0 left-0" ref={parallax.ref}>
+        {IMAGES.map((src, index) => (
           <img
-            src="/Images/home/home2.jpg"
-            ref={parallax.ref}
             key={index}
-            className="w-full h-full object-cover absolute top-0 left-0"
+            src={src}
+            alt={`Imagen ${index + 1}`}
+            className={`absolute w-full h-full top-0 left-0 object-cover transition-all duration-1000 ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
           />
-        );
-      })} */}
+        ))}
+      </div>
     </div>
   );
 }

@@ -60,7 +60,7 @@ export function Navbar() {
   return (
     <nav
       className={`${
-        scrollY > maxYScroll ? "p-4 text-black" : "p-9 text-white"
+        true ? "p-4 text-secondary" : "p-9 text-white"
       } font-bold text-xl w-full z-[500] fixed transition-[padding] duration-500 ease-out`}
     >
       <div className="flex w-full justify-between relative z-40">
@@ -168,9 +168,7 @@ export function Navbar() {
       </div>
       <div
         className={`${
-          scrollY > maxYScroll
-            ? "bg-white h-20"
-            : "bg-gradient-to-b from-black opacity-50 h-40"
+          true ? "bg-white h-20" : "bg-gradient-to-b from-black opacity-50 h-40"
         } top-0 left-0 w-full  absolute z-30 transition-all duration-500 ease-out`}
       ></div>
     </nav>
