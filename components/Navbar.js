@@ -166,11 +166,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
-      <div
-        className={`${
-          true ? "bg-white h-20" : "bg-gradient-to-b from-black opacity-50 h-40"
-        } top-0 left-0 w-full  absolute z-30 transition-all duration-500 ease-out`}
-      ></div>
+      <div className="bg-white shadow-md h-20 top-0 left-0 w-full absolute z-30 transition-all duration-500 ease-out"></div>
     </nav>
   );
 }
