@@ -1,9 +1,10 @@
-import Head from 'next/head';
-import Hero from '../components/Hero';
-import HomeExperiences from '../components/HomeExperiences';
-import Footer from '../components/Footer';
-import WhatsappButton from '../components/WhatsappButton';
-import AboutMilongas from '../components/AboutMilongas';
+import Head from "next/head";
+import Hero from "../components/Hero";
+import HomeExperiences from "../components/HomeExperiences";
+import Footer from "../components/Footer";
+import WhatsappButton from "../components/WhatsappButton";
+import AboutMilongas from "../components/AboutMilongas";
+import BannerInternational from "../components/BannerInternational";
 
 export default function Home() {
   return (
@@ -16,6 +17,9 @@ export default function Home() {
       </Head>
       <section className="text-3xl">
         <Hero />
+      </section>
+      <section>
+        <BannerInternational />
       </section>
       <section>
         <HomeExperiences />
