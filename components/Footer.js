@@ -114,8 +114,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="h-20 bg-secondary max-sm:h-24 max-[420px]:h-36 w-full">
-        <div className="text-white h-20 w-full pl-20 pr-6 flex items-center justify-between max-[420px]:grid max-[420px]:grid-rows-2 max-[420px]:h-36 max-[420px]:p-0">
+      <div className="h-20 bg-secondary max-sm:h-24 max-[420px]:h-36 w-full px-20">
+        <div className="text-white h-20 w-full flex items-center justify-between max-[420px]:grid max-[420px]:grid-rows-2 max-[420px]:h-36 max-[420px]:p-0">
           <div className="flex flex-wrap  max-[420px]:justify-center">
             <div>Copyright 2023 - All Rights Reserved.</div>
             <div>Developed by León Rodriguez</div>

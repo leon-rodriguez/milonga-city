@@ -22,26 +22,29 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % IMAGES.length);
-    }, 2000); // Cambia cada 2 segundos
+    }, 3500);
 
     return () => clearInterval(interval);
   }, []);
   return (
     <div className="w-full h-screen overflow-hidden relative">
       <div className="absolute top-0 left-0 z-20 w-screen h-screen bg-[#00000022]"></div>
-      <div className="h-screen w-screen flex items-center justify-end pt-[250px] pr-[500px] max-[900px]:pr-[350px] max-[751px]:pr-20 max-[450px]:pr-5">
-        <div className="wrapper">
-          <div className="words">
-            <span>{t("heroWord1")}</span>
-            <span>{t("heroWord2")}</span>
-            <span>{t("heroWord3")}</span>
-            <span>{t("heroWord4")}</span>
-            <span>{t("heroWord5")}</span>
-          </div>
-          <p>TANGO</p>
+      <div className="h-screen w-screen flex items-center justify-center ">
+        <div className="relative z-30">
+          <h1 className=" text-center text-white text-6xl font-bold">
+            Viaja por <span className="text-secondary">Argentina</span> y el{" "}
+            <span className="text-secondary">Mundo</span>
+          </h1>
+          <h2 className="mt-4 text-white text-2xl font-bold text-center">
+            Cotiza y reserva Vuelo, Hoteles, Circuitos, Cruceros, Paquetes y
+            Excursiones en pocos minutos y al mejor precio!
+          </h2>
         </div>
       </div>
-      <div className="w-full h-full absolute top-0 left-0" ref={parallax.ref}>
+      <div
+        className="w-full h-full absolute top-0 left-0 -z-10"
+        ref={parallax.ref}
+      >
         {IMAGES.map((src, index) => (
           <img
             key={index}
