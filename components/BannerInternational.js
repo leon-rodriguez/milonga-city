@@ -1,6 +1,6 @@
 const BannerInternational = () => {
   return (
-    <div className="bg-gray-100 w-full h-72 px-6">
+    <div className="bg-gray-100 w-full h-72 px-20">
       <h1 className="text-center font-bold text-4xl pt-2">
         Viaja Internacional
       </h1>

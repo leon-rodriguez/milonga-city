@@ -60,7 +60,7 @@ export function Navbar() {
   return (
     <nav
       className={`${
-        true ? "p-4 text-secondary" : "p-9 text-white"
+        true ? "pt-4 px-20 text-secondary" : "p-9 text-white"
       } font-bold text-xl w-full z-[500] fixed transition-[padding] duration-500 ease-out`}
     >
       <div className="flex w-full justify-between relative z-40">
@@ -108,7 +108,7 @@ export function Navbar() {
             </Link>
           </li>
         </ul>
-        <div className="w-32 h-7 justify-evenly grid grid-cols-[1fr_3fr_3fr] ">
+        <div className="w-28 h-7 justify-evenly grid grid-cols-[1fr_1fr_1fr] ">
           <div
             className="flex justify-end items-center cursor-pointer"
             onClick={() => {
@@ -118,7 +118,7 @@ export function Navbar() {
             {showLangOptions ? <IoIosArrowUp /> : <IoIosArrowDown />}
           </div>
           <div
-            className=" h-7 flex justify-center cursor-pointer"
+            className=" h-7 flex justify-end cursor-pointer"
             onClick={() => {
               setShowLangOptions(!showLangOptions);
             }}
@@ -129,7 +129,7 @@ export function Navbar() {
             />
           </div>
           <div
-            className="h-7 flex items-center cursor-pointer"
+            className="h-7 flex items-center justify-end cursor-pointer"
             onClick={() => {
               setShowLangOptions(!showLangOptions);
             }}

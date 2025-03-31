@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import Card from './Card.js';
+import { useEffect, useState } from "react";
+import Card from "./Card.js";
 
 const ContainerExperiences = (props) => {
   const [data, setData] = useState(null);
@@ -16,8 +16,8 @@ const ContainerExperiences = (props) => {
   return (
     <div className="w-full min-h-auto">
       <div className="bg-[#f0f0f0] grid grid-cols-3 gap-y-9 w-2/3 p-11 mx-auto max-[1800px]:grid-cols-2 max-[1240px]:grid-cols-1 max-[1240px]:w-2/4 max-[720px]:w-full">
-        {!data && 'cargando :('}
-        {data && data.length === 0 && 'no hay experiencias disponibles'}
+        {!data && "cargando :("}
+        {data && data.length === 0 && "no hay experiencias disponibles"}
         {data &&
           data.length > 0 &&
           data.map((item) => (

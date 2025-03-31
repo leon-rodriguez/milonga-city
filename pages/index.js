@@ -24,9 +24,9 @@ export default function Home() {
       <section>
         <HomeExperiences />
       </section>
-      <section>
+      {/* <section>
         <AboutMilongas />
-      </section>
+      </section> */}
       <section>
         <Footer />
         <WhatsappButton />
