@@ -58,12 +58,8 @@ export function Navbar() {
   };
 
   return (
-    <nav
-      className={`${
-        true ? "pt-4 px-20 text-secondary" : "p-9 text-white"
-      } font-bold text-xl w-full z-[500] fixed transition-[padding] duration-500 ease-out`}
-    >
-      <div className="flex w-full justify-between relative z-40">
+    <nav className="px-20 text-black font-light text-md w-full z-[500] fixed transition-[padding] duration-500 ease-out">
+      <div className="flex w-full h-20 justify-between items-center relative z-40">
         <Link href="/">
           <Image
             src={logo}
@@ -73,7 +69,7 @@ export function Navbar() {
             } h-auto object-cover  transition-all duration-500 ease-out`}
           />
         </Link>
-        <ul className="flex justify-center h-[60px]">
+        <ul className="flex justify-center items-center h-20 space-x-5">
           <li>
             <Link
               href="/"
@@ -82,7 +78,7 @@ export function Navbar() {
               {t("navHome")}
             </Link>
           </li>
-          <li className="flex justify-start  px-4 mx-4">
+          <li className="flex justify-start">
             {actualUrl === "/" ? (
               <a
                 href="#milonga"
@@ -98,6 +94,14 @@ export function Navbar() {
                 {t("navMilongas")}
               </Link>
             )}
+          </li>
+          <li>
+            <Link
+              href="/experiences"
+              className="transition-all ease duration-300 hover:text-secondary"
+            >
+              {t("navExperiences")}
+            </Link>
           </li>
           <li>
             <Link
