@@ -19,14 +19,24 @@ export default function Home() {
         <Hero />
       </section>
       <section>
-        <BannerInternational />
+        <BannerInternational
+          title="Viaje Internacional"
+          src="/Images/home/banner.jpg"
+          description="Las mejores tarifas de aereos, hoteles, traslados, circuitos excursionesy mucho mas!"
+        />
       </section>
       <section>
-        <HomeExperiences />
+        <BannerInternational
+          title="Viaje Internacional"
+          src="/Images/home/banner.jpg"
+        />
       </section>
-      {/* <section>
-        <AboutMilongas />
-      </section> */}
+      <section>
+        <BannerInternational
+          title="Viaje Internacional"
+          src="/Images/home/banner.jpg"
+        />
+      </section>
       <section>
         <Footer />
         <WhatsappButton />
