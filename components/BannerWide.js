@@ -1,6 +1,10 @@
-const BannerInternational = ({ title, description, src, cta }) => {
+const BannerWide = ({ title, description, src, cta }) => {
   return (
-    <div className="bg-gray-100 w-full px-20">
+    <div className="w-full px-20 mt-20">
+      <h1 className="text-center font-bold text-2xl mb-8">
+        Viajá por el mundo tranquilo con todo organizado con nuestros circuitos
+        especiales
+      </h1>
       <div className="mt-4 relative flex justify-center items-start cursor-pointer rounded-lg overflow-hidden group">
         <img
           src={src}
@@ -21,4 +25,4 @@ const BannerInternational = ({ title, description, src, cta }) => {
   );
 };
 
-export default BannerInternational;
+export default BannerWide;
