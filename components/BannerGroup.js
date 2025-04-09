@@ -4,7 +4,10 @@ const BannerGroup = ({ title, srcs }) => {
       <h1 className="text-center font-bold text-2xl mb-8">{title}</h1>
       <div className={`w-full grid grid-cols-${srcs.length} h-[400px] gap-4`}>
         {srcs.map((src, index) => (
-          <div className="overflow-hidden relative flex justify-center items-center group">
+          <div
+            className="overflow-hidden relative flex justify-center items-center group"
+            key={index}
+          >
             <img
               src={src}
               className="h-full w-full object-cover rounded-lg ease-out duration-700 group-hover:scale-110"

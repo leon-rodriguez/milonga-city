@@ -20,12 +20,16 @@ const HomeExperiences = () => {
   }, []);
 
   return (
-    <article className=" pt-6 px-20 max-[420px]:px-0 bg-[#f0f0f0] min-h-[750px]">
+    <article className=" pt-6 px-20 max-[420px]:px-0 bg-[#f0f0f0] min-h-screen">
       <h1 className="text-center font-bold text-4xl mb-2">
         {t("homeExperiencesTitle")}
       </h1>
       <h3 className="text-center text-lg mb-8">{t("homeExperiencesDesc")}</h3>
-      <div className="flex justify-between flex-wrap">
+      <div
+        className={`flex flex-wrap ${
+          !data ? "justify-center" : "justify-between"
+        }`}
+      >
         {!data && <LoaderSpinner size={80} />}
         {data && data.length === 0 && "Experiences aren`t available"}
         {data &&
