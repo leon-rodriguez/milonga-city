@@ -58,7 +58,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="px-20 text-black font-light text-md w-full z-[500] fixed transition-[padding] duration-500 ease-out">
+    <nav className="px-20 max-[1000px]:px-4 text-black font-light text-md w-full z-[500] fixed transition-[padding] duration-500 ease-out">
       <div className="flex w-full h-20 justify-between items-center relative z-40">
         <Link href="/">
           <Image
