@@ -1,7 +1,7 @@
-import { RxDoubleArrowDown, RxDoubleArrowUp } from 'react-icons/rx';
-import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { RxDoubleArrowDown, RxDoubleArrowUp } from "react-icons/rx";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const BookingPayed = ({ data, date, hour }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -9,8 +9,8 @@ const BookingPayed = ({ data, date, hour }) => {
 
   return (
     <div
-      className={`w-full shadow-lg flex justify-center items-start bg-gray-100 ${
-        showDetails ? ' h-[750px]' : ' h-[700px]'
+      className={`w-full shadow-lg flex justify-center items-start bg-white ${
+        showDetails ? " h-[750px]" : " h-[700px]"
       }`}
     >
       <div
@@ -19,7 +19,7 @@ const BookingPayed = ({ data, date, hour }) => {
       >
         <div className="flex flex-col space-y-1.5 p-6">
           <h3 className="font-semibold tracking-tight text-2xl">
-            {t('reserve_succes_title')}
+            {t("reserve_succes_title")}
           </h3>
         </div>
         <div className=" pt-10 flex flex-col items-center space-y-4">
@@ -38,30 +38,30 @@ const BookingPayed = ({ data, date, hour }) => {
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
           <p className="text-xl text-gray-700">
-            {t('reserve_succes_subtitle')}
+            {t("reserve_succes_subtitle")}
           </p>
           <p className="max-w-[425px] text-md text-gray-600">
-            {t('reserve_succes_body')}
+            {t("reserve_succes_body")}
           </p>
         </div>
         <div
           className={` transition-all duration-300 ease-in ${
-            showDetails ? ' visible' : ' hidden'
+            showDetails ? " visible" : " hidden"
           }  cursor-default mt-8`}
         >
-          <h1 className="text-2xl font-bold">{t('booking_details')}:</h1>
+          <h1 className="text-2xl font-bold">{t("booking_details")}:</h1>
           <div className=" gap-3 grid">
             <div className="text-left pl-[75px]">
-              <span className="text-2xl mr-4">{t('booking_price')}: </span>
+              <span className="text-2xl mr-4">{t("booking_price")}: </span>
               <span className="text-xl text-gray-500">$</span>
               <span className="text-xl text-gray-500">{data.price}</span>
             </div>
             <div className="text-left pl-[75px]">
-              <span className="text-2xl mr-4">{t('booking_date')}: </span>
+              <span className="text-2xl mr-4">{t("booking_date")}: </span>
               <span className="text-xl text-gray-500">{date}</span>
             </div>
             <div className="text-left pl-[75px]">
-              <span className="text-2xl mr-4">{t('booking_hour')}: </span>
+              <span className="text-2xl mr-4">{t("booking_hour")}: </span>
               <span className="text-xl text-gray-500">{hour}</span>
             </div>
           </div>
@@ -69,7 +69,7 @@ const BookingPayed = ({ data, date, hour }) => {
         <div className="w-full flex items-center justify-center mt-12">
           <Link href="/">
             <button className="w-[200px] h-12 rounded-3xl flex justify-center items-center border-2 border-black text-black text-xl font-bold cursor-pointer transition-all duration-100 ease-in bg-transparent hover:bg-[#fff]/80 ">
-              {t('contact_succes_cta')}
+              {t("contact_succes_cta")}
             </button>
           </Link>
         </div>
@@ -80,7 +80,7 @@ const BookingPayed = ({ data, date, hour }) => {
               setShowDetails(!showDetails);
             }}
           >
-            {t('reserve_succes_details')}
+            {t("reserve_succes_details")}
             {showDetails ? (
               <RxDoubleArrowUp className="text-white ml-2" />
             ) : (

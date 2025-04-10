@@ -9,19 +9,12 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
   const { t } = useTranslation();
 
   const urlCountries =
-    "https://referential.p.rapidapi.com/v1/country?fields=currency%2Ccurrency_num_code%2Ccurrency_code%2Ccontinent_code%2Ccurrency%2Ciso_a3%2Cdial_code&limit=250";
-
+    "https://countrywise.p.rapidapi.com/?country=all&fields=name";
   const options = {
     method: "GET",
-    url: "https://referential.p.rapidapi.com/v1/country",
-    params: {
-      fields:
-        "currency,currency_num_code,currency_code,continent_code,currency,iso_a3,dial_code",
-      limit: "250",
-    },
     headers: {
-      "X-RapidAPI-Key": "6b6a7b5ed6mshf1dd120e4460f50p14df31jsn71787f59f979",
-      "X-RapidAPI-Host": "referential.p.rapidapi.com",
+      "x-rapidapi-key": "6b6a7b5ed6mshf1dd120e4460f50p14df31jsn71787f59f979",
+      "x-rapidapi-host": "countrywise.p.rapidapi.com",
     },
   };
 
@@ -31,7 +24,7 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
         return results.json();
       })
       .then((results) => {
-        setCountries(results.sort((a, b) => a.value.localeCompare(b.value)));
+        setCountries(results.sort((a, b) => a.name.localeCompare(b.name)));
       });
   }, []);
 
@@ -65,7 +58,7 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
     let flag = true;
     setSelectedCountry(e.target.value);
     countries.map((item) => {
-      if (item.value.toLowerCase() === e.target.value.toLowerCase()) {
+      if (item.name.toLowerCase() === e.target.name.toLowerCase()) {
         setIsNationalityValid(true);
         flag = false;
       }
@@ -105,23 +98,23 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
             countries.length > 0 &&
             countries.map((item, index) => {
               if (
-                item.value
+                item.name
                   .toLowerCase()
                   .startsWith(selectedCountry.toLowerCase())
               ) {
-                console.log(item.value);
+                console.log(item.name);
                 return (
                   <div
                     className={`w-full h-12 p-4 flex justify-start items-center hover:bg-[#f5f5f5] cursor-pointer`}
                     onClick={() => {
-                      handleCountrySelected(item.value);
+                      handleCountrySelected(item.name);
                     }}
                     key={index}
                   >
                     <div
                       className={`w-5 h-5 rounded-full border border-slate-300 `}
                     ></div>
-                    <div className="ml-3">{item.value}</div>
+                    <div className="ml-3">{item.name}</div>
                   </div>
                 );
               }
