@@ -27,7 +27,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="w-full h-screen overflow-hidden relative">
+    <div className="w-full h-screen overflow-hidden relative mb-20">
       <div className="absolute top-0 left-0 z-20 w-screen h-screen bg-[#00000022]"></div>
       <div className="h-screen w-screen flex items-center justify-center ">
         <div className="relative z-30">

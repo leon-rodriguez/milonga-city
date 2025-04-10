@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Footer from '../../../components/Footer';
-import HeroExperience from '../../../components/HeroExperience';
-import WhatsappButton from '../../../components/WhatsappButton';
-import ContainerExperience from '../../../components/ContainerExperience';
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import Head from "next/head";
+import Footer from "../../../components/Footer";
+import HeroExperience from "../../../components/HeroExperience";
+import WhatsappButton from "../../../components/WhatsappButton";
+import ContainerExperience from "../../../components/ContainerExperience";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const Experience = () => {
   const router = useRouter();
@@ -32,9 +32,9 @@ const Experience = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section>
+      {/* <section>
         <HeroExperience id={id} />
-      </section>
+      </section> */}
       <section className="w-full flex justify-center bg-[#f0f0f0]">
         <ContainerExperience id={id} />
       </section>

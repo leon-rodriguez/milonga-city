@@ -1,6 +1,6 @@
-import GalleryExperience from './GalleryExperience';
-import InformationExperience from './InformationExperience';
-import { useState, useEffect } from 'react';
+import GalleryExperience from "./GalleryExperience";
+import InformationExperience from "./InformationExperience";
+import { useState, useEffect } from "react";
 
 const ContainerExperience = ({ id }) => {
   const [data, setData] = useState();
@@ -17,7 +17,7 @@ const ContainerExperience = ({ id }) => {
   }, [id]);
 
   return (
-    <div className="min-h-screen w-[1280px] bg-white pt-2">
+    <div className="min-h-screen w-[1280px] bg-white pt-20 ">
       <GalleryExperience data={data} />
       <InformationExperience id={id} data={data} />
     </div>

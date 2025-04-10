@@ -11,7 +11,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full mt-20">
+    <div className="w-full">
       <div className=" min-[1300px]:px-20 bg-primary h-96 grid grid-cols-4 max-lg:grid-cols-2 max-lg:grid-rows-2 max-lg:min-h-[750px] max-sm:grid-cols-1 max-sm:grid-rows-[2fr_2fr_1fr_2fr] max-sm:min-h-[1000px]">
         <div className="grid grid-rows-[128px_auto]  max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-start items-center text-3xl font-bold text-white max-sm:justify-center">

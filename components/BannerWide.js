@@ -1,6 +1,6 @@
 const BannerWide = ({ title, description, src, cta }) => {
   return (
-    <div className="w-full px-20 mt-20">
+    <div className="w-full px-20 mb-20">
       <h1 className="text-center font-bold text-2xl mb-8">
         Viajá por el mundo tranquilo con todo organizado con nuestros circuitos
         especiales
