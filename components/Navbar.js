@@ -78,23 +78,6 @@ export function Navbar() {
               {t("navHome")}
             </Link>
           </li>
-          <li className="flex justify-start">
-            {actualUrl === "/" ? (
-              <a
-                href="#milonga"
-                className="transition-all ease duration-300 hover:text-secondary"
-              >
-                {t("navMilongas")}
-              </a>
-            ) : (
-              <Link
-                href="/#milonga"
-                className="transition-all ease duration-300 hover:text-secondary"
-              >
-                {t("navMilongas")}
-              </Link>
-            )}
-          </li>
           <li>
             <Link
               href="/experiences"
@@ -216,21 +199,12 @@ export function NavbarMobile() {
             </li>
           </Link>
           <li className="text-center" onClick={openMenu}>
-            {actualUrl === "/" ? (
-              <a
-                href="#milonga"
-                className="transition-all ease duration-300 hover:text-secondary"
-              >
-                {t("navMilongas")}
-              </a>
-            ) : (
-              <Link
-                href="/#milonga"
-                className="transition-all ease duration-300 hover:text-secondary"
-              >
-                {t("navMilongas")}
-              </Link>
-            )}
+            <Link
+              href="/experiences"
+              className="transition-all ease duration-300 hover:text-secondary"
+            >
+              {t("navExperiences")}
+            </Link>
           </li>
           <Link href="/contact">
             <li
@@ -251,16 +225,8 @@ export function NavbarMobile() {
           />
         </Link>
         <div className="w-[200px] grid grid-cols-3">
-          <div className="relative flex justify-center ">
-            {/* <FaShoppingCart
-              className="text-3xl mt-5 cursor-pointer"
-              onClick={handleBookingModal}
-            />
-            <ModalBookings isActive={bookingIsActive} /> */}
-          </div>
-          <div className="flex justify-center mt-5">
-            {/* <MdAccountCircle className="text-3xl cursor-pointer" /> */}
-          </div>
+          <div className="relative flex justify-center "></div>
+          <div className="flex justify-center mt-5"></div>
 
           <MdOutlineMenu
             className="text-6xl text-white relative z-50 mt-2 mr-2"

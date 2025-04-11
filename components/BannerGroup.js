@@ -3,7 +3,7 @@ const BannerGroup = ({ title, srcs }) => {
     <div className="w-full px-20 mb-20 max-[1000px]:px-4 max-[650px]:px-0">
       <h1 className="text-center font-bold text-2xl mb-8">{title}</h1>
       <div
-        className={`w-full grid grid-cols-${srcs.length} min-h-[400px] gap-4 max-[650px]:grid-cols-1 max-[650px]:grid-rows-${srcs.length}`}
+        className={`w-full grid grid-cols-${srcs.length} h-[400px] gap-4 max-[650px]:h-auto max-[650px]:grid-cols-1 max-[650px]:grid-rows-${srcs.length}`}
       >
         {srcs.map((src, index) => (
           <div
