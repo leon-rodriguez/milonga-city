@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <div className="w-full">
-      <div className=" min-[1300px]:px-20 bg-primary h-96 grid grid-cols-4 max-lg:grid-cols-2 max-lg:grid-rows-2 max-lg:min-h-[750px] max-sm:grid-cols-1 max-sm:grid-rows-[2fr_2fr_1fr_2fr] max-sm:min-h-[1000px]">
+      <div className=" px-20 bg-primary h-96 grid grid-cols-4 max-lg:grid-cols-2 max-lg:grid-rows-2 max-lg:min-h-[750px] max-sm:grid-cols-1 max-sm:grid-rows-[2fr_2fr_1fr_2fr] max-sm:min-h-[1000px] max-[1000px]:px-4">
         <div className="grid grid-rows-[128px_auto]  max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-start items-center text-3xl font-bold text-white max-sm:justify-center">
             {t("footer_aboutus")}
@@ -28,7 +28,7 @@ const Footer = () => {
             {t("footer_activities")}
           </div>
           <div className="flex justify-start max-sm:justify-center">
-            <ul className="list-disc text-white font-bold list-inside leading-8">
+            <ul className="list-disc text-white font-bold list-inside leading-8 max-sm:w-56">
               <li className="max-sm:flex justify-start">
                 <a>{t("footer_activities_item1")}</a>
               </li>
@@ -52,7 +52,7 @@ const Footer = () => {
             {t("footer_followus")}
           </div>
           <div className="flex justify-start pb-10 max-sm:justify-center">
-            <div className="text-white w-40 text-xl font-bold flex justify-start space-x-7">
+            <div className="text-white  text-xl font-bold flex justify-start space-x-7">
               <a
                 href="https://www.facebook.com/people/Milonga-City/100063789690031/"
                 className="cursor-default"
