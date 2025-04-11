@@ -1,12 +1,9 @@
 import Link from "next/link";
-const BannerWide = ({ title, description, src, href }) => {
+const BannerWide = ({ title, subTitle, description, src, href }) => {
   return (
-    <Link href={href}>
-      <div className="w-full px-20 max-[1000px]:px-4 mb-20 max-[650px]:px-0">
-        <h1 className="text-center font-bold text-2xl mb-8">
-          Viajá por el mundo tranquilo con todo organizado con nuestros
-          circuitos especiales
-        </h1>
+    <div className="w-full px-20 max-[1000px]:px-4 mb-20 max-[650px]:px-0">
+      <h1 className="text-center font-bold text-2xl mb-8">{title}</h1>
+      <Link href={href}>
         <div className="mt-4 relative flex justify-center items-start cursor-pointer rounded-lg overflow-hidden group max-[650px]:rounded-none">
           <img
             src={src}
@@ -14,7 +11,7 @@ const BannerWide = ({ title, description, src, href }) => {
           />
           <div className="bg-[#0000002e] absolute inset-0 group-hover:bg-[#0000004c] ease-out duration-100"></div>
           <div className="font-bold text-4xl text-white absolute z-20 mt-24">
-            {title}
+            {subTitle}
           </div>
           <div className="w-[600px] text-2xl text-white absolute z-20 mt-40 text-center">
             {description}
@@ -23,8 +20,8 @@ const BannerWide = ({ title, description, src, href }) => {
             Ver mas
           </button>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

@@ -27,13 +27,13 @@ export default function Home() {
   const REDOM_DATA = [
     {
       src: "/Images/home/Dominicana/Dominicana1.jpg",
-      title: "Dominicana",
+      title: "Rep Dominicana",
       href: "https://milongacity.paquetedinamico.com/es/257/republica-dominicana/moreideas?agency=444864",
     },
     {
       src: "/Images/home/Dominicana/Dominicana2.jpg",
-      title: "Dominicana",
-      href: "https://milongacity.paquetedinamico.com/es/257/republica-dominicana/moreideas?agency=444864",
+      title: "Cancun",
+      href: "https://milongacity.paquetedinamico.com/es/13/mexico/moreideas",
     },
   ];
 
@@ -50,9 +50,10 @@ export default function Home() {
       </section>
       <section>
         <BannerWide
-          title="Viaje Internacional"
+          title="Conoce los mejores paquetes de viajes"
+          subTitle="Viaje Internacional"
           src="/Images/home/Inter/Inter.jpg"
-          description="Las mejores tarifas de aereos, hoteles, traslados, circuitos excursionesy mucho mas!"
+          description="Las mejores tarifas de aereos, hoteles, traslados, circuitos excursiones y mucho mas!"
           href="https://milongacity.paquetedinamico.com/"
         />
       </section>
@@ -64,18 +65,24 @@ export default function Home() {
       </section>
       <section>
         <BannerWide
-          title="Disney + Universal"
+          title="Descubri el magico mundo de los parques de Disney y Universal"
+          subTitle="Disney + Universal"
           description="Salidas grupales con aéreos de cupo y viajes a medida"
           src="/Images/home/Disney/Disney.jpg"
           href="https://milongacity.paquetedinamico.com/es/24/estados-unidos/moreideas"
         />
       </section>
       <section>
-        <BannerGroup title="Viaje Internacional" data={REDOM_DATA} />
+        <BannerGroup
+          title="Relajate en las playas mas hermosas del Caribe"
+          data={REDOM_DATA}
+        />
       </section>
       <section>
         <BannerWide
-          title="Viaje a Brasil"
+          title="Playas, cultura y naturaleza con ofertas exclusivas"
+          subTitle="Brasil"
+          description="Precios increibles en paquetes y viajes a medida"
           src="/Images/home/Brasil/Brasil.jpg"
           href="https://milongacity.paquetedinamico.com/es/16/brasil/moreideas"
         />
