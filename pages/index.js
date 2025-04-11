@@ -6,16 +6,35 @@ import BannerWide from "../components/BannerWide";
 import BannerGroup from "../components/BannerGroup";
 
 export default function Home() {
-  const SRCS = [
-    "/Images/home/Brasil/Brasil1.jpg",
-    "/Images/home/Brasil/Brasil2.jpg",
-    "/Images/home/Brasil/Brasil4.jpg",
+  const ARG_DATA = [
+    {
+      src: "/Images/home/Argentina/BuenosAires.jpg",
+      title: "Buenos Aires",
+      href: "/experiences",
+    },
+    {
+      src: "/Images/home/Argentina/PeritoMoreno.jpg",
+      title: "Perito Moreno",
+      href: "/contact",
+    },
+    {
+      src: "/Images/home/Argentina/Salta.jpg",
+      title: "Salta",
+      href: "/contact",
+    },
   ];
 
-  const SRCS2 = [
-    "/Images/home/Turquia/turquia1.jpg",
-    "/Images/home/Turquia/turquia2.jpg",
-    // "/Images/home/banner.jpg",
+  const REDOM_DATA = [
+    {
+      src: "/Images/home/Dominicana/Dominicana1.jpg",
+      title: "Dominicana",
+      href: "https://milongacity.paquetedinamico.com/es/257/republica-dominicana/moreideas?agency=444864",
+    },
+    {
+      src: "/Images/home/Dominicana/Dominicana2.jpg",
+      title: "Dominicana",
+      href: "https://milongacity.paquetedinamico.com/es/257/republica-dominicana/moreideas?agency=444864",
+    },
   ];
 
   return (
@@ -32,21 +51,34 @@ export default function Home() {
       <section>
         <BannerWide
           title="Viaje Internacional"
-          src="/Images/home/banner.jpg"
+          src="/Images/home/Inter/Inter.jpg"
           description="Las mejores tarifas de aereos, hoteles, traslados, circuitos excursionesy mucho mas!"
+          href="https://milongacity.paquetedinamico.com/"
         />
       </section>
       <section>
-        <BannerGroup title="Enamorate de los encantos de Brasil" srcs={SRCS} />
+        <BannerGroup
+          title="Enamorate de los encantos de Argentina"
+          data={ARG_DATA}
+        />
       </section>
       <section>
         <BannerWide
-          title="Viaje Internacional"
-          src="/Images/home/bannerDisney.jpg"
+          title="Disney + Universal"
+          description="Salidas grupales con aéreos de cupo y viajes a medida"
+          src="/Images/home/Disney/Disney.jpg"
+          href="https://milongacity.paquetedinamico.com/es/24/estados-unidos/moreideas"
         />
       </section>
       <section>
-        <BannerGroup title="Viaje Internacional" srcs={SRCS2} />
+        <BannerGroup title="Viaje Internacional" data={REDOM_DATA} />
+      </section>
+      <section>
+        <BannerWide
+          title="Viaje a Brasil"
+          src="/Images/home/Brasil/Brasil.jpg"
+          href="https://milongacity.paquetedinamico.com/es/16/brasil/moreideas"
+        />
       </section>
       <section>
         <Footer />
