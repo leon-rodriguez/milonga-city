@@ -2,7 +2,9 @@ import Link from "next/link";
 const BannerWide = ({ title, subTitle, description, src, href }) => {
   return (
     <div className="w-full px-20 max-[1000px]:px-4 mb-20 max-[650px]:px-0">
-      <h1 className="text-center font-bold text-2xl mb-8">{title}</h1>
+      <h1 className="text-center font-bold text-2xl mb-8 max-[650px]:text-xl">
+        {title}
+      </h1>
       <Link href={href}>
         <div className="mt-4 relative flex justify-center items-start cursor-pointer rounded-lg overflow-hidden group max-[650px]:rounded-none">
           <img
@@ -13,7 +15,7 @@ const BannerWide = ({ title, subTitle, description, src, href }) => {
           <div className="font-bold text-4xl text-white absolute z-20 mt-24">
             {subTitle}
           </div>
-          <div className="w-[600px] text-2xl text-white absolute z-20 mt-40 text-center">
+          <div className="w-[600px] max-[600px]:w-[300px] text-2xl max-[600px]:text-lg text-white absolute z-20 mt-40 text-center">
             {description}
           </div>
           <button className="w-40 h-12 z-20 absolute bottom-[80px] border border-white text-white rounded-sm transition-all duration-300 ease-in-out hover:bg-gray-200 hover:text-black">

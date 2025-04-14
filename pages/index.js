@@ -50,7 +50,7 @@ export default function Home() {
       </section>
       <section>
         <BannerWide
-          title="Conoce los mejores paquetes de viajes"
+          title="Los destinos mas exoticos, los viajes mas populares y el viaje de tus sueños a solo un click"
           subTitle="Viaje Internacional"
           src="/Images/home/Inter/Inter.jpg"
           description="Las mejores tarifas de aereos, hoteles, traslados, circuitos excursiones y mucho mas!"
