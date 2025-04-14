@@ -1,4 +1,4 @@
-import logo from "../assets/logo-milonga-city.svg";
+import logo from "../assets/logo_blanco.png";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { FaFacebookF, FaTripadvisor } from "react-icons/fa";
@@ -114,18 +114,16 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="h-20 bg-secondary max-sm:h-24 max-[420px]:h-36 w-full px-20">
-        <div className="text-white h-20 w-full flex items-center justify-between max-[420px]:grid max-[420px]:grid-rows-2 max-[420px]:h-36 max-[420px]:p-0">
-          <div className="flex flex-wrap  max-[420px]:justify-center">
+      <div className="h-full bg-secondary w-full px-20 max-[1000px]:px-4">
+        <div className="text-white w-full flex items-center justify-between max-[420px]:grid max-[420px]:grid-rows-2 max-[420px]:p-0">
+          <div className="flex flex-wrap  max-[420px]:justify-center w-full">
             <div>Copyright 2023 - All Rights Reserved.</div>
             <div>Developed by León Rodriguez</div>
           </div>
           <Image
             src={logo}
-            height={180}
-            width={180}
             alt="logo"
-            className="w-14 h-auto object-cover max-[420px]:mx-auto"
+            className="w-20 h-auto object-cover max-[420px]:mx-auto"
           />
         </div>
       </div>
