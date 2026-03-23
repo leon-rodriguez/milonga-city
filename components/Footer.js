@@ -26,7 +26,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <a
-                  className=" transition-all duration-300 hover:text-secondary" target="_blank" 
+                  className=" transition-all duration-300 hover:text-secondary" target="_blank" rel="noopener noreferrer"
                   href="https://tramitesadistancia.gob.ar/tramitesadistancia/detalle-tipo?id=624"
                 >
                   {t("consumer_rights")}
@@ -34,7 +34,7 @@ const Footer = () => {
                 <CiLink className=" text-2xl ml-2 "/>
               </li>
               <li className="flex items-center">
-                <a className=" transition-all duration-300 hover:text-secondary" href="#" target="_blank">
+                <a className=" transition-all duration-300 hover:text-secondary" href="#" target="_blank" rel="noopener noreferrer">
                   Local virtual
                 </a>
                 <CiLink className=" text-2xl ml-2 "/>
