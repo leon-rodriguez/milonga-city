@@ -13,14 +13,31 @@ const Footer = () => {
   return (
     <div className="w-full">
       <div className=" px-20 bg-primary h-96 grid grid-cols-4 max-lg:grid-cols-2 max-lg:grid-rows-2 max-lg:min-h-[750px] max-sm:grid-cols-1 max-sm:grid-rows-[2fr_2fr_1fr_2fr] max-sm:min-h-[1000px] max-[1000px]:px-4">
-        <div className="grid grid-rows-[128px_auto]  max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
+
+                <div className="grid grid-rows-[128px_auto] max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
           <div className="flex justify-start items-center text-3xl font-bold text-white max-sm:justify-center">
             {t("footer_aboutus")}
           </div>
-          <div className="flex justify-start max-sm:justify-center">
-            <div className="w-56 text-white font-bold leading-7">
-              {t("footer_aboutus_body")}
-            </div>
+          <div className="flex justify-start mt-1 leading-8 text-white font-bold max-sm:justify-center">
+            <ul className="space-y-4">
+              <li className="flex items-center">
+                <div>Pablo Rodriguez</div>
+              </li>
+              <li className="flex items-center">
+                <a
+                  className=" transition-all duration-300 hover:text-secondary"
+                  href="mailto:info@milonga.city"
+                >
+                  {t("consumer_rights")}
+                </a>
+              </li>
+              <li className="flex items-center">
+                <div>Local virtual</div>
+              </li>
+               <li className="flex items-center">
+                <img src="/Images/footer/asociacion_de_agencias.jpeg" alt="asociacion de agencias" className="w-24 h-auto object-cover" />
+              </li>
+            </ul>
           </div>
         </div>
         <div className="grid grid-rows-[128px_auto]  max-sm:pl-0 max-sm:grid-rows-[80px_auto]">
@@ -95,7 +112,7 @@ const Footer = () => {
                   className=" transition-all duration-300 hover:text-secondary"
                   href="mailto:info@milonga.city"
                 >
-                  info@milonga.city
+                  info@milonga-city.com.ar
                 </a>
               </li>
               <li className="flex items-center">
