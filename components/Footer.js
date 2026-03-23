@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { IoMailOutline, IoDocumentTextOutline } from "react-icons/io5";
 import { MdOutlinePlace } from "react-icons/md";
 import { RiInstagramFill } from "react-icons/ri";
+import { CiLink } from "react-icons/ci";  
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -25,17 +26,21 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <a
-                  className=" transition-all duration-300 hover:text-secondary"
-                  href="mailto:info@milonga.city"
+                  className=" transition-all duration-300 hover:text-secondary" target="_blank" 
+                  href="https://tramitesadistancia.gob.ar/tramitesadistancia/detalle-tipo?id=624"
                 >
                   {t("consumer_rights")}
                 </a>
+                <CiLink className=" text-2xl ml-2 "/>
               </li>
               <li className="flex items-center">
-                <div>Local virtual</div>
+                <a className=" transition-all duration-300 hover:text-secondary" href="#" target="_blank">
+                  Local virtual
+                </a>
+                <CiLink className=" text-2xl ml-2 "/>
               </li>
                <li className="flex items-center">
-                <img src="/Images/footer/asociacion_de_agencias.jpeg" alt="asociacion de agencias" className="w-24 h-auto object-cover" />
+                <img src="/Images/footer/asociacion_de_agencias.jpeg" alt="asociacion de agencias" className="w-16 h-auto object-cover" />
               </li>
             </ul>
           </div>
