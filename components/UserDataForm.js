@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import NationalityPicker from './NationalityPicker';
-import { useTranslation } from 'react-i18next';
-import { t } from 'i18next';
+import { useState } from "react";
+import NationalityPicker from "./NationalityPicker";
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
   const [isTextValid, setIsTextValid] = useState(null);
@@ -15,7 +15,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
     setIsTextValid(
       /^[a-zA-Z\s]+$/.test(e.target.value) &&
         !/[0-9\|{}\[\]_\\]/.test(e.target.value) &&
-        /[a-zA-Z]/.test(e.target.value)
+        /[a-zA-Z]/.test(e.target.value),
     );
     if (isTextValid) {
       handleDataFormChange({
@@ -42,7 +42,8 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
     const regex = /^\+?[0-9()\s-]+$/;
 
     setIsPhoneValid(regex.test(e.target.value));
-    if (isPhoneValid) {
+    console.log("se valida telefono", isPhoneValid);
+    if (regex.test(e.target.value)) {
       handleDataFormChange({
         ...dataFormValues,
         phone: e.target.value,
@@ -73,7 +74,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
         <div className="container-input-field">
           <div
             className={`${
-              isTextValid ? 'input-field' : 'input-field-incorrect'
+              isTextValid ? "input-field" : "input-field-incorrect"
             }`}
           >
             <input
@@ -85,13 +86,13 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
                 verifyValidName(e);
               }}
             />
-            <label htmlFor="name">{t('contact_name')}:</label>
+            <label htmlFor="name">{t("contact_name")}:</label>
           </div>
         </div>
         <div className="container-input-field">
           <div
             className={`${
-              isEmailValid ? 'input-field' : 'input-field-incorrect'
+              isEmailValid ? "input-field" : "input-field-incorrect"
             }`}
           >
             <input
@@ -109,7 +110,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
         <div className="container-input-field">
           <div
             className={`${
-              isPhoneValid ? 'input-field' : 'input-field-incorrect'
+              isPhoneValid ? "input-field" : "input-field-incorrect"
             }`}
           >
             <input
@@ -121,7 +122,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
                 verifyValidPhone(e);
               }}
             />
-            <label htmlFor="phone">{t('reserve_phone')}:</label>
+            <label htmlFor="phone">{t("reserve_phone")}:</label>
           </div>
         </div>
         <NationalityPicker
@@ -131,7 +132,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
       </div>
       <div className="w-full flex justify-center items-end mt-4 mb-7">
         <textarea
-          placeholder={t('reserve_hotel')}
+          placeholder={t("reserve_hotel")}
           rows="4"
           cols="50"
           className="w-[260px] h-12 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"
@@ -142,7 +143,7 @@ const UserDataForm = ({ handleDataFormChange, dataFormValues }) => {
       </div>
       <div className="w-full flex justify-center items-end mt-0">
         <textarea
-          placeholder={t('reserve_observation')}
+          placeholder={t("reserve_observation")}
           rows="4"
           cols="50"
           className="w-[260px] h-24 border-2 border-[#bbb] rounded-lg p-2 outline-none resize-none"

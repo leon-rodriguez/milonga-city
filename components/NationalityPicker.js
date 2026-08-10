@@ -102,7 +102,7 @@ const NationalityPicker = ({ handleDataFormChange, dataFormValues }) => {
                   .toLowerCase()
                   .startsWith(selectedCountry.toLowerCase())
               ) {
-                console.log(item.name);
+                // console.log(item.name);
                 return (
                   <div
                     className={`w-full h-12 p-4 flex justify-start items-center hover:bg-[#f5f5f5] cursor-pointer`}
